@@ -1,0 +1,8 @@
+{
+    "files.associations": {
+        "stdio.h": "c",
+        "unistd.h": "c",
+        "string.h": "c",
+        "fstream": "c"
+    }
+}

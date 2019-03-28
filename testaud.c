@@ -13,6 +13,7 @@ void draw_line(int x0, int y0, int x1, int y1, short int line_color);
 void draw_rect(int x, int y, short int line_color);
 void clear_screen();
 void wait_for_vsync();
+void readWav(char* filename);
 /*******************************************************************************
 * This program performs the following:
 * 1. records audio for 10 seconds when KEY[0] is pressed. LEDR[0] is lit
@@ -107,16 +108,16 @@ int main(void) {
                     int j;
                     /* Erase any boxes and lines that were drawn in the last iteration */
                     //clear_screen();
-                    int line = 0;
+                    double line = 0;
                     int lastline = 0;
                     int colorLine = 0x0000;
-                    if(buffer_index % 100 == 0){
+                    if(buffer_index % 267 == 0){
                         lastline = line;
-                        line = 10*log(*(audio_ptr + 2)*10);
+                        line = 10*log(abs(*(audio_ptr + 2)));
                         draw_line(0,120,319,120,0x0000);
                         colorLine = color[rand()%6];
+                        draw_line(0,120,(int) line,120,colorLine);
                     }
-                    draw_line(0,120,line,120,colorLine);
                 }
             }
         }
