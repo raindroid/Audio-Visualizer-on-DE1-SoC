@@ -3,6 +3,8 @@
         "stdio.h": "c",
         "unistd.h": "c",
         "string.h": "c",
-        "fstream": "c"
+        "fstream": "c",
+        "jtag_uart.h": "c",
+        "address_map_arm.h": "c"
     }
 }

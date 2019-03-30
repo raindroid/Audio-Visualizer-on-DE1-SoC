@@ -1,0 +1,795 @@
+
+F:/UofT/ece243/project/ece243project/tests/AudioNew/audio.axf:     file format elf32-littlearm
+
+
+Disassembly of section .text:
+
+00000000 <__cs3_interrupt_vector>:
+   0:	18 f0 9f e5 18 f0 9f e5 18 f0 9f e5 18 f0 9f e5     ................
+  10:	18 f0 9f e5 18 f0 9f e5 18 f0 9f e5 18 f0 9f e5     ................
+  20:	40 00 00 00 28 08 00 00 2c 08 00 00 30 08 00 00     @...(...,...0...
+  30:	34 08 00 00 24 08 00 00 38 08 00 00 3c 08 00 00     4...$...8...<...
+
+00000040 <__cs3_reset>:
+  40:	ea000026 	b	e0 <__cs3_start_asm_sim>
+
+00000044 <__cs3_start_c>:
+  44:	e59f608c 	ldr	r6, [pc, #140]	; d8 <__cs3_start_c+0x94>
+  48:	e3560000 	cmp	r6, #0
+  4c:	e92d4080 	push	{r7, lr}
+  50:	e2466001 	sub	r6, r6, #1
+  54:	0a00001e 	beq	d4 <__cs3_start_c+0x90>
+  58:	e59f507c 	ldr	r5, [pc, #124]	; dc <__cs3_start_c+0x98>
+  5c:	e3a00000 	mov	r0, #0
+  60:	e3a01000 	mov	r1, #0
+  64:	e515200c 	ldr	r2, [r5, #-12]
+  68:	e515e010 	ldr	lr, [r5, #-16]
+  6c:	e5154008 	ldr	r4, [r5, #-8]
+  70:	e15e0002 	cmp	lr, r2
+  74:	00822004 	addeq	r2, r2, r4
+  78:	0a000009 	beq	a4 <__cs3_start_c+0x60>
+  7c:	e3540000 	cmp	r4, #0
+  80:	0a000007 	beq	a4 <__cs3_start_c+0x60>
+  84:	e1a07002 	mov	r7, r2
+  88:	e1a0c002 	mov	r12, r2
+  8c:	e8be000c 	ldm	lr!, {r2, r3}
+  90:	e8ac000c 	stmia	r12!, {r2, r3}
+  94:	e067300c 	rsb	r3, r7, r12
+  98:	e1540003 	cmp	r4, r3
+  9c:	e1a0200c 	mov	r2, r12
+  a0:	1afffff9 	bne	8c <__cs3_start_c+0x48>
+  a4:	e515e004 	ldr	lr, [r5, #-4]
+  a8:	e35e0000 	cmp	lr, #0
+  ac:	11a03002 	movne	r3, r2
+  b0:	0a000003 	beq	c4 <__cs3_start_c+0x80>
+  b4:	e8a30003 	stmia	r3!, {r0, r1}
+  b8:	e062c003 	rsb	r12, r2, r3
+  bc:	e15e000c 	cmp	lr, r12
+  c0:	1afffffb 	bne	b4 <__cs3_start_c+0x70>
+  c4:	e2466001 	sub	r6, r6, #1
+  c8:	e3760001 	cmn	r6, #1
+  cc:	e2855014 	add	r5, r5, #20
+  d0:	1affffe3 	bne	64 <__cs3_start_c+0x20>
+  d4:	eb0001b9 	bl	7c0 <__cs3_premain>
+  d8:	00000001 	.word	0x00000001
+  dc:	00000924 	.word	0x00000924
+
+000000e0 <__cs3_start_asm_sim>:
+  e0:	e28f103c 	add	r1, pc, #60	; 0x3c
+  e4:	e3a00016 	mov	r0, #22
+  e8:	ef123456 	svc	0x00123456
+  ec:	e3500000 	cmp	r0, #0
+  f0:	ba000008 	blt	118 <__cs3_start_asm_sim+0x38>
+  f4:	e59f2028 	ldr	r2, [pc, #40]	; 124 <__cs3_heap_start_ptr>
+  f8:	e59fd01c 	ldr	sp, [pc, #28]	; 11c <__cs3_start_asm_sim+0x3c>
+  fc:	e5920008 	ldr	r0, [r2, #8]
+ 100:	e3500000 	cmp	r0, #0
+ 104:	11a0d000 	movne	sp, r0
+ 108:	e59f1010 	ldr	r1, [pc, #16]	; 120 <__cs3_start_asm_sim+0x40>
+ 10c:	e5920004 	ldr	r0, [r2, #4]
+ 110:	e3500000 	cmp	r0, #0
+ 114:	15810000 	strne	r0, [r1]
+ 118:	eaffffc9 	b	44 <__cs3_start_c>
+ 11c:	3ffffff8 	.word	0x3ffffff8
+ 120:	00000d60 	.word	0x00000d60
+
+00000124 <__cs3_heap_start_ptr>:
+ 124:	00000d88 	.word	0x00000d88
+
+00000128 <_start>:
+ 128:	e51fd000 	ldr	sp, [pc, #-0]	; 130 <_start+0x8>
+ 12c:	eaffffc4 	b	44 <__cs3_start_c>
+ 130:	3ffffff8 	.word	0x3ffffff8
+
+00000134 <deregister_tm_clones>:
+ 134:	e92d4008 	push	{r3, lr}
+ 138:	e59f002c 	ldr	r0, [pc, #44]	; 16c <deregister_tm_clones+0x38>
+ 13c:	e59f302c 	ldr	r3, [pc, #44]	; 170 <deregister_tm_clones+0x3c>
+ 140:	e0603003 	rsb	r3, r0, r3
+ 144:	e3530006 	cmp	r3, #6
+ 148:	8a000001 	bhi	154 <deregister_tm_clones+0x20>
+ 14c:	e8bd4008 	pop	{r3, lr}
+ 150:	e12fff1e 	bx	lr
+ 154:	e59f3018 	ldr	r3, [pc, #24]	; 174 <deregister_tm_clones+0x40>
+ 158:	e3530000 	cmp	r3, #0
+ 15c:	0afffffa 	beq	14c <deregister_tm_clones+0x18>
+ 160:	e1a0e00f 	mov	lr, pc
+ 164:	e12fff13 	bx	r3
+ 168:	eafffff7 	b	14c <deregister_tm_clones+0x18>
+ 16c:	00000d68 	.word	0x00000d68
+ 170:	00000d6b 	.word	0x00000d6b
+ 174:	00000000 	.word	0x00000000
+
+00000178 <register_tm_clones>:
+ 178:	e92d4008 	push	{r3, lr}
+ 17c:	e59f0034 	ldr	r0, [pc, #52]	; 1b8 <register_tm_clones+0x40>
+ 180:	e59f3034 	ldr	r3, [pc, #52]	; 1bc <register_tm_clones+0x44>
+ 184:	e0603003 	rsb	r3, r0, r3
+ 188:	e1a03143 	asr	r3, r3, #2
+ 18c:	e0833fa3 	add	r3, r3, r3, lsr #31
+ 190:	e1b010c3 	asrs	r1, r3, #1
+ 194:	1a000001 	bne	1a0 <register_tm_clones+0x28>
+ 198:	e8bd4008 	pop	{r3, lr}
+ 19c:	e12fff1e 	bx	lr
+ 1a0:	e59f2018 	ldr	r2, [pc, #24]	; 1c0 <register_tm_clones+0x48>
+ 1a4:	e3520000 	cmp	r2, #0
+ 1a8:	0afffffa 	beq	198 <register_tm_clones+0x20>
+ 1ac:	e1a0e00f 	mov	lr, pc
+ 1b0:	e12fff12 	bx	r2
+ 1b4:	eafffff7 	b	198 <register_tm_clones+0x20>
+ 1b8:	00000d68 	.word	0x00000d68
+ 1bc:	00000d68 	.word	0x00000d68
+ 1c0:	00000000 	.word	0x00000000
+
+000001c4 <__do_global_dtors_aux>:
+ 1c4:	e92d4010 	push	{r4, lr}
+ 1c8:	e59f402c 	ldr	r4, [pc, #44]	; 1fc <__do_global_dtors_aux+0x38>
+ 1cc:	e5d43000 	ldrb	r3, [r4]
+ 1d0:	e3530000 	cmp	r3, #0
+ 1d4:	1a000006 	bne	1f4 <__do_global_dtors_aux+0x30>
+ 1d8:	ebffffd5 	bl	134 <deregister_tm_clones>
+ 1dc:	e59f301c 	ldr	r3, [pc, #28]	; 200 <__do_global_dtors_aux+0x3c>
+ 1e0:	e3530000 	cmp	r3, #0
+ 1e4:	159f0018 	ldrne	r0, [pc, #24]	; 204 <__do_global_dtors_aux+0x40>
+ 1e8:	1320f000 	nopne	{0}
+ 1ec:	e3a03001 	mov	r3, #1
+ 1f0:	e5c43000 	strb	r3, [r4]
+ 1f4:	e8bd4010 	pop	{r4, lr}
+ 1f8:	e12fff1e 	bx	lr
+ 1fc:	00000d68 	.word	0x00000d68
+ 200:	00000000 	.word	0x00000000
+ 204:	000008c8 	.word	0x000008c8
+
+00000208 <frame_dummy>:
+ 208:	e92d4008 	push	{r3, lr}
+ 20c:	e59f3034 	ldr	r3, [pc, #52]	; 248 <frame_dummy+0x40>
+ 210:	e3530000 	cmp	r3, #0
+ 214:	159f0030 	ldrne	r0, [pc, #48]	; 24c <frame_dummy+0x44>
+ 218:	159f1030 	ldrne	r1, [pc, #48]	; 250 <frame_dummy+0x48>
+ 21c:	1320f000 	nopne	{0}
+ 220:	e59f002c 	ldr	r0, [pc, #44]	; 254 <frame_dummy+0x4c>
+ 224:	e5903000 	ldr	r3, [r0]
+ 228:	e3530000 	cmp	r3, #0
+ 22c:	0a000003 	beq	240 <frame_dummy+0x38>
+ 230:	e59f3020 	ldr	r3, [pc, #32]	; 258 <frame_dummy+0x50>
+ 234:	e3530000 	cmp	r3, #0
+ 238:	11a0e00f 	movne	lr, pc
+ 23c:	112fff13 	bxne	r3
+ 240:	e8bd4008 	pop	{r3, lr}
+ 244:	eaffffcb 	b	178 <register_tm_clones>
+ 248:	00000000 	.word	0x00000000
+ 24c:	000008c8 	.word	0x000008c8
+ 250:	00000d6c 	.word	0x00000d6c
+ 254:	00000928 	.word	0x00000928
+ 258:	00000000 	.word	0x00000000
+
+0000025c <check_KEYs>:
+}
+
+/****************************************************************************************
+ * Subroutine to read KEYs
+****************************************************************************************/
+void check_KEYs(int * KEY0, int * KEY1, int * counter) {
+ 25c:	e52d4004 	push	{r4}		; (str r4, [sp, #-4]!)
+    volatile int * KEY_ptr   = (int *)KEY_BASE;
+    volatile int * audio_ptr = (int *)AUDIO_BASE;
+    int            KEY_value;
+
+    KEY_value = *(KEY_ptr); // read the pushbutton KEY values
+ 260:	e3a03000 	mov	r3, #0
+ 264:	e34f3f20 	movt	r3, #65312	; 0xff20
+ 268:	e5934050 	ldr	r4, [r3, #80]	; 0x50
+    while (*KEY_ptr)
+ 26c:	e3a0c000 	mov	r12, #0
+ 270:	e34fcf20 	movt	r12, #65312	; 0xff20
+ 274:	e59c3050 	ldr	r3, [r12, #80]	; 0x50
+ 278:	e3530000 	cmp	r3, #0
+ 27c:	1afffffc 	bne	274 <check_KEYs+0x18>
+        ; // wait for pushbutton KEY release
+
+    if (KEY_value == 0x1) // check KEY0
+ 280:	e3540001 	cmp	r4, #1
+ 284:	1a000009 	bne	2b0 <check_KEYs+0x54>
+    {
+        // reset counter to start recording
+        *counter = 0;
+ 288:	e3a01000 	mov	r1, #0
+ 28c:	e5821000 	str	r1, [r2]
+        // clear audio-in FIFO
+        *(audio_ptr) = 0x4;
+ 290:	e3033fff 	movw	r3, #16383	; 0x3fff
+ 294:	e34f3f20 	movt	r3, #65312	; 0xff20
+ 298:	e3a02004 	mov	r2, #4
+ 29c:	e5032fbf 	str	r2, [r3, #-4031]	; 0xfffff041
+        *(audio_ptr) = 0x0;
+ 2a0:	e5031fbf 	str	r1, [r3, #-4031]	; 0xfffff041
+
+        *KEY0 = 1;
+ 2a4:	e3a03001 	mov	r3, #1
+ 2a8:	e5803000 	str	r3, [r0]
+ 2ac:	ea00000a 	b	2dc <check_KEYs+0x80>
+    } else if (KEY_value == 0x2) // check KEY1
+ 2b0:	e3540002 	cmp	r4, #2
+ 2b4:	1a000008 	bne	2dc <check_KEYs+0x80>
+    {
+        // reset counter to start playback
+        *counter = 0;
+ 2b8:	e3a00000 	mov	r0, #0
+ 2bc:	e5820000 	str	r0, [r2]
+        // clear audio-out FIFO
+        *(audio_ptr) = 0x8;
+ 2c0:	e3033fff 	movw	r3, #16383	; 0x3fff
+ 2c4:	e34f3f20 	movt	r3, #65312	; 0xff20
+ 2c8:	e3a02008 	mov	r2, #8
+ 2cc:	e5032fbf 	str	r2, [r3, #-4031]	; 0xfffff041
+        *(audio_ptr) = 0x0;
+ 2d0:	e5030fbf 	str	r0, [r3, #-4031]	; 0xfffff041
+
+        *KEY1 = 1;
+ 2d4:	e3a03001 	mov	r3, #1
+ 2d8:	e5813000 	str	r3, [r1]
+    }
+}
+ 2dc:	e8bd0010 	ldmfd	sp!, {r4}
+ 2e0:	e12fff1e 	bx	lr
+
+000002e4 <main>:
+ * 	1. records audio for 10 seconds when KEY[0] is pressed. LEDR[0] is lit
+ *	   while recording.
+ * 	2. plays the recorded audio when KEY[1] is pressed. LEDR[1] is lit while
+ *	   playing.
+ ******************************************************************************/
+int main(void) {
+ 2e4:	e92d45f0 	push	{r4, r5, r6, r7, r8, r10, lr}
+ 2e8:	e24dd927 	sub	sp, sp, #638976	; 0x9c000
+ 2ec:	e24dde41 	sub	sp, sp, #1040	; 0x410
+ 2f0:	e24dd004 	sub	sp, sp, #4
+    volatile int * red_LED_ptr = (int *)LED_BASE;
+    volatile int * audio_ptr   = (int *)AUDIO_BASE;
+
+    /* used for audio record/playback */
+    int fifospace;
+    int record = 0, play = 0, buffer_index = 0;
+ 2f4:	e3a03000 	mov	r3, #0
+ 2f8:	e28d1927 	add	r1, sp, #638976	; 0x9c000
+ 2fc:	e581340c 	str	r3, [r1, #1036]	; 0x40c
+ 300:	e5813408 	str	r3, [r1, #1032]	; 0x408
+ 304:	e5813404 	str	r3, [r1, #1028]	; 0x404
+    play   = 0;
+
+    while (1) {
+        check_KEYs(&record, &play, &buffer_index);
+        if (record) {
+            *(red_LED_ptr) = 0x1; // turn on LEDR[0]
+ 308:	e1a0a003 	mov	r10, r3
+ 30c:	e34faf20 	movt	r10, #65312	; 0xff20
+            fifospace =
+ 310:	e3034fff 	movw	r4, #16383	; 0x3fff
+ 314:	e34f4f20 	movt	r4, #65312	; 0xff20
+                *(audio_ptr + 1); // read the audio port fifospace register
+            if ((fifospace & 0x000000FF) > BUF_THRESHOLD) // check RARC
+            {
+                // store data until the the audio-in FIFO is empty or the buffer
+                // is full
+                while ((fifospace & 0x000000FF) && (buffer_index < BUF_SIZE)) {
+ 318:	e303587f 	movw	r5, #14463	; 0x387f
+ 31c:	e3405001 	movt	r5, #1
+                    left_buffer[buffer_index]  = *(audio_ptr + 2);
+ 320:	e3018df4 	movw	r8, #7668	; 0x1df4
+ 324:	e34f8ffb 	movt	r8, #65531	; 0xfffb
+                    right_buffer[buffer_index] = *(audio_ptr + 3);
+ 328:	e3037bf4 	movw	r7, #15348	; 0x3bf4
+ 32c:	e34f7ff6 	movt	r7, #65526	; 0xfff6
+                    ++buffer_index;
+
+                    if (buffer_index == BUF_SIZE) {
+ 330:	e3a06de2 	mov	r6, #14464	; 0x3880
+ 334:	e3406001 	movt	r6, #1
+    /* read and echo audio data */
+    record = 0;
+    play   = 0;
+
+    while (1) {
+        check_KEYs(&record, &play, &buffer_index);
+ 338:	e30c040c 	movw	r0, #50188	; 0xc40c
+ 33c:	e3400009 	movt	r0, #9
+ 340:	e08d0000 	add	r0, sp, r0
+ 344:	e30c1408 	movw	r1, #50184	; 0xc408
+ 348:	e3401009 	movt	r1, #9
+ 34c:	e08d1001 	add	r1, sp, r1
+ 350:	e30c2404 	movw	r2, #50180	; 0xc404
+ 354:	e3402009 	movt	r2, #9
+ 358:	e08d2002 	add	r2, sp, r2
+ 35c:	ebffffbe 	bl	25c <check_KEYs>
+        if (record) {
+ 360:	e28d2927 	add	r2, sp, #638976	; 0x9c000
+ 364:	e592340c 	ldr	r3, [r2, #1036]	; 0x40c
+ 368:	e3530000 	cmp	r3, #0
+ 36c:	0a000020 	beq	3f4 <main+0x110>
+            *(red_LED_ptr) = 0x1; // turn on LEDR[0]
+ 370:	e3a03001 	mov	r3, #1
+ 374:	e58a3000 	str	r3, [r10]
+            fifospace =
+ 378:	e5143fbb 	ldr	r3, [r4, #-4027]	; 0xfffff045
+                *(audio_ptr + 1); // read the audio port fifospace register
+            if ((fifospace & 0x000000FF) > BUF_THRESHOLD) // check RARC
+ 37c:	e6ef3073 	uxtb	r3, r3
+ 380:	e3530060 	cmp	r3, #96	; 0x60
+ 384:	daffffeb 	ble	338 <main+0x54>
+            {
+                // store data until the the audio-in FIFO is empty or the buffer
+                // is full
+                while ((fifospace & 0x000000FF) && (buffer_index < BUF_SIZE)) {
+ 388:	e3530000 	cmp	r3, #0
+ 38c:	0affffe9 	beq	338 <main+0x54>
+ 390:	e5923404 	ldr	r3, [r2, #1028]	; 0x404
+ 394:	e1530005 	cmp	r3, r5
+ 398:	caffffe6 	bgt	338 <main+0x54>
+                    right_buffer[buffer_index] = *(audio_ptr + 3);
+                    ++buffer_index;
+
+                    if (buffer_index == BUF_SIZE) {
+                        // done recording
+                        record         = 0;
+ 39c:	e3a00000 	mov	r0, #0
+            if ((fifospace & 0x000000FF) > BUF_THRESHOLD) // check RARC
+            {
+                // store data until the the audio-in FIFO is empty or the buffer
+                // is full
+                while ((fifospace & 0x000000FF) && (buffer_index < BUF_SIZE)) {
+                    left_buffer[buffer_index]  = *(audio_ptr + 2);
+ 3a0:	e5141fb7 	ldr	r1, [r4, #-4023]	; 0xfffff049
+ 3a4:	e28dc927 	add	r12, sp, #638976	; 0x9c000
+ 3a8:	e28cce41 	add	r12, r12, #1040	; 0x410
+ 3ac:	e08c2103 	add	r2, r12, r3, lsl #2
+ 3b0:	e7821008 	str	r1, [r2, r8]
+                    right_buffer[buffer_index] = *(audio_ptr + 3);
+ 3b4:	e5141fb3 	ldr	r1, [r4, #-4019]	; 0xfffff04d
+ 3b8:	e7821007 	str	r1, [r2, r7]
+                    ++buffer_index;
+ 3bc:	e2833001 	add	r3, r3, #1
+ 3c0:	e28d1927 	add	r1, sp, #638976	; 0x9c000
+ 3c4:	e5813404 	str	r3, [r1, #1028]	; 0x404
+
+                    if (buffer_index == BUF_SIZE) {
+ 3c8:	e1530006 	cmp	r3, r6
+                        // done recording
+                        record         = 0;
+ 3cc:	0581040c 	streq	r0, [r1, #1036]	; 0x40c
+                        *(red_LED_ptr) = 0x0; // turn off LEDR
+ 3d0:	058a0000 	streq	r0, [r10]
+                    }
+                    fifospace = *(audio_ptr +
+ 3d4:	e5143fbb 	ldr	r3, [r4, #-4027]	; 0xfffff045
+                *(audio_ptr + 1); // read the audio port fifospace register
+            if ((fifospace & 0x000000FF) > BUF_THRESHOLD) // check RARC
+            {
+                // store data until the the audio-in FIFO is empty or the buffer
+                // is full
+                while ((fifospace & 0x000000FF) && (buffer_index < BUF_SIZE)) {
+ 3d8:	e31300ff 	tst	r3, #255	; 0xff
+ 3dc:	0affffd5 	beq	338 <main+0x54>
+ 3e0:	e28d2927 	add	r2, sp, #638976	; 0x9c000
+ 3e4:	e5923404 	ldr	r3, [r2, #1028]	; 0x404
+ 3e8:	e1530005 	cmp	r3, r5
+ 3ec:	daffffeb 	ble	3a0 <main+0xbc>
+ 3f0:	eaffffd0 	b	338 <main+0x54>
+                    }
+                    fifospace = *(audio_ptr +
+                                  1); // read the audio port fifospace register
+                }
+            }
+        } else if (play) {
+ 3f4:	e28dc927 	add	r12, sp, #638976	; 0x9c000
+ 3f8:	e59c3408 	ldr	r3, [r12, #1032]	; 0x408
+ 3fc:	e3530000 	cmp	r3, #0
+ 400:	0affffcc 	beq	338 <main+0x54>
+            *(red_LED_ptr) = 0x2; // turn on LEDR_1
+ 404:	e3a03002 	mov	r3, #2
+ 408:	e58a3000 	str	r3, [r10]
+            fifospace =
+ 40c:	e5143fbb 	ldr	r3, [r4, #-4027]	; 0xfffff045
+                *(audio_ptr + 1); // read the audio port fifospace register
+            if ((fifospace & 0x00FF0000) > BUF_THRESHOLD) // check WSRC
+ 410:	e20338ff 	and	r3, r3, #16711680	; 0xff0000
+ 414:	e3530060 	cmp	r3, #96	; 0x60
+ 418:	daffffc6 	ble	338 <main+0x54>
+            {
+                // output data until the buffer is empty or the audio-out FIFO
+                // is full
+                while ((fifospace & 0x00FF0000) && (buffer_index < BUF_SIZE)) {
+ 41c:	e3530000 	cmp	r3, #0
+ 420:	0affffc4 	beq	338 <main+0x54>
+ 424:	e59c3404 	ldr	r3, [r12, #1028]	; 0x404
+ 428:	e1530005 	cmp	r3, r5
+ 42c:	caffffc1 	bgt	338 <main+0x54>
+                    *(audio_ptr + 3) = right_buffer[buffer_index];
+                    ++buffer_index;
+
+                    if (buffer_index == BUF_SIZE) {
+                        // done playback
+                        play           = 0;
+ 430:	e3a02000 	mov	r2, #0
+            if ((fifospace & 0x00FF0000) > BUF_THRESHOLD) // check WSRC
+            {
+                // output data until the buffer is empty or the audio-out FIFO
+                // is full
+                while ((fifospace & 0x00FF0000) && (buffer_index < BUF_SIZE)) {
+                    *(audio_ptr + 2) = left_buffer[buffer_index];
+ 434:	e28d1927 	add	r1, sp, #638976	; 0x9c000
+ 438:	e2811e41 	add	r1, r1, #1040	; 0x410
+ 43c:	e0813103 	add	r3, r1, r3, lsl #2
+ 440:	e7933008 	ldr	r3, [r3, r8]
+ 444:	e5043fb7 	str	r3, [r4, #-4023]	; 0xfffff049
+                    *(audio_ptr + 3) = right_buffer[buffer_index];
+ 448:	e28dc927 	add	r12, sp, #638976	; 0x9c000
+ 44c:	e59c3404 	ldr	r3, [r12, #1028]	; 0x404
+ 450:	e0813103 	add	r3, r1, r3, lsl #2
+ 454:	e7933007 	ldr	r3, [r3, r7]
+ 458:	e5043fb3 	str	r3, [r4, #-4019]	; 0xfffff04d
+                    ++buffer_index;
+ 45c:	e59c3404 	ldr	r3, [r12, #1028]	; 0x404
+ 460:	e2833001 	add	r3, r3, #1
+ 464:	e58c3404 	str	r3, [r12, #1028]	; 0x404
+
+                    if (buffer_index == BUF_SIZE) {
+ 468:	e1530006 	cmp	r3, r6
+                        // done playback
+                        play           = 0;
+ 46c:	058c2408 	streq	r2, [r12, #1032]	; 0x408
+                        *(red_LED_ptr) = 0x0; // turn off LEDR
+ 470:	058a2000 	streq	r2, [r10]
+                    }
+                    fifospace = *(audio_ptr +
+ 474:	e5143fbb 	ldr	r3, [r4, #-4027]	; 0xfffff045
+                *(audio_ptr + 1); // read the audio port fifospace register
+            if ((fifospace & 0x00FF0000) > BUF_THRESHOLD) // check WSRC
+            {
+                // output data until the buffer is empty or the audio-out FIFO
+                // is full
+                while ((fifospace & 0x00FF0000) && (buffer_index < BUF_SIZE)) {
+ 478:	e31308ff 	tst	r3, #16711680	; 0xff0000
+ 47c:	0affffad 	beq	338 <main+0x54>
+ 480:	e28d1927 	add	r1, sp, #638976	; 0x9c000
+ 484:	e5913404 	ldr	r3, [r1, #1028]	; 0x404
+ 488:	e1530005 	cmp	r3, r5
+ 48c:	daffffe8 	ble	434 <main+0x150>
+ 490:	eaffffa8 	b	338 <main+0x54>
+
+00000494 <atexit>:
+ 494:	e1a01000 	mov	r1, r0
+ 498:	e3a00000 	mov	r0, #0
+ 49c:	e92d4008 	push	{r3, lr}
+ 4a0:	e1a02000 	mov	r2, r0
+ 4a4:	e1a03000 	mov	r3, r0
+ 4a8:	eb00000e 	bl	4e8 <__register_exitproc>
+ 4ac:	e8bd4008 	pop	{r3, lr}
+ 4b0:	e12fff1e 	bx	lr
+
+000004b4 <exit>:
+ 4b4:	e92d4008 	push	{r3, lr}
+ 4b8:	e3a01000 	mov	r1, #0
+ 4bc:	e1a04000 	mov	r4, r0
+ 4c0:	eb000045 	bl	5dc <__call_exitprocs>
+ 4c4:	e59f3018 	ldr	r3, [pc, #24]	; 4e4 <exit+0x30>
+ 4c8:	e5930000 	ldr	r0, [r3]
+ 4cc:	e590303c 	ldr	r3, [r0, #60]	; 0x3c
+ 4d0:	e3530000 	cmp	r3, #0
+ 4d4:	11a0e00f 	movne	lr, pc
+ 4d8:	112fff13 	bxne	r3
+ 4dc:	e1a00004 	mov	r0, r4
+ 4e0:	eb0000c9 	bl	80c <_exit>
+ 4e4:	000008cc 	.word	0x000008cc
+
+000004e8 <__register_exitproc>:
+ 4e8:	e59fc0e4 	ldr	r12, [pc, #228]	; 5d4 <__register_exitproc+0xec>
+ 4ec:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+ 4f0:	e59c4000 	ldr	r4, [r12]
+ 4f4:	e594c148 	ldr	r12, [r4, #328]	; 0x148
+ 4f8:	e35c0000 	cmp	r12, #0
+ 4fc:	0284cf53 	addeq	r12, r4, #332	; 0x14c
+ 500:	e59c5004 	ldr	r5, [r12, #4]
+ 504:	0584c148 	streq	r12, [r4, #328]	; 0x148
+ 508:	e355001f 	cmp	r5, #31
+ 50c:	e24dd010 	sub	sp, sp, #16
+ 510:	e1a06000 	mov	r6, r0
+ 514:	da000015 	ble	570 <__register_exitproc+0x88>
+ 518:	e59f00b8 	ldr	r0, [pc, #184]	; 5d8 <__register_exitproc+0xf0>
+ 51c:	e3500000 	cmp	r0, #0
+ 520:	1a000001 	bne	52c <__register_exitproc+0x44>
+ 524:	e3e00000 	mvn	r0, #0
+ 528:	ea000018 	b	590 <__register_exitproc+0xa8>
+ 52c:	e3a00e19 	mov	r0, #400	; 0x190
+ 530:	e58d100c 	str	r1, [sp, #12]
+ 534:	e58d2008 	str	r2, [sp, #8]
+ 538:	e58d3004 	str	r3, [sp, #4]
+ 53c:	e320f000 	nop	{0}
+ 540:	e250c000 	subs	r12, r0, #0
+ 544:	e59d100c 	ldr	r1, [sp, #12]
+ 548:	e59d2008 	ldr	r2, [sp, #8]
+ 54c:	e59d3004 	ldr	r3, [sp, #4]
+ 550:	0afffff3 	beq	524 <__register_exitproc+0x3c>
+ 554:	e5945148 	ldr	r5, [r4, #328]	; 0x148
+ 558:	e3a00000 	mov	r0, #0
+ 55c:	e58c0004 	str	r0, [r12, #4]
+ 560:	e58c5000 	str	r5, [r12]
+ 564:	e584c148 	str	r12, [r4, #328]	; 0x148
+ 568:	e58c0188 	str	r0, [r12, #392]	; 0x188
+ 56c:	e58c018c 	str	r0, [r12, #396]	; 0x18c
+ 570:	e3560000 	cmp	r6, #0
+ 574:	e59c4004 	ldr	r4, [r12, #4]
+ 578:	1a000007 	bne	59c <__register_exitproc+0xb4>
+ 57c:	e2843002 	add	r3, r4, #2
+ 580:	e2844001 	add	r4, r4, #1
+ 584:	e78c1103 	str	r1, [r12, r3, lsl #2]
+ 588:	e58c4004 	str	r4, [r12, #4]
+ 58c:	e3a00000 	mov	r0, #0
+ 590:	e28dd010 	add	sp, sp, #16
+ 594:	e8bd41f0 	pop	{r4, r5, r6, r7, r8, lr}
+ 598:	e12fff1e 	bx	lr
+ 59c:	e3a00001 	mov	r0, #1
+ 5a0:	e1a00410 	lsl	r0, r0, r4
+ 5a4:	e08c8104 	add	r8, r12, r4, lsl #2
+ 5a8:	e3560002 	cmp	r6, #2
+ 5ac:	e59c7188 	ldr	r7, [r12, #392]	; 0x188
+ 5b0:	e5883108 	str	r3, [r8, #264]	; 0x108
+ 5b4:	059c318c 	ldreq	r3, [r12, #396]	; 0x18c
+ 5b8:	e1877000 	orr	r7, r7, r0
+ 5bc:	01830000 	orreq	r0, r3, r0
+ 5c0:	e1a05008 	mov	r5, r8
+ 5c4:	e5882088 	str	r2, [r8, #136]	; 0x88
+ 5c8:	e58c7188 	str	r7, [r12, #392]	; 0x188
+ 5cc:	058c018c 	streq	r0, [r12, #396]	; 0x18c
+ 5d0:	eaffffe9 	b	57c <__register_exitproc+0x94>
+ 5d4:	000008cc 	.word	0x000008cc
+ 5d8:	00000000 	.word	0x00000000
+
+000005dc <__call_exitprocs>:
+ 5dc:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, r10, r11, lr}
+ 5e0:	e59f3168 	ldr	r3, [pc, #360]	; 750 <__call_exitprocs+0x174>
+ 5e4:	e5933000 	ldr	r3, [r3]
+ 5e8:	e24dd014 	sub	sp, sp, #20
+ 5ec:	e58d3004 	str	r3, [sp, #4]
+ 5f0:	e2833f52 	add	r3, r3, #328	; 0x148
+ 5f4:	e58d0008 	str	r0, [sp, #8]
+ 5f8:	e58d300c 	str	r3, [sp, #12]
+ 5fc:	e1a07001 	mov	r7, r1
+ 600:	e3a08001 	mov	r8, #1
+ 604:	e59d3004 	ldr	r3, [sp, #4]
+ 608:	e5936148 	ldr	r6, [r3, #328]	; 0x148
+ 60c:	e3560000 	cmp	r6, #0
+ 610:	e59db00c 	ldr	r11, [sp, #12]
+ 614:	0a000033 	beq	6e8 <__call_exitprocs+0x10c>
+ 618:	e5965004 	ldr	r5, [r6, #4]
+ 61c:	e2554001 	subs	r4, r5, #1
+ 620:	5286a088 	addpl	r10, r6, #136	; 0x88
+ 624:	5285501f 	addpl	r5, r5, #31
+ 628:	508a5105 	addpl	r5, r10, r5, lsl #2
+ 62c:	5a000007 	bpl	650 <__call_exitprocs+0x74>
+ 630:	ea000029 	b	6dc <__call_exitprocs+0x100>
+ 634:	e5953000 	ldr	r3, [r5]
+ 638:	e1530007 	cmp	r3, r7
+ 63c:	0a000005 	beq	658 <__call_exitprocs+0x7c>
+ 640:	e2444001 	sub	r4, r4, #1
+ 644:	e3740001 	cmn	r4, #1
+ 648:	e2455004 	sub	r5, r5, #4
+ 64c:	0a000022 	beq	6dc <__call_exitprocs+0x100>
+ 650:	e3570000 	cmp	r7, #0
+ 654:	1afffff6 	bne	634 <__call_exitprocs+0x58>
+ 658:	e5963004 	ldr	r3, [r6, #4]
+ 65c:	e06a2005 	rsb	r2, r10, r5
+ 660:	e2433001 	sub	r3, r3, #1
+ 664:	e0862002 	add	r2, r6, r2
+ 668:	e1530004 	cmp	r3, r4
+ 66c:	e5123078 	ldr	r3, [r2, #-120]	; 0xffffff88
+ 670:	13a01000 	movne	r1, #0
+ 674:	05864004 	streq	r4, [r6, #4]
+ 678:	15021078 	strne	r1, [r2, #-120]	; 0xffffff88
+ 67c:	e3530000 	cmp	r3, #0
+ 680:	0affffee 	beq	640 <__call_exitprocs+0x64>
+ 684:	e1a02418 	lsl	r2, r8, r4
+ 688:	e5961188 	ldr	r1, [r6, #392]	; 0x188
+ 68c:	e1120001 	tst	r2, r1
+ 690:	e5969004 	ldr	r9, [r6, #4]
+ 694:	0a000016 	beq	6f4 <__call_exitprocs+0x118>
+ 698:	e596118c 	ldr	r1, [r6, #396]	; 0x18c
+ 69c:	e1120001 	tst	r2, r1
+ 6a0:	1a000016 	bne	700 <__call_exitprocs+0x124>
+ 6a4:	e59d0008 	ldr	r0, [sp, #8]
+ 6a8:	e5151080 	ldr	r1, [r5, #-128]	; 0xffffff80
+ 6ac:	e1a0e00f 	mov	lr, pc
+ 6b0:	e12fff13 	bx	r3
+ 6b4:	e5963004 	ldr	r3, [r6, #4]
+ 6b8:	e1530009 	cmp	r3, r9
+ 6bc:	1affffd0 	bne	604 <__call_exitprocs+0x28>
+ 6c0:	e59b3000 	ldr	r3, [r11]
+ 6c4:	e1530006 	cmp	r3, r6
+ 6c8:	1affffcd 	bne	604 <__call_exitprocs+0x28>
+ 6cc:	e2444001 	sub	r4, r4, #1
+ 6d0:	e3740001 	cmn	r4, #1
+ 6d4:	e2455004 	sub	r5, r5, #4
+ 6d8:	1affffdc 	bne	650 <__call_exitprocs+0x74>
+ 6dc:	e59f1070 	ldr	r1, [pc, #112]	; 754 <__call_exitprocs+0x178>
+ 6e0:	e3510000 	cmp	r1, #0
+ 6e4:	1a000009 	bne	710 <__call_exitprocs+0x134>
+ 6e8:	e28dd014 	add	sp, sp, #20
+ 6ec:	e8bd4ff0 	pop	{r4, r5, r6, r7, r8, r9, r10, r11, lr}
+ 6f0:	e12fff1e 	bx	lr
+ 6f4:	e1a0e00f 	mov	lr, pc
+ 6f8:	e12fff13 	bx	r3
+ 6fc:	eaffffec 	b	6b4 <__call_exitprocs+0xd8>
+ 700:	e5150080 	ldr	r0, [r5, #-128]	; 0xffffff80
+ 704:	e1a0e00f 	mov	lr, pc
+ 708:	e12fff13 	bx	r3
+ 70c:	eaffffe8 	b	6b4 <__call_exitprocs+0xd8>
+ 710:	e5963004 	ldr	r3, [r6, #4]
+ 714:	e3530000 	cmp	r3, #0
+ 718:	e5963000 	ldr	r3, [r6]
+ 71c:	1a000008 	bne	744 <__call_exitprocs+0x168>
+ 720:	e3530000 	cmp	r3, #0
+ 724:	0a000006 	beq	744 <__call_exitprocs+0x168>
+ 728:	e1a00006 	mov	r0, r6
+ 72c:	e58b3000 	str	r3, [r11]
+ 730:	e320f000 	nop	{0}
+ 734:	e59b6000 	ldr	r6, [r11]
+ 738:	e3560000 	cmp	r6, #0
+ 73c:	1affffb5 	bne	618 <__call_exitprocs+0x3c>
+ 740:	eaffffe8 	b	6e8 <__call_exitprocs+0x10c>
+ 744:	e1a0b006 	mov	r11, r6
+ 748:	e1a06003 	mov	r6, r3
+ 74c:	eafffff9 	b	738 <__call_exitprocs+0x15c>
+ 750:	000008cc 	.word	0x000008cc
+ 754:	00000000 	.word	0x00000000
+
+00000758 <register_fini>:
+ 758:	e92d4008 	push	{r3, lr}
+ 75c:	e59f3010 	ldr	r3, [pc, #16]	; 774 <register_fini+0x1c>
+ 760:	e3530000 	cmp	r3, #0
+ 764:	159f000c 	ldrne	r0, [pc, #12]	; 778 <register_fini+0x20>
+ 768:	1bffff49 	blne	494 <atexit>
+ 76c:	e8bd4008 	pop	{r3, lr}
+ 770:	e12fff1e 	bx	lr
+ 774:	000008f4 	.word	0x000008f4
+ 778:	0000077c 	.word	0x0000077c
+
+0000077c <__libc_fini_array>:
+ 77c:	e92d4038 	push	{r3, r4, r5, lr}
+ 780:	e59f5030 	ldr	r5, [pc, #48]	; 7b8 <__libc_fini_array+0x3c>
+ 784:	e59f4030 	ldr	r4, [pc, #48]	; 7bc <__libc_fini_array+0x40>
+ 788:	e0654004 	rsb	r4, r5, r4
+ 78c:	e1b04144 	asrs	r4, r4, #2
+ 790:	10855104 	addne	r5, r5, r4, lsl #2
+ 794:	0a000004 	beq	7ac <__libc_fini_array+0x30>
+ 798:	e5353004 	ldr	r3, [r5, #-4]!
+ 79c:	e1a0e00f 	mov	lr, pc
+ 7a0:	e12fff13 	bx	r3
+ 7a4:	e2544001 	subs	r4, r4, #1
+ 7a8:	1afffffa 	bne	798 <__libc_fini_array+0x1c>
+ 7ac:	eb000050 	bl	8f4 <__libc_fini>
+ 7b0:	e8bd4038 	pop	{r3, r4, r5, lr}
+ 7b4:	e12fff1e 	bx	lr
+ 7b8:	0000090c 	.word	0x0000090c
+ 7bc:	00000910 	.word	0x00000910
+
+000007c0 <__cs3_premain>:
+ 7c0:	e92d4008 	push	{r3, lr}
+ 7c4:	eb00001d 	bl	840 <__libc_init_array>
+ 7c8:	e59f3030 	ldr	r3, [pc, #48]	; 800 <__cs3_premain+0x40>
+ 7cc:	e3530000 	cmp	r3, #0
+ 7d0:	15930000 	ldrne	r0, [r3]
+ 7d4:	01a00003 	moveq	r0, r3
+ 7d8:	e59f3024 	ldr	r3, [pc, #36]	; 804 <__cs3_premain+0x44>
+ 7dc:	e3530000 	cmp	r3, #0
+ 7e0:	15931000 	ldrne	r1, [r3]
+ 7e4:	01a01003 	moveq	r1, r3
+ 7e8:	e3a02000 	mov	r2, #0
+ 7ec:	ebfffebc 	bl	2e4 <main>
+ 7f0:	e59f3010 	ldr	r3, [pc, #16]	; 808 <__cs3_premain+0x48>
+ 7f4:	e3530000 	cmp	r3, #0
+ 7f8:	1bffff2d 	blne	4b4 <exit>
+ 7fc:	eafffffe 	b	7fc <__cs3_premain+0x3c>
+	...
+ 808:	000004b4 	.word	0x000004b4
+
+0000080c <_exit>:
+ 80c:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+ 810:	e3a00018 	mov	r0, #24
+ 814:	e59f1004 	ldr	r1, [pc, #4]	; 820 <_exit+0x14>
+ 818:	ef123456 	svc	0x00123456
+ 81c:	eafffffe 	b	81c <_exit+0x10>
+ 820:	00020026 	.word	0x00020026
+
+00000824 <__cs3_isr_interrupt>:
+ 824:	eafffffe 	b	824 <__cs3_isr_interrupt>
+
+00000828 <__cs3_isr_undef>:
+ 828:	eafffffe 	b	828 <__cs3_isr_undef>
+
+0000082c <__cs3_isr_swi>:
+ 82c:	eafffffe 	b	82c <__cs3_isr_swi>
+
+00000830 <__cs3_isr_pabort>:
+ 830:	eafffffe 	b	830 <__cs3_isr_pabort>
+
+00000834 <__cs3_isr_dabort>:
+ 834:	eafffffe 	b	834 <__cs3_isr_dabort>
+
+00000838 <__cs3_isr_irq>:
+ 838:	eafffffe 	b	838 <__cs3_isr_irq>
+
+0000083c <__cs3_isr_fiq>:
+ 83c:	eafffffe 	b	83c <__cs3_isr_fiq>
+
+00000840 <__libc_init_array>:
+ 840:	e92d4070 	push	{r4, r5, r6, lr}
+ 844:	e59f506c 	ldr	r5, [pc, #108]	; 8b8 <__libc_init_array+0x78>
+ 848:	e59f606c 	ldr	r6, [pc, #108]	; 8bc <__libc_init_array+0x7c>
+ 84c:	e0656006 	rsb	r6, r5, r6
+ 850:	e1b06146 	asrs	r6, r6, #2
+ 854:	12455004 	subne	r5, r5, #4
+ 858:	13a04000 	movne	r4, #0
+ 85c:	0a000005 	beq	878 <__libc_init_array+0x38>
+ 860:	e5b53004 	ldr	r3, [r5, #4]!
+ 864:	e2844001 	add	r4, r4, #1
+ 868:	e1a0e00f 	mov	lr, pc
+ 86c:	e12fff13 	bx	r3
+ 870:	e1560004 	cmp	r6, r4
+ 874:	1afffff9 	bne	860 <__libc_init_array+0x20>
+ 878:	e59f5040 	ldr	r5, [pc, #64]	; 8c0 <__libc_init_array+0x80>
+ 87c:	e59f6040 	ldr	r6, [pc, #64]	; 8c4 <__libc_init_array+0x84>
+ 880:	e0656006 	rsb	r6, r5, r6
+ 884:	eb000012 	bl	8d4 <_init>
+ 888:	e1b06146 	asrs	r6, r6, #2
+ 88c:	12455004 	subne	r5, r5, #4
+ 890:	13a04000 	movne	r4, #0
+ 894:	0a000005 	beq	8b0 <__libc_init_array+0x70>
+ 898:	e5b53004 	ldr	r3, [r5, #4]!
+ 89c:	e2844001 	add	r4, r4, #1
+ 8a0:	e1a0e00f 	mov	lr, pc
+ 8a4:	e12fff13 	bx	r3
+ 8a8:	e1560004 	cmp	r6, r4
+ 8ac:	1afffff9 	bne	898 <__libc_init_array+0x58>
+ 8b0:	e8bd4070 	pop	{r4, r5, r6, lr}
+ 8b4:	e12fff1e 	bx	lr
+ 8b8:	000008ec 	.word	0x000008ec
+ 8bc:	000008ec 	.word	0x000008ec
+ 8c0:	000008ec 	.word	0x000008ec
+ 8c4:	000008f4 	.word	0x000008f4
+
+Disassembly of section .rodata:
+
+000008cc <_global_impure_ptr>:
+ 8cc:	00000938 00000043                       8...C...
+
+000008d4 <_init>:
+ 8d4:	e1a0c00d 	mov	r12, sp
+ 8d8:	e92ddff8 	push	{r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr, pc}
+ 8dc:	e24cb004 	sub	r11, r12, #4
+ 8e0:	e24bd028 	sub	sp, r11, #40	; 0x28
+ 8e4:	e89d6ff0 	ldm	sp, {r4, r5, r6, r7, r8, r9, r10, r11, sp, lr}
+ 8e8:	e12fff1e 	bx	lr
+
+000008ec <__init_array_start>:
+ 8ec:	00000758 	.word	0x00000758
+
+000008f0 <__frame_dummy_init_array_entry>:
+ 8f0:	00000208                                ....
+
+000008f4 <__libc_fini>:
+ 8f4:	e1a0c00d 	mov	r12, sp
+ 8f8:	e92ddff8 	push	{r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr, pc}
+ 8fc:	e24cb004 	sub	r11, r12, #4
+ 900:	e24bd028 	sub	sp, r11, #40	; 0x28
+ 904:	e89d6ff0 	ldm	sp, {r4, r5, r6, r7, r8, r9, r10, r11, sp, lr}
+ 908:	e12fff1e 	bx	lr
+
+0000090c <__fini_array_start>:
+ 90c:	000001c4 	.word	0x000001c4
+
+00000910 <__cs3_regions>:
+	...
+ 91c:	00000d68 	.word	0x00000d68
+ 920:	00000020 	.word	0x00000020
+
+00000924 <__cs3_regions_end>:
+ 924:	00000000 	.word	0x00000000
