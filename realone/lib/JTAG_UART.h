@@ -4,7 +4,7 @@
 /* function prototypes */
 void VIS_Uart_TxChar(volatile int *, char);
 void VIS_Uart_Tx(volatile int *, char * s, int size);
-void VIS_UART_TxUint(volatile int *, int num);
+void VIS_UART_TxInt(volatile int *, int num);
 
 char VIS_Uart_RxChar(volatile int *);
 

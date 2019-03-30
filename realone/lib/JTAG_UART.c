@@ -1,6 +1,6 @@
 #include "JTAG_UART.h"
 
-volatile int * red_LED_ptr = (int *)0xFF200000;
+static volatile int * red_LED_ptr = (int *)0xFF200000;
 const char intToChar[10] = {'0','1','2','3','4','5','6','7','8','9'};  
 
 void VIS_Uart_TxChar(volatile int * JTAG_UART_ptr, char c) {

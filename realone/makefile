@@ -27,8 +27,8 @@ LDFLAGS		:= $(patsubst %, -Wl$(DEFINE_COMMA)%, $(ARCHLDFLAGS)) $(ARCHLDSCRIPT)
 OCFLAGS		:= -O srec
 
 # Files
-HDRS		:= address_map_arm.h lib/JTAG_UART.h lib/Audio.h
-SRCS		:= main.c lib/JTAG_UART.c lib/Audio.c
+HDRS		:= address_map_arm.h lib/JTAG_UART.h lib/Audio.h lib/LED.h values.h tests/tests.h
+SRCS		:= main.c lib/JTAG_UART.c lib/Audio.c lib/LED.c tests/lib_tests.c
 OBJS		:= $(patsubst %, %.o, $(SRCS))
 
 # Targets
