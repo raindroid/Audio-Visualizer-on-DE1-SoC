@@ -9,6 +9,7 @@
         "audio.h": "c",
         "tests.h": "c",
         "hex.h": "c",
-        "complex.h": "c"
+        "values.h": "c"
+
     }
 }
