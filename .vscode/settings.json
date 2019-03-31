@@ -8,6 +8,7 @@
         "address_map_arm.h": "c",
         "audio.h": "c",
         "tests.h": "c",
-        "hex.h": "c"
+        "hex.h": "c",
+        "complex.h": "c"
     }
 }
