@@ -8,5 +8,6 @@ void led_test();
 void uart_test();
 void audio_test();
 void hex_test();
+void display_test();
 
 #endif

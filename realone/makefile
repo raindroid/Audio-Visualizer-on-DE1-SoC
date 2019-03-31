@@ -27,8 +27,8 @@ LDFLAGS		:= $(patsubst %, -Wl$(DEFINE_COMMA)%, $(ARCHLDFLAGS)) $(ARCHLDSCRIPT)
 OCFLAGS		:= -O srec
 
 # Files
-HDRS		:= address_map_arm.h values.h lib/JTAG_UART.h lib/Audio.h lib/LED.h lib/HEX.h  tests/tests.h
-SRCS		:= main.c values.c lib/JTAG_UART.c lib/Audio.c lib/LED.c lib/HEX.c tests/lib_tests.c
+HDRS		:= address_map_arm.h values.h lib/JTAG_UART.h lib/Audio.h lib/LED.h lib/HEX.h  tests/tests.h views/VGA_Display.h helpers/Math.h
+SRCS		:= main.c values.c lib/JTAG_UART.c lib/Audio.c lib/LED.c lib/HEX.c tests/lib_tests.c views/VGA_Display.c helpers/Math.c
 OBJS		:= $(patsubst %, %.o, $(SRCS))
 
 # Targets
@@ -40,11 +40,11 @@ main.srec: main.axf
 
 main.axf: $(OBJS)
 	$(RM) $@
-	$(CC) $(LDFLAGS) $(OBJS) -o $@
+	$(CC) $(LDFLAGS) $(OBJS) -o $@ -lm
 
 %.c.o: %.c $(HDRS)
 	$(RM) $@
-	$(CC) $(CCFLAGS) $< -o $@
+	$(CC) $(CCFLAGS) $< -o $@ 
 
 %.s.o: %.s $(HDRS)
 	$(RM) $@

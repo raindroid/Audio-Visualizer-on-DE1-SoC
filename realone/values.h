@@ -3,6 +3,7 @@
 #pragma once
 #include "address_map_arm.h"
 #define DEBUG
+#define MAX_LINES 1000
 
 void VIS_ERROR_Handler();
 

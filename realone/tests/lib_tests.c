@@ -5,6 +5,9 @@
 #include <string.h>
 #include "../lib/LED.h"
 #include "../lib/HEX.h"
+#include "../views/VGA_Display.h"
+#include <stdlib.h>
+#include "../values.h"
 
 
 static volatile int *JTAG_UART_ptr = (int *)JTAG_UART_BASE; // JTAG UART address
@@ -30,15 +33,25 @@ void audio_test() {
     int right_buffer[BUF_SIZE];
 
     fifospace = *(audio_ptr + 1); // read the audio port fifospace register
-    if ((fifospace & 0x000000FF) > BUF_THRESHOLD) // check RARC
+    // if ((fifospace & 0x000000FF) > BUF_THRESHOLD) // check RARC
     {
         // store data until the the audio-in FIFO is empty or the buffer
         // is full
-        while ((fifospace & 0x000000FF) && (buffer_index < BUF_SIZE)) {
-            left_buffer[buffer_index]  = *(audio_ptr + 2);
-            right_buffer[buffer_index] = *(audio_ptr + 3);
+        // while ((fifospace & 0x000000FF) && (buffer_index < BUF_SIZE)) {
+        while(1) {
+            // left_buffer[buffer_index]  = *(audio_ptr + 2);
+            // right_buffer[buffer_index] = *(audio_ptr + 3);
+            while (!(fifospace & 0x000000FF));
+            *(audio_ptr + 2)  = *(audio_ptr + 2) >> 6;
+            *(audio_ptr + 3)  = *(audio_ptr + 3) >> 6;
             ++buffer_index;
-            fifospace = *(audio_ptr + 1); // read the audio port fifospace register
+            if (buffer_index >= 0xFFFFFF) buffer_index = 0;
+            VIS_HEX_SetUint_HEX(buffer_index);
+            if (VIS_Uart_RxChar(JTAG_UART_ptr) != 0) {
+                // reset counter
+                buffer_index = 0;
+            }
+            // fifospace = *(audio_ptr + 1); // read the audio port fifospace register
         }
     }
     VIS_Uart_Tx(JTAG_UART_ptr, "Buffer Size=", strlen("Buffer Size="));
@@ -106,4 +119,22 @@ void hex_test() {
 
     VIS_HEX_SetUint_HEX(0x123ACF);
     
+}
+
+void display_test() {
+    VIS_VGA_SetBuffer(SDRAM_BASE, FPGA_ONCHIP_BASE);
+    unsigned k = 100;
+    unsigned fakeSpect[MAX_LINES] = {0}; 
+    while(1) {
+        for (unsigned i = 0; i < k; i++) {
+            if (i != 0 && rand() % 10 < 2)
+                fakeSpect[i] = fakeSpect[i - 1] + (rand() % 800 - 400);
+            else if (rand() % 10 < 3)
+                fakeSpect[i] = rand() % 20000;
+            else 
+                fakeSpect[i] = rand() % 12000;
+        }
+        VIS_VGA_UpdateFrame(k, fakeSpect);
+        // VIS_VGA_ColorTest();
+    }
 }
