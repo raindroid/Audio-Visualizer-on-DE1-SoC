@@ -27,4 +27,7 @@ void VIS_LED_Set(unsigned index, unsigned status);
  */
 unsigned VIS_LED_Toggle(unsigned index);
 
+void VIS_LED_SetAll();
+void VIS_LED_ResetAll();
+
 #endif // !_LED_H__

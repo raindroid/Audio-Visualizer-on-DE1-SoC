@@ -36,6 +36,11 @@ void VIS_UART_TxInt(volatile int * JTAG_UART_ptr, int num) {
     }
 }
 
+void VIS_UART_TxEnter(volatile int * JTAG_UART_ptr) {
+    VIS_Uart_TxChar(JTAG_UART_ptr, '\r');
+    VIS_Uart_TxChar(JTAG_UART_ptr, '\n');
+}
+
 char VIS_Uart_RxChar(volatile int * JTAG_UART_ptr) {
     int data;
     data = *(JTAG_UART_ptr); // read the JTAG_UART data register

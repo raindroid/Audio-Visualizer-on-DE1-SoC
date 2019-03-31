@@ -7,8 +7,10 @@
 
 int main(void)
 {
-    led_test();
+    // led_test();
     // uart_test();
     // audio_test();
+    hex_test();
 
+    for (;;); 
 }

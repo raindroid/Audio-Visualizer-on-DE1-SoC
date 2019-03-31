@@ -5,1349 +5,1954 @@ F:/UofT/ece243/project/ece243project/realone/main.axf:     file format elf32-lit
 Disassembly of section .text:
 
 00000000 <__cs3_interrupt_vector>:
-   0:	18 f0 9f e5 18 f0 9f e5 18 f0 9f e5 18 f0 9f e5     ................
-  10:	18 f0 9f e5 18 f0 9f e5 18 f0 9f e5 18 f0 9f e5     ................
-  20:	40 00 00 00 1c 0f 00 00 20 0f 00 00 24 0f 00 00     @....... ...$...
-  30:	28 0f 00 00 18 0f 00 00 2c 0f 00 00 30 0f 00 00     (.......,...0...
+       0:	18 f0 9f e5 18 f0 9f e5 18 f0 9f e5 18 f0 9f e5     ................
+      10:	18 f0 9f e5 18 f0 9f e5 18 f0 9f e5 18 f0 9f e5     ................
+      20:	40 00 00 00 34 16 00 00 38 16 00 00 3c 16 00 00     @...4...8...<...
+      30:	40 16 00 00 30 16 00 00 44 16 00 00 48 16 00 00     @...0...D...H...
 
 00000040 <__cs3_reset>:
-  40:	ea000026 	b	e0 <__cs3_start_asm_sim>
+      40:	ea000026 	b	e0 <__cs3_start_asm_sim>
 
 00000044 <__cs3_start_c>:
-  44:	e59f608c 	ldr	r6, [pc, #140]	; d8 <__cs3_start_c+0x94>
-  48:	e3560000 	cmp	r6, #0
-  4c:	e92d4080 	push	{r7, lr}
-  50:	e2466001 	sub	r6, r6, #1
-  54:	0a00001e 	beq	d4 <__cs3_start_c+0x90>
-  58:	e59f507c 	ldr	r5, [pc, #124]	; dc <__cs3_start_c+0x98>
-  5c:	e3a00000 	mov	r0, #0
-  60:	e3a01000 	mov	r1, #0
-  64:	e515200c 	ldr	r2, [r5, #-12]
-  68:	e515e010 	ldr	lr, [r5, #-16]
-  6c:	e5154008 	ldr	r4, [r5, #-8]
-  70:	e15e0002 	cmp	lr, r2
-  74:	00822004 	addeq	r2, r2, r4
-  78:	0a000009 	beq	a4 <__cs3_start_c+0x60>
-  7c:	e3540000 	cmp	r4, #0
-  80:	0a000007 	beq	a4 <__cs3_start_c+0x60>
-  84:	e1a07002 	mov	r7, r2
-  88:	e1a0c002 	mov	r12, r2
-  8c:	e8be000c 	ldm	lr!, {r2, r3}
-  90:	e8ac000c 	stmia	r12!, {r2, r3}
-  94:	e067300c 	rsb	r3, r7, r12
-  98:	e1540003 	cmp	r4, r3
-  9c:	e1a0200c 	mov	r2, r12
-  a0:	1afffff9 	bne	8c <__cs3_start_c+0x48>
-  a4:	e515e004 	ldr	lr, [r5, #-4]
-  a8:	e35e0000 	cmp	lr, #0
-  ac:	11a03002 	movne	r3, r2
-  b0:	0a000003 	beq	c4 <__cs3_start_c+0x80>
-  b4:	e8a30003 	stmia	r3!, {r0, r1}
-  b8:	e062c003 	rsb	r12, r2, r3
-  bc:	e15e000c 	cmp	lr, r12
-  c0:	1afffffb 	bne	b4 <__cs3_start_c+0x70>
-  c4:	e2466001 	sub	r6, r6, #1
-  c8:	e3760001 	cmn	r6, #1
-  cc:	e2855014 	add	r5, r5, #20
-  d0:	1affffe3 	bne	64 <__cs3_start_c+0x20>
-  d4:	eb000376 	bl	eb4 <__cs3_premain>
-  d8:	00000001 	.word	0x00000001
-  dc:	00001054 	.word	0x00001054
+      44:	e59f608c 	ldr	r6, [pc, #140]	; d8 <__cs3_start_c+0x94>
+      48:	e3560000 	cmp	r6, #0
+      4c:	e92d4080 	push	{r7, lr}
+      50:	e2466001 	sub	r6, r6, #1
+      54:	0a00001e 	beq	d4 <__cs3_start_c+0x90>
+      58:	e59f507c 	ldr	r5, [pc, #124]	; dc <__cs3_start_c+0x98>
+      5c:	e3a00000 	mov	r0, #0
+      60:	e3a01000 	mov	r1, #0
+      64:	e515200c 	ldr	r2, [r5, #-12]
+      68:	e515e010 	ldr	lr, [r5, #-16]
+      6c:	e5154008 	ldr	r4, [r5, #-8]
+      70:	e15e0002 	cmp	lr, r2
+      74:	00822004 	addeq	r2, r2, r4
+      78:	0a000009 	beq	a4 <__cs3_start_c+0x60>
+      7c:	e3540000 	cmp	r4, #0
+      80:	0a000007 	beq	a4 <__cs3_start_c+0x60>
+      84:	e1a07002 	mov	r7, r2
+      88:	e1a0c002 	mov	r12, r2
+      8c:	e8be000c 	ldm	lr!, {r2, r3}
+      90:	e8ac000c 	stmia	r12!, {r2, r3}
+      94:	e067300c 	rsb	r3, r7, r12
+      98:	e1540003 	cmp	r4, r3
+      9c:	e1a0200c 	mov	r2, r12
+      a0:	1afffff9 	bne	8c <__cs3_start_c+0x48>
+      a4:	e515e004 	ldr	lr, [r5, #-4]
+      a8:	e35e0000 	cmp	lr, #0
+      ac:	11a03002 	movne	r3, r2
+      b0:	0a000003 	beq	c4 <__cs3_start_c+0x80>
+      b4:	e8a30003 	stmia	r3!, {r0, r1}
+      b8:	e062c003 	rsb	r12, r2, r3
+      bc:	e15e000c 	cmp	lr, r12
+      c0:	1afffffb 	bne	b4 <__cs3_start_c+0x70>
+      c4:	e2466001 	sub	r6, r6, #1
+      c8:	e3760001 	cmn	r6, #1
+      cc:	e2855014 	add	r5, r5, #20
+      d0:	1affffe3 	bne	64 <__cs3_start_c+0x20>
+      d4:	eb00053c 	bl	15cc <__cs3_premain>
+      d8:	00000001 	.word	0x00000001
+      dc:	000017ac 	.word	0x000017ac
 
 000000e0 <__cs3_start_asm_sim>:
-  e0:	e28f103c 	add	r1, pc, #60	; 0x3c
-  e4:	e3a00016 	mov	r0, #22
-  e8:	ef123456 	svc	0x00123456
-  ec:	e3500000 	cmp	r0, #0
-  f0:	ba000008 	blt	118 <__cs3_start_asm_sim+0x38>
-  f4:	e59f2028 	ldr	r2, [pc, #40]	; 124 <__cs3_heap_start_ptr>
-  f8:	e59fd01c 	ldr	sp, [pc, #28]	; 11c <__cs3_start_asm_sim+0x3c>
-  fc:	e5920008 	ldr	r0, [r2, #8]
- 100:	e3500000 	cmp	r0, #0
- 104:	11a0d000 	movne	sp, r0
- 108:	e59f1010 	ldr	r1, [pc, #16]	; 120 <__cs3_start_asm_sim+0x40>
- 10c:	e5920004 	ldr	r0, [r2, #4]
- 110:	e3500000 	cmp	r0, #0
- 114:	15810000 	strne	r0, [r1]
- 118:	eaffffc9 	b	44 <__cs3_start_c>
- 11c:	3ffffff8 	.word	0x3ffffff8
- 120:	000014a0 	.word	0x000014a0
+      e0:	e28f103c 	add	r1, pc, #60	; 0x3c
+      e4:	e3a00016 	mov	r0, #22
+      e8:	ef123456 	svc	0x00123456
+      ec:	e3500000 	cmp	r0, #0
+      f0:	ba000008 	blt	118 <__cs3_start_asm_sim+0x38>
+      f4:	e59f2028 	ldr	r2, [pc, #40]	; 124 <__cs3_heap_start_ptr>
+      f8:	e59fd01c 	ldr	sp, [pc, #28]	; 11c <__cs3_start_asm_sim+0x3c>
+      fc:	e5920008 	ldr	r0, [r2, #8]
+     100:	e3500000 	cmp	r0, #0
+     104:	11a0d000 	movne	sp, r0
+     108:	e59f1010 	ldr	r1, [pc, #16]	; 120 <__cs3_start_asm_sim+0x40>
+     10c:	e5920004 	ldr	r0, [r2, #4]
+     110:	e3500000 	cmp	r0, #0
+     114:	15810000 	strne	r0, [r1]
+     118:	eaffffc9 	b	44 <__cs3_start_c>
+     11c:	3ffffff8 	.word	0x3ffffff8
+     120:	00001c48 	.word	0x00001c48
 
 00000124 <__cs3_heap_start_ptr>:
- 124:	000014c8 	.word	0x000014c8
+     124:	00001c70 	.word	0x00001c70
 
 00000128 <_start>:
- 128:	e51fd000 	ldr	sp, [pc, #-0]	; 130 <_start+0x8>
- 12c:	eaffffc4 	b	44 <__cs3_start_c>
- 130:	3ffffff8 	.word	0x3ffffff8
+     128:	e51fd000 	ldr	sp, [pc, #-0]	; 130 <_start+0x8>
+     12c:	eaffffc4 	b	44 <__cs3_start_c>
+     130:	3ffffff8 	.word	0x3ffffff8
 
 00000134 <deregister_tm_clones>:
- 134:	e92d4008 	push	{r3, lr}
- 138:	e59f002c 	ldr	r0, [pc, #44]	; 16c <deregister_tm_clones+0x38>
- 13c:	e59f302c 	ldr	r3, [pc, #44]	; 170 <deregister_tm_clones+0x3c>
- 140:	e0603003 	rsb	r3, r0, r3
- 144:	e3530006 	cmp	r3, #6
- 148:	8a000001 	bhi	154 <deregister_tm_clones+0x20>
- 14c:	e8bd4008 	pop	{r3, lr}
- 150:	e12fff1e 	bx	lr
- 154:	e59f3018 	ldr	r3, [pc, #24]	; 174 <deregister_tm_clones+0x40>
- 158:	e3530000 	cmp	r3, #0
- 15c:	0afffffa 	beq	14c <deregister_tm_clones+0x18>
- 160:	e1a0e00f 	mov	lr, pc
- 164:	e12fff13 	bx	r3
- 168:	eafffff7 	b	14c <deregister_tm_clones+0x18>
- 16c:	000014a8 	.word	0x000014a8
- 170:	000014ab 	.word	0x000014ab
- 174:	00000000 	.word	0x00000000
+     134:	e92d4008 	push	{r3, lr}
+     138:	e59f002c 	ldr	r0, [pc, #44]	; 16c <deregister_tm_clones+0x38>
+     13c:	e59f302c 	ldr	r3, [pc, #44]	; 170 <deregister_tm_clones+0x3c>
+     140:	e0603003 	rsb	r3, r0, r3
+     144:	e3530006 	cmp	r3, #6
+     148:	8a000001 	bhi	154 <deregister_tm_clones+0x20>
+     14c:	e8bd4008 	pop	{r3, lr}
+     150:	e12fff1e 	bx	lr
+     154:	e59f3018 	ldr	r3, [pc, #24]	; 174 <deregister_tm_clones+0x40>
+     158:	e3530000 	cmp	r3, #0
+     15c:	0afffffa 	beq	14c <deregister_tm_clones+0x18>
+     160:	e1a0e00f 	mov	lr, pc
+     164:	e12fff13 	bx	r3
+     168:	eafffff7 	b	14c <deregister_tm_clones+0x18>
+     16c:	00001c50 	.word	0x00001c50
+     170:	00001c53 	.word	0x00001c53
+     174:	00000000 	.word	0x00000000
 
 00000178 <register_tm_clones>:
- 178:	e92d4008 	push	{r3, lr}
- 17c:	e59f0034 	ldr	r0, [pc, #52]	; 1b8 <register_tm_clones+0x40>
- 180:	e59f3034 	ldr	r3, [pc, #52]	; 1bc <register_tm_clones+0x44>
- 184:	e0603003 	rsb	r3, r0, r3
- 188:	e1a03143 	asr	r3, r3, #2
- 18c:	e0833fa3 	add	r3, r3, r3, lsr #31
- 190:	e1b010c3 	asrs	r1, r3, #1
- 194:	1a000001 	bne	1a0 <register_tm_clones+0x28>
- 198:	e8bd4008 	pop	{r3, lr}
- 19c:	e12fff1e 	bx	lr
- 1a0:	e59f2018 	ldr	r2, [pc, #24]	; 1c0 <register_tm_clones+0x48>
- 1a4:	e3520000 	cmp	r2, #0
- 1a8:	0afffffa 	beq	198 <register_tm_clones+0x20>
- 1ac:	e1a0e00f 	mov	lr, pc
- 1b0:	e12fff12 	bx	r2
- 1b4:	eafffff7 	b	198 <register_tm_clones+0x20>
- 1b8:	000014a8 	.word	0x000014a8
- 1bc:	000014a8 	.word	0x000014a8
- 1c0:	00000000 	.word	0x00000000
+     178:	e92d4008 	push	{r3, lr}
+     17c:	e59f0034 	ldr	r0, [pc, #52]	; 1b8 <register_tm_clones+0x40>
+     180:	e59f3034 	ldr	r3, [pc, #52]	; 1bc <register_tm_clones+0x44>
+     184:	e0603003 	rsb	r3, r0, r3
+     188:	e1a03143 	asr	r3, r3, #2
+     18c:	e0833fa3 	add	r3, r3, r3, lsr #31
+     190:	e1b010c3 	asrs	r1, r3, #1
+     194:	1a000001 	bne	1a0 <register_tm_clones+0x28>
+     198:	e8bd4008 	pop	{r3, lr}
+     19c:	e12fff1e 	bx	lr
+     1a0:	e59f2018 	ldr	r2, [pc, #24]	; 1c0 <register_tm_clones+0x48>
+     1a4:	e3520000 	cmp	r2, #0
+     1a8:	0afffffa 	beq	198 <register_tm_clones+0x20>
+     1ac:	e1a0e00f 	mov	lr, pc
+     1b0:	e12fff12 	bx	r2
+     1b4:	eafffff7 	b	198 <register_tm_clones+0x20>
+     1b8:	00001c50 	.word	0x00001c50
+     1bc:	00001c50 	.word	0x00001c50
+     1c0:	00000000 	.word	0x00000000
 
 000001c4 <__do_global_dtors_aux>:
- 1c4:	e92d4010 	push	{r4, lr}
- 1c8:	e59f402c 	ldr	r4, [pc, #44]	; 1fc <__do_global_dtors_aux+0x38>
- 1cc:	e5d43000 	ldrb	r3, [r4]
- 1d0:	e3530000 	cmp	r3, #0
- 1d4:	1a000006 	bne	1f4 <__do_global_dtors_aux+0x30>
- 1d8:	ebffffd5 	bl	134 <deregister_tm_clones>
- 1dc:	e59f301c 	ldr	r3, [pc, #28]	; 200 <__do_global_dtors_aux+0x3c>
- 1e0:	e3530000 	cmp	r3, #0
- 1e4:	159f0018 	ldrne	r0, [pc, #24]	; 204 <__do_global_dtors_aux+0x40>
- 1e8:	1320f000 	nopne	{0}
- 1ec:	e3a03001 	mov	r3, #1
- 1f0:	e5c43000 	strb	r3, [r4]
- 1f4:	e8bd4010 	pop	{r4, lr}
- 1f8:	e12fff1e 	bx	lr
- 1fc:	000014a8 	.word	0x000014a8
- 200:	00000000 	.word	0x00000000
- 204:	00000fbc 	.word	0x00000fbc
+     1c4:	e92d4010 	push	{r4, lr}
+     1c8:	e59f402c 	ldr	r4, [pc, #44]	; 1fc <__do_global_dtors_aux+0x38>
+     1cc:	e5d43000 	ldrb	r3, [r4]
+     1d0:	e3530000 	cmp	r3, #0
+     1d4:	1a000006 	bne	1f4 <__do_global_dtors_aux+0x30>
+     1d8:	ebffffd5 	bl	134 <deregister_tm_clones>
+     1dc:	e59f301c 	ldr	r3, [pc, #28]	; 200 <__do_global_dtors_aux+0x3c>
+     1e0:	e3530000 	cmp	r3, #0
+     1e4:	159f0018 	ldrne	r0, [pc, #24]	; 204 <__do_global_dtors_aux+0x40>
+     1e8:	1320f000 	nopne	{0}
+     1ec:	e3a03001 	mov	r3, #1
+     1f0:	e5c43000 	strb	r3, [r4]
+     1f4:	e8bd4010 	pop	{r4, lr}
+     1f8:	e12fff1e 	bx	lr
+     1fc:	00001c50 	.word	0x00001c50
+     200:	00000000 	.word	0x00000000
+     204:	000016d4 	.word	0x000016d4
 
 00000208 <frame_dummy>:
- 208:	e92d4008 	push	{r3, lr}
- 20c:	e59f3034 	ldr	r3, [pc, #52]	; 248 <frame_dummy+0x40>
- 210:	e3530000 	cmp	r3, #0
- 214:	159f0030 	ldrne	r0, [pc, #48]	; 24c <frame_dummy+0x44>
- 218:	159f1030 	ldrne	r1, [pc, #48]	; 250 <frame_dummy+0x48>
- 21c:	1320f000 	nopne	{0}
- 220:	e59f002c 	ldr	r0, [pc, #44]	; 254 <frame_dummy+0x4c>
- 224:	e5903000 	ldr	r3, [r0]
- 228:	e3530000 	cmp	r3, #0
- 22c:	0a000003 	beq	240 <frame_dummy+0x38>
- 230:	e59f3020 	ldr	r3, [pc, #32]	; 258 <frame_dummy+0x50>
- 234:	e3530000 	cmp	r3, #0
- 238:	11a0e00f 	movne	lr, pc
- 23c:	112fff13 	bxne	r3
- 240:	e8bd4008 	pop	{r3, lr}
- 244:	eaffffcb 	b	178 <register_tm_clones>
- 248:	00000000 	.word	0x00000000
- 24c:	00000fbc 	.word	0x00000fbc
- 250:	000014ac 	.word	0x000014ac
- 254:	00001058 	.word	0x00001058
- 258:	00000000 	.word	0x00000000
+     208:	e92d4008 	push	{r3, lr}
+     20c:	e59f3034 	ldr	r3, [pc, #52]	; 248 <frame_dummy+0x40>
+     210:	e3530000 	cmp	r3, #0
+     214:	159f0030 	ldrne	r0, [pc, #48]	; 24c <frame_dummy+0x44>
+     218:	159f1030 	ldrne	r1, [pc, #48]	; 250 <frame_dummy+0x48>
+     21c:	1320f000 	nopne	{0}
+     220:	e59f002c 	ldr	r0, [pc, #44]	; 254 <frame_dummy+0x4c>
+     224:	e5903000 	ldr	r3, [r0]
+     228:	e3530000 	cmp	r3, #0
+     22c:	0a000003 	beq	240 <frame_dummy+0x38>
+     230:	e59f3020 	ldr	r3, [pc, #32]	; 258 <frame_dummy+0x50>
+     234:	e3530000 	cmp	r3, #0
+     238:	11a0e00f 	movne	lr, pc
+     23c:	112fff13 	bxne	r3
+     240:	e8bd4008 	pop	{r3, lr}
+     244:	eaffffcb 	b	178 <register_tm_clones>
+     248:	00000000 	.word	0x00000000
+     24c:	000016d4 	.word	0x000016d4
+     250:	00001c54 	.word	0x00001c54
+     254:	000017b0 	.word	0x000017b0
+     258:	00000000 	.word	0x00000000
 
 0000025c <main>:
-void uart_test();
-void audio_test();
-void led_test();
+#include "string.h"
+#include "lib/LED.h"
+#include "tests/tests.h"
 
 int main(void)
 {
- 25c:	e92d4800 	push	{r11, lr}
- 260:	e28db004 	add	r11, sp, #4
-    led_test();
- 264:	eb000002 	bl	274 <led_test>
- 268:	e3a03000 	mov	r3, #0
+     25c:	e92d4800 	push	{r11, lr}
+     260:	e28db004 	add	r11, sp, #4
+    // led_test();
     // uart_test();
     // audio_test();
+    hex_test();
+     264:	eb0002e6 	bl	e04 <hex_test>
 
-}
- 26c:	e1a00003 	mov	r0, r3
- 270:	e8bd8800 	pop	{r11, pc}
+    for (;;); 
+     268:	eafffffe 	b	268 <main+0xc>
 
-00000274 <led_test>:
+0000026c <VIS_ERROR_Handler>:
+#include "values.h"
+void VIS_ERROR_Handler() {
+     26c:	e52db004 	push	{r11}		; (str r11, [sp, #-4]!)
+     270:	e28db000 	add	r11, sp, #0
+    // if error happens, stop here
+    for (;;);
+     274:	eafffffe 	b	274 <VIS_ERROR_Handler+0x8>
 
-void led_test() {
- 274:	e92d4800 	push	{r11, lr}
- 278:	e28db004 	add	r11, sp, #4
-    VIS_LED_Set(1, VIS_LED_SET);
- 27c:	e3a00001 	mov	r0, #1
- 280:	e3a01001 	mov	r1, #1
- 284:	eb000187 	bl	8a8 <VIS_LED_Set>
-    VIS_LED_Set(3, VIS_LED_SET);
- 288:	e3a00003 	mov	r0, #3
- 28c:	e3a01001 	mov	r1, #1
- 290:	eb000184 	bl	8a8 <VIS_LED_Set>
-    VIS_LED_Set(5, VIS_LED_SET);
- 294:	e3a00005 	mov	r0, #5
- 298:	e3a01001 	mov	r1, #1
- 29c:	eb000181 	bl	8a8 <VIS_LED_Set>
-    VIS_LED_Set(7, VIS_LED_SET);
- 2a0:	e3a00007 	mov	r0, #7
- 2a4:	e3a01001 	mov	r1, #1
- 2a8:	eb00017e 	bl	8a8 <VIS_LED_Set>
-    VIS_LED_Toggle(9);
- 2ac:	e3a00009 	mov	r0, #9
- 2b0:	eb0001a9 	bl	95c <VIS_LED_Toggle>
-    VIS_LED_Toggle(2);
- 2b4:	e3a00002 	mov	r0, #2
- 2b8:	eb0001a7 	bl	95c <VIS_LED_Toggle>
-    VIS_LED_Toggle(2);
- 2bc:	e3a00002 	mov	r0, #2
- 2c0:	eb0001a5 	bl	95c <VIS_LED_Toggle>
-    VIS_LED_Set(4, VIS_LED_SET);
- 2c4:	e3a00004 	mov	r0, #4
- 2c8:	e3a01001 	mov	r1, #1
- 2cc:	eb000175 	bl	8a8 <VIS_LED_Set>
-    VIS_LED_Set(4, VIS_LED_RESET);
- 2d0:	e3a00004 	mov	r0, #4
- 2d4:	e3a01000 	mov	r1, #0
- 2d8:	eb000172 	bl	8a8 <VIS_LED_Set>
-}
- 2dc:	e8bd8800 	pop	{r11, pc}
-
-000002e0 <audio_test>:
-
-void audio_test() {
- 2e0:	e92d4800 	push	{r11, lr}
- 2e4:	e28db004 	add	r11, sp, #4
- 2e8:	e24ddc19 	sub	sp, sp, #6400	; 0x1900
- 2ec:	e24dd010 	sub	sp, sp, #16
- /* used for audio record/playback */
-    int fifospace, buffer_index = 0;
- 2f0:	e3a03000 	mov	r3, #0
- 2f4:	e50b300c 	str	r3, [r11, #-12]
-    int left_buffer[BUF_SIZE];
-    int right_buffer[BUF_SIZE];
-
-    fifospace = *(audio_ptr + 1); // read the audio port fifospace register
- 2f8:	e3013064 	movw	r3, #4196	; 0x1064
- 2fc:	e3403000 	movt	r3, #0
- 300:	e5933000 	ldr	r3, [r3]
- 304:	e5933004 	ldr	r3, [r3, #4]
- 308:	e50b3008 	str	r3, [r11, #-8]
-    if ((fifospace & 0x000000FF) > BUF_THRESHOLD) // check RARC
- 30c:	e51b3008 	ldr	r3, [r11, #-8]
- 310:	e6ef3073 	uxtb	r3, r3
- 314:	e3530060 	cmp	r3, #96	; 0x60
- 318:	da000028 	ble	3c0 <audio_test+0xe0>
-    {
-        // store data until the the audio-in FIFO is empty or the buffer
-        // is full
-        while ((fifospace & 0x000000FF) && (buffer_index < BUF_SIZE)) {
- 31c:	ea00001f 	b	3a0 <audio_test+0xc0>
-            left_buffer[buffer_index]  = *(audio_ptr + 2);
- 320:	e3013064 	movw	r3, #4196	; 0x1064
- 324:	e3403000 	movt	r3, #0
- 328:	e5933000 	ldr	r3, [r3]
- 32c:	e5932008 	ldr	r2, [r3, #8]
- 330:	e51b100c 	ldr	r1, [r11, #-12]
- 334:	e30f3374 	movw	r3, #62324	; 0xf374
- 338:	e34f3fff 	movt	r3, #65535	; 0xffff
- 33c:	e1a01101 	lsl	r1, r1, #2
- 340:	e24b0004 	sub	r0, r11, #4
- 344:	e0801001 	add	r1, r0, r1
- 348:	e0813003 	add	r3, r1, r3
- 34c:	e5832000 	str	r2, [r3]
-            right_buffer[buffer_index] = *(audio_ptr + 3);
- 350:	e3013064 	movw	r3, #4196	; 0x1064
- 354:	e3403000 	movt	r3, #0
- 358:	e5933000 	ldr	r3, [r3]
- 35c:	e593200c 	ldr	r2, [r3, #12]
- 360:	e30e36f4 	movw	r3, #59124	; 0xe6f4
- 364:	e34f3fff 	movt	r3, #65535	; 0xffff
- 368:	e51b100c 	ldr	r1, [r11, #-12]
- 36c:	e1a01101 	lsl	r1, r1, #2
- 370:	e24b0004 	sub	r0, r11, #4
- 374:	e0801001 	add	r1, r0, r1
- 378:	e0813003 	add	r3, r1, r3
- 37c:	e5832000 	str	r2, [r3]
-            ++buffer_index;
- 380:	e51b300c 	ldr	r3, [r11, #-12]
- 384:	e2833001 	add	r3, r3, #1
- 388:	e50b300c 	str	r3, [r11, #-12]
-            fifospace = *(audio_ptr + 1); // read the audio port fifospace register
- 38c:	e3013064 	movw	r3, #4196	; 0x1064
- 390:	e3403000 	movt	r3, #0
- 394:	e5933000 	ldr	r3, [r3]
- 398:	e5933004 	ldr	r3, [r3, #4]
- 39c:	e50b3008 	str	r3, [r11, #-8]
-    fifospace = *(audio_ptr + 1); // read the audio port fifospace register
-    if ((fifospace & 0x000000FF) > BUF_THRESHOLD) // check RARC
-    {
-        // store data until the the audio-in FIFO is empty or the buffer
-        // is full
-        while ((fifospace & 0x000000FF) && (buffer_index < BUF_SIZE)) {
- 3a0:	e51b3008 	ldr	r3, [r11, #-8]
- 3a4:	e6ef3073 	uxtb	r3, r3
- 3a8:	e3530000 	cmp	r3, #0
- 3ac:	0a000003 	beq	3c0 <audio_test+0xe0>
- 3b0:	e51b200c 	ldr	r2, [r11, #-12]
- 3b4:	e300331f 	movw	r3, #799	; 0x31f
- 3b8:	e1520003 	cmp	r2, r3
- 3bc:	daffffd7 	ble	320 <audio_test+0x40>
-            right_buffer[buffer_index] = *(audio_ptr + 3);
-            ++buffer_index;
-            fifospace = *(audio_ptr + 1); // read the audio port fifospace register
-        }
-    }
-    VIS_Uart_Tx(JTAG_UART_ptr, "Buffer Size=", strlen("Buffer Size="));
- 3c0:	e3013060 	movw	r3, #4192	; 0x1060
- 3c4:	e3403000 	movt	r3, #0
- 3c8:	e5933000 	ldr	r3, [r3]
- 3cc:	e1a00003 	mov	r0, r3
- 3d0:	e3001fc0 	movw	r1, #4032	; 0xfc0
- 3d4:	e3401000 	movt	r1, #0
- 3d8:	e3a0200c 	mov	r2, #12
- 3dc:	eb0000a5 	bl	678 <VIS_Uart_Tx>
-    VIS_UART_TxInt(JTAG_UART_ptr, BUF_SIZE);
- 3e0:	e3013060 	movw	r3, #4192	; 0x1060
- 3e4:	e3403000 	movt	r3, #0
- 3e8:	e5933000 	ldr	r3, [r3]
- 3ec:	e1a00003 	mov	r0, r3
- 3f0:	e3a01e32 	mov	r1, #800	; 0x320
- 3f4:	eb0000b8 	bl	6dc <VIS_UART_TxInt>
-    VIS_Uart_Tx(JTAG_UART_ptr, "\r\n", strlen("\r\n"));
- 3f8:	e3013060 	movw	r3, #4192	; 0x1060
- 3fc:	e3403000 	movt	r3, #0
- 400:	e5933000 	ldr	r3, [r3]
- 404:	e1a00003 	mov	r0, r3
- 408:	e3001fd0 	movw	r1, #4048	; 0xfd0
- 40c:	e3401000 	movt	r1, #0
- 410:	e3a02002 	mov	r2, #2
- 414:	eb000097 	bl	678 <VIS_Uart_Tx>
-    
-
-    for (int i = 0; i < 200; i++) {
- 418:	e3a03000 	mov	r3, #0
- 41c:	e50b3010 	str	r3, [r11, #-16]
- 420:	ea000024 	b	4b8 <audio_test+0x1d8>
-        VIS_UART_TxInt(JTAG_UART_ptr, i);
- 424:	e3013060 	movw	r3, #4192	; 0x1060
- 428:	e3403000 	movt	r3, #0
- 42c:	e5933000 	ldr	r3, [r3]
- 430:	e1a00003 	mov	r0, r3
- 434:	e51b1010 	ldr	r1, [r11, #-16]
- 438:	eb0000a7 	bl	6dc <VIS_UART_TxInt>
-        VIS_Uart_TxChar(JTAG_UART_ptr, ':');
- 43c:	e3013060 	movw	r3, #4192	; 0x1060
- 440:	e3403000 	movt	r3, #0
- 444:	e5933000 	ldr	r3, [r3]
- 448:	e1a00003 	mov	r0, r3
- 44c:	e3a0103a 	mov	r1, #58	; 0x3a
- 450:	eb00006a 	bl	600 <VIS_Uart_TxChar>
-        VIS_UART_TxInt(JTAG_UART_ptr, left_buffer[i]);
- 454:	e3013060 	movw	r3, #4192	; 0x1060
- 458:	e3403000 	movt	r3, #0
- 45c:	e5932000 	ldr	r2, [r3]
- 460:	e51b1010 	ldr	r1, [r11, #-16]
- 464:	e30f3374 	movw	r3, #62324	; 0xf374
- 468:	e34f3fff 	movt	r3, #65535	; 0xffff
- 46c:	e1a01101 	lsl	r1, r1, #2
- 470:	e24b0004 	sub	r0, r11, #4
- 474:	e0801001 	add	r1, r0, r1
- 478:	e0813003 	add	r3, r1, r3
- 47c:	e5933000 	ldr	r3, [r3]
- 480:	e1a00002 	mov	r0, r2
- 484:	e1a01003 	mov	r1, r3
- 488:	eb000093 	bl	6dc <VIS_UART_TxInt>
-        VIS_Uart_Tx(JTAG_UART_ptr, "\r\n", strlen("\r\n"));
- 48c:	e3013060 	movw	r3, #4192	; 0x1060
- 490:	e3403000 	movt	r3, #0
- 494:	e5933000 	ldr	r3, [r3]
- 498:	e1a00003 	mov	r0, r3
- 49c:	e3001fd0 	movw	r1, #4048	; 0xfd0
- 4a0:	e3401000 	movt	r1, #0
- 4a4:	e3a02002 	mov	r2, #2
- 4a8:	eb000072 	bl	678 <VIS_Uart_Tx>
-    VIS_Uart_Tx(JTAG_UART_ptr, "Buffer Size=", strlen("Buffer Size="));
-    VIS_UART_TxInt(JTAG_UART_ptr, BUF_SIZE);
-    VIS_Uart_Tx(JTAG_UART_ptr, "\r\n", strlen("\r\n"));
-    
-
-    for (int i = 0; i < 200; i++) {
- 4ac:	e51b3010 	ldr	r3, [r11, #-16]
- 4b0:	e2833001 	add	r3, r3, #1
- 4b4:	e50b3010 	str	r3, [r11, #-16]
- 4b8:	e51b3010 	ldr	r3, [r11, #-16]
- 4bc:	e35300c7 	cmp	r3, #199	; 0xc7
- 4c0:	daffffd7 	ble	424 <audio_test+0x144>
-        VIS_UART_TxInt(JTAG_UART_ptr, i);
-        VIS_Uart_TxChar(JTAG_UART_ptr, ':');
-        VIS_UART_TxInt(JTAG_UART_ptr, left_buffer[i]);
-        VIS_Uart_Tx(JTAG_UART_ptr, "\r\n", strlen("\r\n"));
-    }
-}
- 4c4:	e24bd004 	sub	sp, r11, #4
- 4c8:	e8bd8800 	pop	{r11, pc}
-
-000004cc <uart_test>:
-
-void uart_test() {
- 4cc:	e92d4810 	push	{r4, r11, lr}
- 4d0:	e28db008 	add	r11, sp, #8
- 4d4:	e24dd02c 	sub	sp, sp, #44	; 0x2c
-    
-    char text_string[] = "\nJTAG UART example code\n> \0";
- 4d8:	e3003fd4 	movw	r3, #4052	; 0xfd4
- 4dc:	e3403000 	movt	r3, #0
- 4e0:	e24bc030 	sub	r12, r11, #48	; 0x30
- 4e4:	e1a0e003 	mov	lr, r3
- 4e8:	e8be000f 	ldm	lr!, {r0, r1, r2, r3}
- 4ec:	e8ac000f 	stmia	r12!, {r0, r1, r2, r3}
- 4f0:	e89e0007 	ldm	lr, {r0, r1, r2}
- 4f4:	e88c0007 	stm	r12, {r0, r1, r2}
-    char c;
-
-    VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
- 4f8:	e3013060 	movw	r3, #4192	; 0x1060
- 4fc:	e3403000 	movt	r3, #0
- 500:	e5934000 	ldr	r4, [r3]
- 504:	e24b3030 	sub	r3, r11, #48	; 0x30
- 508:	e1a00003 	mov	r0, r3
- 50c:	eb00019a 	bl	b7c <strlen>
- 510:	e1a03000 	mov	r3, r0
- 514:	e24b2030 	sub	r2, r11, #48	; 0x30
- 518:	e1a00004 	mov	r0, r4
- 51c:	e1a01002 	mov	r1, r2
- 520:	e1a02003 	mov	r2, r3
- 524:	eb000053 	bl	678 <VIS_Uart_Tx>
-
-    for (int i = 0; i < BUF_SIZE; i++) {
- 528:	e3a03000 	mov	r3, #0
- 52c:	e50b3010 	str	r3, [r11, #-16]
- 530:	ea00000e 	b	570 <uart_test+0xa4>
-        VIS_UART_TxInt(JTAG_UART_ptr, i);
- 534:	e3013060 	movw	r3, #4192	; 0x1060
- 538:	e3403000 	movt	r3, #0
- 53c:	e5933000 	ldr	r3, [r3]
- 540:	e1a00003 	mov	r0, r3
- 544:	e51b1010 	ldr	r1, [r11, #-16]
- 548:	eb000063 	bl	6dc <VIS_UART_TxInt>
-        VIS_Uart_TxChar(JTAG_UART_ptr, ' ');
- 54c:	e3013060 	movw	r3, #4192	; 0x1060
- 550:	e3403000 	movt	r3, #0
- 554:	e5933000 	ldr	r3, [r3]
- 558:	e1a00003 	mov	r0, r3
- 55c:	e3a01020 	mov	r1, #32
- 560:	eb000026 	bl	600 <VIS_Uart_TxChar>
-    char text_string[] = "\nJTAG UART example code\n> \0";
-    char c;
-
-    VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
-
-    for (int i = 0; i < BUF_SIZE; i++) {
- 564:	e51b3010 	ldr	r3, [r11, #-16]
- 568:	e2833001 	add	r3, r3, #1
- 56c:	e50b3010 	str	r3, [r11, #-16]
- 570:	e51b2010 	ldr	r2, [r11, #-16]
- 574:	e300331f 	movw	r3, #799	; 0x31f
- 578:	e1520003 	cmp	r2, r3
- 57c:	daffffec 	ble	534 <uart_test+0x68>
- 580:	ea000000 	b	588 <uart_test+0xbc>
-        if (c != '\0') {
-            VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
-
-            VIS_Uart_TxChar(JTAG_UART_ptr, c);
-        }
-    }
- 584:	e1a00000 	nop			; (mov r0, r0)
-    }
-
-    /* read and echo characters */
-    while (1)
-    {
-        c = VIS_Uart_RxChar(JTAG_UART_ptr);
- 588:	e3013060 	movw	r3, #4192	; 0x1060
- 58c:	e3403000 	movt	r3, #0
- 590:	e5933000 	ldr	r3, [r3]
- 594:	e1a00003 	mov	r0, r3
- 598:	eb000097 	bl	7fc <VIS_Uart_RxChar>
- 59c:	e1a03000 	mov	r3, r0
- 5a0:	e54b3011 	strb	r3, [r11, #-17]	; 0xffffffef
-        if (c != '\0') {
- 5a4:	e55b3011 	ldrb	r3, [r11, #-17]	; 0xffffffef
- 5a8:	e3530000 	cmp	r3, #0
- 5ac:	0afffff4 	beq	584 <uart_test+0xb8>
-            VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
- 5b0:	e3013060 	movw	r3, #4192	; 0x1060
- 5b4:	e3403000 	movt	r3, #0
- 5b8:	e5934000 	ldr	r4, [r3]
- 5bc:	e24b3030 	sub	r3, r11, #48	; 0x30
- 5c0:	e1a00003 	mov	r0, r3
- 5c4:	eb00016c 	bl	b7c <strlen>
- 5c8:	e1a03000 	mov	r3, r0
- 5cc:	e24b2030 	sub	r2, r11, #48	; 0x30
- 5d0:	e1a00004 	mov	r0, r4
- 5d4:	e1a01002 	mov	r1, r2
- 5d8:	e1a02003 	mov	r2, r3
- 5dc:	eb000025 	bl	678 <VIS_Uart_Tx>
-
-            VIS_Uart_TxChar(JTAG_UART_ptr, c);
- 5e0:	e3013060 	movw	r3, #4192	; 0x1060
- 5e4:	e3403000 	movt	r3, #0
- 5e8:	e5932000 	ldr	r2, [r3]
- 5ec:	e55b3011 	ldrb	r3, [r11, #-17]	; 0xffffffef
- 5f0:	e1a00002 	mov	r0, r2
- 5f4:	e1a01003 	mov	r1, r3
- 5f8:	eb000000 	bl	600 <VIS_Uart_TxChar>
-        }
-    }
- 5fc:	eaffffe0 	b	584 <uart_test+0xb8>
-
-00000600 <VIS_Uart_TxChar>:
+00000278 <VIS_Uart_TxChar>:
 #include "JTAG_UART.h"
 
 static volatile int * red_LED_ptr = (int *)0xFF200000;
 const char intToChar[10] = {'0','1','2','3','4','5','6','7','8','9'};  
 
 void VIS_Uart_TxChar(volatile int * JTAG_UART_ptr, char c) {
- 600:	e52db004 	push	{r11}		; (str r11, [sp, #-4]!)
- 604:	e28db000 	add	r11, sp, #0
- 608:	e24dd00c 	sub	sp, sp, #12
- 60c:	e50b0008 	str	r0, [r11, #-8]
- 610:	e1a03001 	mov	r3, r1
- 614:	e54b3009 	strb	r3, [r11, #-9]
+     278:	e52db004 	push	{r11}		; (str r11, [sp, #-4]!)
+     27c:	e28db000 	add	r11, sp, #0
+     280:	e24dd00c 	sub	sp, sp, #12
+     284:	e50b0008 	str	r0, [r11, #-8]
+     288:	e1a03001 	mov	r3, r1
+     28c:	e54b3009 	strb	r3, [r11, #-9]
     *(red_LED_ptr) = 0x1; // turn on LEDR[0]
- 618:	e3013068 	movw	r3, #4200	; 0x1068
- 61c:	e3403000 	movt	r3, #0
- 620:	e5933000 	ldr	r3, [r3]
- 624:	e3a02001 	mov	r2, #1
- 628:	e5832000 	str	r2, [r3]
+     290:	e30137b8 	movw	r3, #6072	; 0x17b8
+     294:	e3403000 	movt	r3, #0
+     298:	e5933000 	ldr	r3, [r3]
+     29c:	e3a02001 	mov	r2, #1
+     2a0:	e5832000 	str	r2, [r3]
     while (!((*(JTAG_UART_ptr + 1)) & 0xFFFF0000)) {
- 62c:	e1a00000 	nop			; (mov r0, r0)
- 630:	e51b3008 	ldr	r3, [r11, #-8]
- 634:	e2833004 	add	r3, r3, #4
- 638:	e5933000 	ldr	r3, [r3]
- 63c:	e1a03823 	lsr	r3, r3, #16
- 640:	e1a03803 	lsl	r3, r3, #16
- 644:	e3530000 	cmp	r3, #0
- 648:	0afffff8 	beq	630 <VIS_Uart_TxChar+0x30>
+     2a4:	e1a00000 	nop			; (mov r0, r0)
+     2a8:	e51b3008 	ldr	r3, [r11, #-8]
+     2ac:	e2833004 	add	r3, r3, #4
+     2b0:	e5933000 	ldr	r3, [r3]
+     2b4:	e1a03823 	lsr	r3, r3, #16
+     2b8:	e1a03803 	lsl	r3, r3, #16
+     2bc:	e3530000 	cmp	r3, #0
+     2c0:	0afffff8 	beq	2a8 <VIS_Uart_TxChar+0x30>
         // if space, echo character, else wait
     } 
     *(JTAG_UART_ptr) = c;
- 64c:	e55b2009 	ldrb	r2, [r11, #-9]
- 650:	e51b3008 	ldr	r3, [r11, #-8]
- 654:	e5832000 	str	r2, [r3]
+     2c4:	e55b2009 	ldrb	r2, [r11, #-9]
+     2c8:	e51b3008 	ldr	r3, [r11, #-8]
+     2cc:	e5832000 	str	r2, [r3]
     *(red_LED_ptr) = 0x0; // turn off LEDR[0]
- 658:	e3013068 	movw	r3, #4200	; 0x1068
- 65c:	e3403000 	movt	r3, #0
- 660:	e5933000 	ldr	r3, [r3]
- 664:	e3a02000 	mov	r2, #0
- 668:	e5832000 	str	r2, [r3]
+     2d0:	e30137b8 	movw	r3, #6072	; 0x17b8
+     2d4:	e3403000 	movt	r3, #0
+     2d8:	e5933000 	ldr	r3, [r3]
+     2dc:	e3a02000 	mov	r2, #0
+     2e0:	e5832000 	str	r2, [r3]
 }
- 66c:	e28bd000 	add	sp, r11, #0
- 670:	e8bd0800 	ldmfd	sp!, {r11}
- 674:	e12fff1e 	bx	lr
+     2e4:	e28bd000 	add	sp, r11, #0
+     2e8:	e8bd0800 	ldmfd	sp!, {r11}
+     2ec:	e12fff1e 	bx	lr
 
-00000678 <VIS_Uart_Tx>:
+000002f0 <VIS_Uart_Tx>:
 
 void VIS_Uart_Tx(volatile int * JTAG_UART_ptr, char * s, int size) {
- 678:	e92d4800 	push	{r11, lr}
- 67c:	e28db004 	add	r11, sp, #4
- 680:	e24dd018 	sub	sp, sp, #24
- 684:	e50b0010 	str	r0, [r11, #-16]
- 688:	e50b1014 	str	r1, [r11, #-20]	; 0xffffffec
- 68c:	e50b2018 	str	r2, [r11, #-24]	; 0xffffffe8
+     2f0:	e92d4800 	push	{r11, lr}
+     2f4:	e28db004 	add	r11, sp, #4
+     2f8:	e24dd018 	sub	sp, sp, #24
+     2fc:	e50b0010 	str	r0, [r11, #-16]
+     300:	e50b1014 	str	r1, [r11, #-20]	; 0xffffffec
+     304:	e50b2018 	str	r2, [r11, #-24]	; 0xffffffe8
     
     for (int i = 0; i < size; i++)
- 690:	e3a03000 	mov	r3, #0
- 694:	e50b3008 	str	r3, [r11, #-8]
- 698:	ea000009 	b	6c4 <VIS_Uart_Tx+0x4c>
+     308:	e3a03000 	mov	r3, #0
+     30c:	e50b3008 	str	r3, [r11, #-8]
+     310:	ea000009 	b	33c <VIS_Uart_Tx+0x4c>
         VIS_Uart_TxChar(JTAG_UART_ptr, s[i]);
- 69c:	e51b3008 	ldr	r3, [r11, #-8]
- 6a0:	e51b2014 	ldr	r2, [r11, #-20]	; 0xffffffec
- 6a4:	e0823003 	add	r3, r2, r3
- 6a8:	e5d33000 	ldrb	r3, [r3]
- 6ac:	e51b0010 	ldr	r0, [r11, #-16]
- 6b0:	e1a01003 	mov	r1, r3
- 6b4:	ebffffd1 	bl	600 <VIS_Uart_TxChar>
+     314:	e51b3008 	ldr	r3, [r11, #-8]
+     318:	e51b2014 	ldr	r2, [r11, #-20]	; 0xffffffec
+     31c:	e0823003 	add	r3, r2, r3
+     320:	e5d33000 	ldrb	r3, [r3]
+     324:	e51b0010 	ldr	r0, [r11, #-16]
+     328:	e1a01003 	mov	r1, r3
+     32c:	ebffffd1 	bl	278 <VIS_Uart_TxChar>
     *(red_LED_ptr) = 0x0; // turn off LEDR[0]
 }
 
 void VIS_Uart_Tx(volatile int * JTAG_UART_ptr, char * s, int size) {
     
     for (int i = 0; i < size; i++)
- 6b8:	e51b3008 	ldr	r3, [r11, #-8]
- 6bc:	e2833001 	add	r3, r3, #1
- 6c0:	e50b3008 	str	r3, [r11, #-8]
- 6c4:	e51b2008 	ldr	r2, [r11, #-8]
- 6c8:	e51b3018 	ldr	r3, [r11, #-24]	; 0xffffffe8
- 6cc:	e1520003 	cmp	r2, r3
- 6d0:	bafffff1 	blt	69c <VIS_Uart_Tx+0x24>
+     330:	e51b3008 	ldr	r3, [r11, #-8]
+     334:	e2833001 	add	r3, r3, #1
+     338:	e50b3008 	str	r3, [r11, #-8]
+     33c:	e51b2008 	ldr	r2, [r11, #-8]
+     340:	e51b3018 	ldr	r3, [r11, #-24]	; 0xffffffe8
+     344:	e1520003 	cmp	r2, r3
+     348:	bafffff1 	blt	314 <VIS_Uart_Tx+0x24>
         VIS_Uart_TxChar(JTAG_UART_ptr, s[i]);
 }
- 6d4:	e24bd004 	sub	sp, r11, #4
- 6d8:	e8bd8800 	pop	{r11, pc}
+     34c:	e24bd004 	sub	sp, r11, #4
+     350:	e8bd8800 	pop	{r11, pc}
 
-000006dc <VIS_UART_TxInt>:
+00000354 <VIS_UART_TxInt>:
 
 void VIS_UART_TxInt(volatile int * JTAG_UART_ptr, int num) {
- 6dc:	e92d4800 	push	{r11, lr}
- 6e0:	e28db004 	add	r11, sp, #4
- 6e4:	e24dd010 	sub	sp, sp, #16
- 6e8:	e50b0010 	str	r0, [r11, #-16]
- 6ec:	e50b1014 	str	r1, [r11, #-20]	; 0xffffffec
+     354:	e92d4800 	push	{r11, lr}
+     358:	e28db004 	add	r11, sp, #4
+     35c:	e24dd010 	sub	sp, sp, #16
+     360:	e50b0010 	str	r0, [r11, #-16]
+     364:	e50b1014 	str	r1, [r11, #-20]	; 0xffffffec
     if (num < 0) {
- 6f0:	e51b3014 	ldr	r3, [r11, #-20]	; 0xffffffec
- 6f4:	e3530000 	cmp	r3, #0
- 6f8:	aa000005 	bge	714 <VIS_UART_TxInt+0x38>
+     368:	e51b3014 	ldr	r3, [r11, #-20]	; 0xffffffec
+     36c:	e3530000 	cmp	r3, #0
+     370:	aa000005 	bge	38c <VIS_UART_TxInt+0x38>
         num = -num;
- 6fc:	e51b3014 	ldr	r3, [r11, #-20]	; 0xffffffec
- 700:	e2633000 	rsb	r3, r3, #0
- 704:	e50b3014 	str	r3, [r11, #-20]	; 0xffffffec
+     374:	e51b3014 	ldr	r3, [r11, #-20]	; 0xffffffec
+     378:	e2633000 	rsb	r3, r3, #0
+     37c:	e50b3014 	str	r3, [r11, #-20]	; 0xffffffec
         VIS_Uart_TxChar(JTAG_UART_ptr, '-');
- 708:	e51b0010 	ldr	r0, [r11, #-16]
- 70c:	e3a0102d 	mov	r1, #45	; 0x2d
- 710:	ebffffba 	bl	600 <VIS_Uart_TxChar>
+     380:	e51b0010 	ldr	r0, [r11, #-16]
+     384:	e3a0102d 	mov	r1, #45	; 0x2d
+     388:	ebffffba 	bl	278 <VIS_Uart_TxChar>
     }
     if (num < 10) {
- 714:	e51b3014 	ldr	r3, [r11, #-20]	; 0xffffffec
- 718:	e3530009 	cmp	r3, #9
- 71c:	ca000008 	bgt	744 <VIS_UART_TxInt+0x68>
+     38c:	e51b3014 	ldr	r3, [r11, #-20]	; 0xffffffec
+     390:	e3530009 	cmp	r3, #9
+     394:	ca000008 	bgt	3bc <VIS_UART_TxInt+0x68>
         VIS_Uart_TxChar(JTAG_UART_ptr, intToChar[num]);
- 720:	e3003ff0 	movw	r3, #4080	; 0xff0
- 724:	e3403000 	movt	r3, #0
- 728:	e51b2014 	ldr	r2, [r11, #-20]	; 0xffffffec
- 72c:	e0833002 	add	r3, r3, r2
- 730:	e5d33000 	ldrb	r3, [r3]
- 734:	e51b0010 	ldr	r0, [r11, #-16]
- 738:	e1a01003 	mov	r1, r3
- 73c:	ebffffaf 	bl	600 <VIS_Uart_TxChar>
- 740:	ea00002b 	b	7f4 <VIS_UART_TxInt+0x118>
+     398:	e30136d8 	movw	r3, #5848	; 0x16d8
+     39c:	e3403000 	movt	r3, #0
+     3a0:	e51b2014 	ldr	r2, [r11, #-20]	; 0xffffffec
+     3a4:	e0833002 	add	r3, r3, r2
+     3a8:	e5d33000 	ldrb	r3, [r3]
+     3ac:	e51b0010 	ldr	r0, [r11, #-16]
+     3b0:	e1a01003 	mov	r1, r3
+     3b4:	ebffffaf 	bl	278 <VIS_Uart_TxChar>
+     3b8:	ea00002b 	b	46c <VIS_UART_TxInt+0x118>
     } else {
         int tens = 1;
- 744:	e3a03001 	mov	r3, #1
- 748:	e50b3008 	str	r3, [r11, #-8]
+     3bc:	e3a03001 	mov	r3, #1
+     3c0:	e50b3008 	str	r3, [r11, #-8]
         while (num / tens > 0) tens *= 10;
- 74c:	ea000005 	b	768 <VIS_UART_TxInt+0x8c>
- 750:	e51b2008 	ldr	r2, [r11, #-8]
- 754:	e1a03002 	mov	r3, r2
- 758:	e1a03103 	lsl	r3, r3, #2
- 75c:	e0833002 	add	r3, r3, r2
- 760:	e1a03083 	lsl	r3, r3, #1
- 764:	e50b3008 	str	r3, [r11, #-8]
- 768:	e51b0014 	ldr	r0, [r11, #-20]	; 0xffffffec
- 76c:	e51b1008 	ldr	r1, [r11, #-8]
- 770:	eb000099 	bl	9dc <__aeabi_idiv>
- 774:	e1a03000 	mov	r3, r0
- 778:	e3530000 	cmp	r3, #0
- 77c:	cafffff3 	bgt	750 <VIS_UART_TxInt+0x74>
+     3c4:	ea000005 	b	3e0 <VIS_UART_TxInt+0x8c>
+     3c8:	e51b2008 	ldr	r2, [r11, #-8]
+     3cc:	e1a03002 	mov	r3, r2
+     3d0:	e1a03103 	lsl	r3, r3, #2
+     3d4:	e0833002 	add	r3, r3, r2
+     3d8:	e1a03083 	lsl	r3, r3, #1
+     3dc:	e50b3008 	str	r3, [r11, #-8]
+     3e0:	e51b0014 	ldr	r0, [r11, #-20]	; 0xffffffec
+     3e4:	e51b1008 	ldr	r1, [r11, #-8]
+     3e8:	eb000341 	bl	10f4 <__aeabi_idiv>
+     3ec:	e1a03000 	mov	r3, r0
+     3f0:	e3530000 	cmp	r3, #0
+     3f4:	cafffff3 	bgt	3c8 <VIS_UART_TxInt+0x74>
         while (tens > 1) {
- 780:	ea000018 	b	7e8 <VIS_UART_TxInt+0x10c>
+     3f8:	ea000018 	b	460 <VIS_UART_TxInt+0x10c>
             tens /= 10;
- 784:	e51b2008 	ldr	r2, [r11, #-8]
- 788:	e3063667 	movw	r3, #26215	; 0x6667
- 78c:	e3463666 	movt	r3, #26214	; 0x6666
- 790:	e0c31293 	smull	r1, r3, r3, r2
- 794:	e1a01143 	asr	r1, r3, #2
- 798:	e1a03fc2 	asr	r3, r2, #31
- 79c:	e0633001 	rsb	r3, r3, r1
- 7a0:	e50b3008 	str	r3, [r11, #-8]
+     3fc:	e51b2008 	ldr	r2, [r11, #-8]
+     400:	e3063667 	movw	r3, #26215	; 0x6667
+     404:	e3463666 	movt	r3, #26214	; 0x6666
+     408:	e0c31293 	smull	r1, r3, r3, r2
+     40c:	e1a01143 	asr	r1, r3, #2
+     410:	e1a03fc2 	asr	r3, r2, #31
+     414:	e0633001 	rsb	r3, r3, r1
+     418:	e50b3008 	str	r3, [r11, #-8]
             VIS_Uart_TxChar(JTAG_UART_ptr, intToChar[num / tens]);
- 7a4:	e51b0014 	ldr	r0, [r11, #-20]	; 0xffffffec
- 7a8:	e51b1008 	ldr	r1, [r11, #-8]
- 7ac:	eb00008a 	bl	9dc <__aeabi_idiv>
- 7b0:	e1a03000 	mov	r3, r0
- 7b4:	e1a02003 	mov	r2, r3
- 7b8:	e3003ff0 	movw	r3, #4080	; 0xff0
- 7bc:	e3403000 	movt	r3, #0
- 7c0:	e7d33002 	ldrb	r3, [r3, r2]
- 7c4:	e51b0010 	ldr	r0, [r11, #-16]
- 7c8:	e1a01003 	mov	r1, r3
- 7cc:	ebffff8b 	bl	600 <VIS_Uart_TxChar>
+     41c:	e51b0014 	ldr	r0, [r11, #-20]	; 0xffffffec
+     420:	e51b1008 	ldr	r1, [r11, #-8]
+     424:	eb000332 	bl	10f4 <__aeabi_idiv>
+     428:	e1a03000 	mov	r3, r0
+     42c:	e1a02003 	mov	r2, r3
+     430:	e30136d8 	movw	r3, #5848	; 0x16d8
+     434:	e3403000 	movt	r3, #0
+     438:	e7d33002 	ldrb	r3, [r3, r2]
+     43c:	e51b0010 	ldr	r0, [r11, #-16]
+     440:	e1a01003 	mov	r1, r3
+     444:	ebffff8b 	bl	278 <VIS_Uart_TxChar>
             num %= tens;
- 7d0:	e51b3014 	ldr	r3, [r11, #-20]	; 0xffffffec
- 7d4:	e1a00003 	mov	r0, r3
- 7d8:	e51b1008 	ldr	r1, [r11, #-8]
- 7dc:	eb0000c8 	bl	b04 <__aeabi_idivmod>
- 7e0:	e1a03001 	mov	r3, r1
- 7e4:	e50b3014 	str	r3, [r11, #-20]	; 0xffffffec
+     448:	e51b3014 	ldr	r3, [r11, #-20]	; 0xffffffec
+     44c:	e1a00003 	mov	r0, r3
+     450:	e51b1008 	ldr	r1, [r11, #-8]
+     454:	eb000370 	bl	121c <__aeabi_idivmod>
+     458:	e1a03001 	mov	r3, r1
+     45c:	e50b3014 	str	r3, [r11, #-20]	; 0xffffffec
     if (num < 10) {
         VIS_Uart_TxChar(JTAG_UART_ptr, intToChar[num]);
     } else {
         int tens = 1;
         while (num / tens > 0) tens *= 10;
         while (tens > 1) {
- 7e8:	e51b3008 	ldr	r3, [r11, #-8]
- 7ec:	e3530001 	cmp	r3, #1
- 7f0:	caffffe3 	bgt	784 <VIS_UART_TxInt+0xa8>
+     460:	e51b3008 	ldr	r3, [r11, #-8]
+     464:	e3530001 	cmp	r3, #1
+     468:	caffffe3 	bgt	3fc <VIS_UART_TxInt+0xa8>
             tens /= 10;
             VIS_Uart_TxChar(JTAG_UART_ptr, intToChar[num / tens]);
             num %= tens;
         }
     }
 }
- 7f4:	e24bd004 	sub	sp, r11, #4
- 7f8:	e8bd8800 	pop	{r11, pc}
+     46c:	e24bd004 	sub	sp, r11, #4
+     470:	e8bd8800 	pop	{r11, pc}
 
-000007fc <VIS_Uart_RxChar>:
+00000474 <VIS_UART_TxEnter>:
+
+void VIS_UART_TxEnter(volatile int * JTAG_UART_ptr) {
+     474:	e92d4800 	push	{r11, lr}
+     478:	e28db004 	add	r11, sp, #4
+     47c:	e24dd008 	sub	sp, sp, #8
+     480:	e50b0008 	str	r0, [r11, #-8]
+    VIS_Uart_TxChar(JTAG_UART_ptr, '\r');
+     484:	e51b0008 	ldr	r0, [r11, #-8]
+     488:	e3a0100d 	mov	r1, #13
+     48c:	ebffff79 	bl	278 <VIS_Uart_TxChar>
+    VIS_Uart_TxChar(JTAG_UART_ptr, '\n');
+     490:	e51b0008 	ldr	r0, [r11, #-8]
+     494:	e3a0100a 	mov	r1, #10
+     498:	ebffff76 	bl	278 <VIS_Uart_TxChar>
+}
+     49c:	e24bd004 	sub	sp, r11, #4
+     4a0:	e8bd8800 	pop	{r11, pc}
+
+000004a4 <VIS_Uart_RxChar>:
 
 char VIS_Uart_RxChar(volatile int * JTAG_UART_ptr) {
- 7fc:	e52db004 	push	{r11}		; (str r11, [sp, #-4]!)
- 800:	e28db000 	add	r11, sp, #0
- 804:	e24dd014 	sub	sp, sp, #20
- 808:	e50b0010 	str	r0, [r11, #-16]
+     4a4:	e52db004 	push	{r11}		; (str r11, [sp, #-4]!)
+     4a8:	e28db000 	add	r11, sp, #0
+     4ac:	e24dd014 	sub	sp, sp, #20
+     4b0:	e50b0010 	str	r0, [r11, #-16]
     int data;
     data = *(JTAG_UART_ptr); // read the JTAG_UART data register
- 80c:	e51b3010 	ldr	r3, [r11, #-16]
- 810:	e5933000 	ldr	r3, [r3]
- 814:	e50b3008 	str	r3, [r11, #-8]
+     4b4:	e51b3010 	ldr	r3, [r11, #-16]
+     4b8:	e5933000 	ldr	r3, [r3]
+     4bc:	e50b3008 	str	r3, [r11, #-8]
     if (data & 0x00008000)   // check RVALID to see if there is new data
- 818:	e51b3008 	ldr	r3, [r11, #-8]
- 81c:	e2033902 	and	r3, r3, #32768	; 0x8000
- 820:	e3530000 	cmp	r3, #0
- 824:	0a000002 	beq	834 <VIS_Uart_RxChar+0x38>
+     4c0:	e51b3008 	ldr	r3, [r11, #-8]
+     4c4:	e2033902 	and	r3, r3, #32768	; 0x8000
+     4c8:	e3530000 	cmp	r3, #0
+     4cc:	0a000002 	beq	4dc <VIS_Uart_RxChar+0x38>
         return ((char)data & 0xFF);
- 828:	e51b3008 	ldr	r3, [r11, #-8]
- 82c:	e6ef3073 	uxtb	r3, r3
- 830:	ea000000 	b	838 <VIS_Uart_RxChar+0x3c>
+     4d0:	e51b3008 	ldr	r3, [r11, #-8]
+     4d4:	e6ef3073 	uxtb	r3, r3
+     4d8:	ea000000 	b	4e0 <VIS_Uart_RxChar+0x3c>
     else
         return ('\0');
- 834:	e3a03000 	mov	r3, #0
+     4dc:	e3a03000 	mov	r3, #0
 }
- 838:	e1a00003 	mov	r0, r3
- 83c:	e28bd000 	add	sp, r11, #0
- 840:	e8bd0800 	ldmfd	sp!, {r11}
- 844:	e12fff1e 	bx	lr
+     4e0:	e1a00003 	mov	r0, r3
+     4e4:	e28bd000 	add	sp, r11, #0
+     4e8:	e8bd0800 	ldmfd	sp!, {r11}
+     4ec:	e12fff1e 	bx	lr
 
-00000848 <VIS_ERROR_Handler>:
-#ifndef _VALUES_H__
-#define _VALUES_H__
-#include "address_map_arm.h"
-#define DEBUG
-
-void VIS_ERROR_Handler() {
- 848:	e52db004 	push	{r11}		; (str r11, [sp, #-4]!)
- 84c:	e28db000 	add	r11, sp, #0
-    // if error happens, stop here
-    for (;;);
- 850:	eafffffe 	b	850 <VIS_ERROR_Handler+0x8>
-
-00000854 <VIS_LED_Get>:
+000004f0 <VIS_LED_Get>:
 #include "LED.h"
 #include "../values.h"
 
 static volatile unsigned * red_LED_ptr = (unsigned *)0xFF200000;
 
 unsigned VIS_LED_Get(unsigned index) {
- 854:	e92d4800 	push	{r11, lr}
- 858:	e28db004 	add	r11, sp, #4
- 85c:	e24dd010 	sub	sp, sp, #16
- 860:	e50b0010 	str	r0, [r11, #-16]
+     4f0:	e92d4800 	push	{r11, lr}
+     4f4:	e28db004 	add	r11, sp, #4
+     4f8:	e24dd010 	sub	sp, sp, #16
+     4fc:	e50b0010 	str	r0, [r11, #-16]
 #ifdef DEBUG
-    if (index < 0 || index > 9) VIS_ERROR_Handler();    
- 864:	e51b3010 	ldr	r3, [r11, #-16]
- 868:	e3530009 	cmp	r3, #9
- 86c:	9a000000 	bls	874 <VIS_LED_Get+0x20>
- 870:	ebfffff4 	bl	848 <VIS_ERROR_Handler>
+    if (index > 9) VIS_ERROR_Handler();    
+     500:	e51b3010 	ldr	r3, [r11, #-16]
+     504:	e3530009 	cmp	r3, #9
+     508:	9a000000 	bls	510 <VIS_LED_Get+0x20>
+     50c:	ebffff56 	bl	26c <VIS_ERROR_Handler>
 #endif // DEBUG
     unsigned led = *(red_LED_ptr);
- 874:	e301306c 	movw	r3, #4204	; 0x106c
- 878:	e3403000 	movt	r3, #0
- 87c:	e5933000 	ldr	r3, [r3]
- 880:	e5933000 	ldr	r3, [r3]
- 884:	e50b3008 	str	r3, [r11, #-8]
+     510:	e30137bc 	movw	r3, #6076	; 0x17bc
+     514:	e3403000 	movt	r3, #0
+     518:	e5933000 	ldr	r3, [r3]
+     51c:	e5933000 	ldr	r3, [r3]
+     520:	e50b3008 	str	r3, [r11, #-8]
     return led & (0x1u << index);
- 888:	e51b3010 	ldr	r3, [r11, #-16]
- 88c:	e3a02001 	mov	r2, #1
- 890:	e1a02312 	lsl	r2, r2, r3
- 894:	e51b3008 	ldr	r3, [r11, #-8]
- 898:	e0023003 	and	r3, r2, r3
+     524:	e51b3010 	ldr	r3, [r11, #-16]
+     528:	e3a02001 	mov	r2, #1
+     52c:	e1a02312 	lsl	r2, r2, r3
+     530:	e51b3008 	ldr	r3, [r11, #-8]
+     534:	e0023003 	and	r3, r2, r3
 }
- 89c:	e1a00003 	mov	r0, r3
- 8a0:	e24bd004 	sub	sp, r11, #4
- 8a4:	e8bd8800 	pop	{r11, pc}
+     538:	e1a00003 	mov	r0, r3
+     53c:	e24bd004 	sub	sp, r11, #4
+     540:	e8bd8800 	pop	{r11, pc}
 
-000008a8 <VIS_LED_Set>:
+00000544 <VIS_LED_Set>:
 
 void VIS_LED_Set(unsigned index, unsigned status) {
- 8a8:	e92d4800 	push	{r11, lr}
- 8ac:	e28db004 	add	r11, sp, #4
- 8b0:	e24dd010 	sub	sp, sp, #16
- 8b4:	e50b0010 	str	r0, [r11, #-16]
- 8b8:	e50b1014 	str	r1, [r11, #-20]	; 0xffffffec
+     544:	e92d4800 	push	{r11, lr}
+     548:	e28db004 	add	r11, sp, #4
+     54c:	e24dd010 	sub	sp, sp, #16
+     550:	e50b0010 	str	r0, [r11, #-16]
+     554:	e50b1014 	str	r1, [r11, #-20]	; 0xffffffec
 #ifdef DEBUG
-    if (index < 0 || index > 9) VIS_ERROR_Handler();    
- 8bc:	e51b3010 	ldr	r3, [r11, #-16]
- 8c0:	e3530009 	cmp	r3, #9
- 8c4:	9a000000 	bls	8cc <VIS_LED_Set+0x24>
- 8c8:	ebffffde 	bl	848 <VIS_ERROR_Handler>
+    if (index > 9) VIS_ERROR_Handler();    
+     558:	e51b3010 	ldr	r3, [r11, #-16]
+     55c:	e3530009 	cmp	r3, #9
+     560:	9a000000 	bls	568 <VIS_LED_Set+0x24>
+     564:	ebffff40 	bl	26c <VIS_ERROR_Handler>
     if (status != VIS_LED_SET && status != VIS_LED_RESET) VIS_ERROR_Handler();
- 8cc:	e51b3014 	ldr	r3, [r11, #-20]	; 0xffffffec
- 8d0:	e3530001 	cmp	r3, #1
- 8d4:	0a000003 	beq	8e8 <VIS_LED_Set+0x40>
- 8d8:	e51b3014 	ldr	r3, [r11, #-20]	; 0xffffffec
- 8dc:	e3530000 	cmp	r3, #0
- 8e0:	0a000000 	beq	8e8 <VIS_LED_Set+0x40>
- 8e4:	ebffffd7 	bl	848 <VIS_ERROR_Handler>
+     568:	e51b3014 	ldr	r3, [r11, #-20]	; 0xffffffec
+     56c:	e3530001 	cmp	r3, #1
+     570:	0a000003 	beq	584 <VIS_LED_Set+0x40>
+     574:	e51b3014 	ldr	r3, [r11, #-20]	; 0xffffffec
+     578:	e3530000 	cmp	r3, #0
+     57c:	0a000000 	beq	584 <VIS_LED_Set+0x40>
+     580:	ebffff39 	bl	26c <VIS_ERROR_Handler>
 #endif // DEBUG
     unsigned led = *(red_LED_ptr);
- 8e8:	e301306c 	movw	r3, #4204	; 0x106c
- 8ec:	e3403000 	movt	r3, #0
- 8f0:	e5933000 	ldr	r3, [r3]
- 8f4:	e5933000 	ldr	r3, [r3]
- 8f8:	e50b3008 	str	r3, [r11, #-8]
+     584:	e30137bc 	movw	r3, #6076	; 0x17bc
+     588:	e3403000 	movt	r3, #0
+     58c:	e5933000 	ldr	r3, [r3]
+     590:	e5933000 	ldr	r3, [r3]
+     594:	e50b3008 	str	r3, [r11, #-8]
     if (status == VIS_LED_SET) {
- 8fc:	e51b3014 	ldr	r3, [r11, #-20]	; 0xffffffec
- 900:	e3530001 	cmp	r3, #1
- 904:	1a000006 	bne	924 <VIS_LED_Set+0x7c>
+     598:	e51b3014 	ldr	r3, [r11, #-20]	; 0xffffffec
+     59c:	e3530001 	cmp	r3, #1
+     5a0:	1a000006 	bne	5c0 <VIS_LED_Set+0x7c>
         led |= 0x1u << index;
- 908:	e51b3010 	ldr	r3, [r11, #-16]
- 90c:	e3a02001 	mov	r2, #1
- 910:	e1a03312 	lsl	r3, r2, r3
- 914:	e51b2008 	ldr	r2, [r11, #-8]
- 918:	e1823003 	orr	r3, r2, r3
- 91c:	e50b3008 	str	r3, [r11, #-8]
- 920:	ea000006 	b	940 <VIS_LED_Set+0x98>
+     5a4:	e51b3010 	ldr	r3, [r11, #-16]
+     5a8:	e3a02001 	mov	r2, #1
+     5ac:	e1a03312 	lsl	r3, r2, r3
+     5b0:	e51b2008 	ldr	r2, [r11, #-8]
+     5b4:	e1823003 	orr	r3, r2, r3
+     5b8:	e50b3008 	str	r3, [r11, #-8]
+     5bc:	ea000006 	b	5dc <VIS_LED_Set+0x98>
     } else {
         led &= ~(0x1u << index);
- 924:	e51b3010 	ldr	r3, [r11, #-16]
- 928:	e3a02001 	mov	r2, #1
- 92c:	e1a03312 	lsl	r3, r2, r3
- 930:	e1e03003 	mvn	r3, r3
- 934:	e51b2008 	ldr	r2, [r11, #-8]
- 938:	e0023003 	and	r3, r2, r3
- 93c:	e50b3008 	str	r3, [r11, #-8]
+     5c0:	e51b3010 	ldr	r3, [r11, #-16]
+     5c4:	e3a02001 	mov	r2, #1
+     5c8:	e1a03312 	lsl	r3, r2, r3
+     5cc:	e1e03003 	mvn	r3, r3
+     5d0:	e51b2008 	ldr	r2, [r11, #-8]
+     5d4:	e0023003 	and	r3, r2, r3
+     5d8:	e50b3008 	str	r3, [r11, #-8]
     }
     *(red_LED_ptr) = led;
- 940:	e301306c 	movw	r3, #4204	; 0x106c
- 944:	e3403000 	movt	r3, #0
- 948:	e5933000 	ldr	r3, [r3]
- 94c:	e51b2008 	ldr	r2, [r11, #-8]
- 950:	e5832000 	str	r2, [r3]
+     5dc:	e30137bc 	movw	r3, #6076	; 0x17bc
+     5e0:	e3403000 	movt	r3, #0
+     5e4:	e5933000 	ldr	r3, [r3]
+     5e8:	e51b2008 	ldr	r2, [r11, #-8]
+     5ec:	e5832000 	str	r2, [r3]
 }
- 954:	e24bd004 	sub	sp, r11, #4
- 958:	e8bd8800 	pop	{r11, pc}
+     5f0:	e24bd004 	sub	sp, r11, #4
+     5f4:	e8bd8800 	pop	{r11, pc}
 
-0000095c <VIS_LED_Toggle>:
+000005f8 <VIS_LED_Toggle>:
 
 unsigned VIS_LED_Toggle(unsigned index) {
- 95c:	e92d4800 	push	{r11, lr}
- 960:	e28db004 	add	r11, sp, #4
- 964:	e24dd010 	sub	sp, sp, #16
- 968:	e50b0010 	str	r0, [r11, #-16]
+     5f8:	e92d4800 	push	{r11, lr}
+     5fc:	e28db004 	add	r11, sp, #4
+     600:	e24dd010 	sub	sp, sp, #16
+     604:	e50b0010 	str	r0, [r11, #-16]
 #ifdef DEBUG
-    if (index < 0 || index > 9) VIS_ERROR_Handler();    
- 96c:	e51b3010 	ldr	r3, [r11, #-16]
- 970:	e3530009 	cmp	r3, #9
- 974:	9a000000 	bls	97c <VIS_LED_Toggle+0x20>
- 978:	ebffffb2 	bl	848 <VIS_ERROR_Handler>
+    if (index > 9) VIS_ERROR_Handler();    
+     608:	e51b3010 	ldr	r3, [r11, #-16]
+     60c:	e3530009 	cmp	r3, #9
+     610:	9a000000 	bls	618 <VIS_LED_Toggle+0x20>
+     614:	ebffff14 	bl	26c <VIS_ERROR_Handler>
 #endif // DEBUG
     unsigned led = *(red_LED_ptr);
- 97c:	e301306c 	movw	r3, #4204	; 0x106c
- 980:	e3403000 	movt	r3, #0
- 984:	e5933000 	ldr	r3, [r3]
- 988:	e5933000 	ldr	r3, [r3]
- 98c:	e50b3008 	str	r3, [r11, #-8]
+     618:	e30137bc 	movw	r3, #6076	; 0x17bc
+     61c:	e3403000 	movt	r3, #0
+     620:	e5933000 	ldr	r3, [r3]
+     624:	e5933000 	ldr	r3, [r3]
+     628:	e50b3008 	str	r3, [r11, #-8]
     led ^= 0x1u << index;
- 990:	e51b3010 	ldr	r3, [r11, #-16]
- 994:	e3a02001 	mov	r2, #1
- 998:	e1a03312 	lsl	r3, r2, r3
- 99c:	e51b2008 	ldr	r2, [r11, #-8]
- 9a0:	e0223003 	eor	r3, r2, r3
- 9a4:	e50b3008 	str	r3, [r11, #-8]
+     62c:	e51b3010 	ldr	r3, [r11, #-16]
+     630:	e3a02001 	mov	r2, #1
+     634:	e1a03312 	lsl	r3, r2, r3
+     638:	e51b2008 	ldr	r2, [r11, #-8]
+     63c:	e0223003 	eor	r3, r2, r3
+     640:	e50b3008 	str	r3, [r11, #-8]
     *(red_LED_ptr) = led;
- 9a8:	e301306c 	movw	r3, #4204	; 0x106c
- 9ac:	e3403000 	movt	r3, #0
- 9b0:	e5933000 	ldr	r3, [r3]
- 9b4:	e51b2008 	ldr	r2, [r11, #-8]
- 9b8:	e5832000 	str	r2, [r3]
+     644:	e30137bc 	movw	r3, #6076	; 0x17bc
+     648:	e3403000 	movt	r3, #0
+     64c:	e5933000 	ldr	r3, [r3]
+     650:	e51b2008 	ldr	r2, [r11, #-8]
+     654:	e5832000 	str	r2, [r3]
     return led & (0x1u << index);
- 9bc:	e51b3010 	ldr	r3, [r11, #-16]
- 9c0:	e3a02001 	mov	r2, #1
- 9c4:	e1a02312 	lsl	r2, r2, r3
- 9c8:	e51b3008 	ldr	r3, [r11, #-8]
- 9cc:	e0023003 	and	r3, r2, r3
- 9d0:	e1a00003 	mov	r0, r3
- 9d4:	e24bd004 	sub	sp, r11, #4
- 9d8:	e8bd8800 	pop	{r11, pc}
+     658:	e51b3010 	ldr	r3, [r11, #-16]
+     65c:	e3a02001 	mov	r2, #1
+     660:	e1a02312 	lsl	r2, r2, r3
+     664:	e51b3008 	ldr	r3, [r11, #-8]
+     668:	e0023003 	and	r3, r2, r3
+}
+     66c:	e1a00003 	mov	r0, r3
+     670:	e24bd004 	sub	sp, r11, #4
+     674:	e8bd8800 	pop	{r11, pc}
 
-000009dc <__aeabi_idiv>:
- 9dc:	e3510000 	cmp	r1, #0
- 9e0:	0a000043 	beq	af4 <.divsi3_skip_div0_test+0x110>
+00000678 <VIS_LED_SetAll>:
 
-000009e4 <.divsi3_skip_div0_test>:
- 9e4:	e020c001 	eor	r12, r0, r1
- 9e8:	42611000 	rsbmi	r1, r1, #0
- 9ec:	e2512001 	subs	r2, r1, #1
- 9f0:	0a000027 	beq	a94 <.divsi3_skip_div0_test+0xb0>
- 9f4:	e1b03000 	movs	r3, r0
- 9f8:	42603000 	rsbmi	r3, r0, #0
- 9fc:	e1530001 	cmp	r3, r1
- a00:	9a000026 	bls	aa0 <.divsi3_skip_div0_test+0xbc>
- a04:	e1110002 	tst	r1, r2
- a08:	0a000028 	beq	ab0 <.divsi3_skip_div0_test+0xcc>
- a0c:	e311020e 	tst	r1, #-536870912	; 0xe0000000
- a10:	01a01181 	lsleq	r1, r1, #3
- a14:	03a02008 	moveq	r2, #8
- a18:	13a02001 	movne	r2, #1
- a1c:	e3510201 	cmp	r1, #268435456	; 0x10000000
- a20:	31510003 	cmpcc	r1, r3
- a24:	31a01201 	lslcc	r1, r1, #4
- a28:	31a02202 	lslcc	r2, r2, #4
- a2c:	3afffffa 	bcc	a1c <.divsi3_skip_div0_test+0x38>
- a30:	e3510102 	cmp	r1, #-2147483648	; 0x80000000
- a34:	31510003 	cmpcc	r1, r3
- a38:	31a01081 	lslcc	r1, r1, #1
- a3c:	31a02082 	lslcc	r2, r2, #1
- a40:	3afffffa 	bcc	a30 <.divsi3_skip_div0_test+0x4c>
- a44:	e3a00000 	mov	r0, #0
- a48:	e1530001 	cmp	r3, r1
- a4c:	20433001 	subcs	r3, r3, r1
- a50:	21800002 	orrcs	r0, r0, r2
- a54:	e15300a1 	cmp	r3, r1, lsr #1
- a58:	204330a1 	subcs	r3, r3, r1, lsr #1
- a5c:	218000a2 	orrcs	r0, r0, r2, lsr #1
- a60:	e1530121 	cmp	r3, r1, lsr #2
- a64:	20433121 	subcs	r3, r3, r1, lsr #2
- a68:	21800122 	orrcs	r0, r0, r2, lsr #2
- a6c:	e15301a1 	cmp	r3, r1, lsr #3
- a70:	204331a1 	subcs	r3, r3, r1, lsr #3
- a74:	218001a2 	orrcs	r0, r0, r2, lsr #3
- a78:	e3530000 	cmp	r3, #0
- a7c:	11b02222 	lsrsne	r2, r2, #4
- a80:	11a01221 	lsrne	r1, r1, #4
- a84:	1affffef 	bne	a48 <.divsi3_skip_div0_test+0x64>
- a88:	e35c0000 	cmp	r12, #0
- a8c:	42600000 	rsbmi	r0, r0, #0
- a90:	e12fff1e 	bx	lr
- a94:	e13c0000 	teq	r12, r0
- a98:	42600000 	rsbmi	r0, r0, #0
- a9c:	e12fff1e 	bx	lr
- aa0:	33a00000 	movcc	r0, #0
- aa4:	01a00fcc 	asreq	r0, r12, #31
- aa8:	03800001 	orreq	r0, r0, #1
- aac:	e12fff1e 	bx	lr
- ab0:	e3510801 	cmp	r1, #65536	; 0x10000
- ab4:	21a01821 	lsrcs	r1, r1, #16
- ab8:	23a02010 	movcs	r2, #16
- abc:	33a02000 	movcc	r2, #0
- ac0:	e3510c01 	cmp	r1, #256	; 0x100
- ac4:	21a01421 	lsrcs	r1, r1, #8
- ac8:	22822008 	addcs	r2, r2, #8
- acc:	e3510010 	cmp	r1, #16
- ad0:	21a01221 	lsrcs	r1, r1, #4
- ad4:	22822004 	addcs	r2, r2, #4
- ad8:	e3510004 	cmp	r1, #4
- adc:	82822003 	addhi	r2, r2, #3
- ae0:	908220a1 	addls	r2, r2, r1, lsr #1
- ae4:	e35c0000 	cmp	r12, #0
- ae8:	e1a00233 	lsr	r0, r3, r2
- aec:	42600000 	rsbmi	r0, r0, #0
- af0:	e12fff1e 	bx	lr
- af4:	e3500000 	cmp	r0, #0
- af8:	c3e00102 	mvngt	r0, #-2147483648	; 0x80000000
- afc:	b3a00102 	movlt	r0, #-2147483648	; 0x80000000
- b00:	ea000007 	b	b24 <__aeabi_idiv0>
+void VIS_LED_SetAll() {
+     678:	e92d4800 	push	{r11, lr}
+     67c:	e28db004 	add	r11, sp, #4
+     680:	e24dd008 	sub	sp, sp, #8
+    for (unsigned i = 0; i <= 9; i++) {
+     684:	e3a03000 	mov	r3, #0
+     688:	e50b3008 	str	r3, [r11, #-8]
+     68c:	ea000005 	b	6a8 <VIS_LED_SetAll+0x30>
+        VIS_LED_Set(i, VIS_LED_SET);
+     690:	e51b0008 	ldr	r0, [r11, #-8]
+     694:	e3a01001 	mov	r1, #1
+     698:	ebffffa9 	bl	544 <VIS_LED_Set>
+    *(red_LED_ptr) = led;
+    return led & (0x1u << index);
+}
 
-00000b04 <__aeabi_idivmod>:
- b04:	e3510000 	cmp	r1, #0
- b08:	0afffff9 	beq	af4 <.divsi3_skip_div0_test+0x110>
- b0c:	e92d4003 	push	{r0, r1, lr}
- b10:	ebffffb3 	bl	9e4 <.divsi3_skip_div0_test>
- b14:	e8bd4006 	pop	{r1, r2, lr}
- b18:	e0030092 	mul	r3, r2, r0
- b1c:	e0411003 	sub	r1, r1, r3
- b20:	e12fff1e 	bx	lr
+void VIS_LED_SetAll() {
+    for (unsigned i = 0; i <= 9; i++) {
+     69c:	e51b3008 	ldr	r3, [r11, #-8]
+     6a0:	e2833001 	add	r3, r3, #1
+     6a4:	e50b3008 	str	r3, [r11, #-8]
+     6a8:	e51b3008 	ldr	r3, [r11, #-8]
+     6ac:	e3530009 	cmp	r3, #9
+     6b0:	9afffff6 	bls	690 <VIS_LED_SetAll+0x18>
+        VIS_LED_Set(i, VIS_LED_SET);
+    }
+}
+     6b4:	e24bd004 	sub	sp, r11, #4
+     6b8:	e8bd8800 	pop	{r11, pc}
 
-00000b24 <__aeabi_idiv0>:
- b24:	e12fff1e 	bx	lr
+000006bc <VIS_LED_ResetAll>:
+void VIS_LED_ResetAll() {
+     6bc:	e92d4800 	push	{r11, lr}
+     6c0:	e28db004 	add	r11, sp, #4
+     6c4:	e24dd008 	sub	sp, sp, #8
+    for (unsigned i = 0; i <= 9; i++) {
+     6c8:	e3a03000 	mov	r3, #0
+     6cc:	e50b3008 	str	r3, [r11, #-8]
+     6d0:	ea000005 	b	6ec <VIS_LED_ResetAll+0x30>
+        VIS_LED_Set(i, VIS_LED_RESET);
+     6d4:	e51b0008 	ldr	r0, [r11, #-8]
+     6d8:	e3a01000 	mov	r1, #0
+     6dc:	ebffff98 	bl	544 <VIS_LED_Set>
+    for (unsigned i = 0; i <= 9; i++) {
+        VIS_LED_Set(i, VIS_LED_SET);
+    }
+}
+void VIS_LED_ResetAll() {
+    for (unsigned i = 0; i <= 9; i++) {
+     6e0:	e51b3008 	ldr	r3, [r11, #-8]
+     6e4:	e2833001 	add	r3, r3, #1
+     6e8:	e50b3008 	str	r3, [r11, #-8]
+     6ec:	e51b3008 	ldr	r3, [r11, #-8]
+     6f0:	e3530009 	cmp	r3, #9
+     6f4:	9afffff6 	bls	6d4 <VIS_LED_ResetAll+0x18>
+        VIS_LED_Set(i, VIS_LED_RESET);
+    }
+     6f8:	e24bd004 	sub	sp, r11, #4
+     6fc:	e8bd8800 	pop	{r11, pc}
 
-00000b28 <atexit>:
- b28:	e1a01000 	mov	r1, r0
- b2c:	e3a00000 	mov	r0, #0
- b30:	e92d4008 	push	{r3, lr}
- b34:	e1a02000 	mov	r2, r0
- b38:	e1a03000 	mov	r3, r0
- b3c:	eb000026 	bl	bdc <__register_exitproc>
- b40:	e8bd4008 	pop	{r3, lr}
- b44:	e12fff1e 	bx	lr
+00000700 <VIS_HEX_Set>:
+    [0x4] = 0b1100110, 0b1101101, 0b11111101, 0b111,
+    [0x8] = 0b1111111, 0b1101111, 0b1110111, 0b1111100, 
+    [0xC] = 0b111001, 0b1011110, 0b1111001, 0b1110001
+};
 
-00000b48 <exit>:
- b48:	e92d4008 	push	{r3, lr}
- b4c:	e3a01000 	mov	r1, #0
- b50:	e1a04000 	mov	r4, r0
- b54:	eb00005d 	bl	cd0 <__call_exitprocs>
- b58:	e59f3018 	ldr	r3, [pc, #24]	; b78 <exit+0x30>
- b5c:	e5930000 	ldr	r0, [r3]
- b60:	e590303c 	ldr	r3, [r0, #60]	; 0x3c
- b64:	e3530000 	cmp	r3, #0
- b68:	11a0e00f 	movne	lr, pc
- b6c:	112fff13 	bxne	r3
- b70:	e1a00004 	mov	r0, r4
- b74:	eb0000e1 	bl	f00 <_exit>
- b78:	00000ffc 	.word	0x00000ffc
+void VIS_HEX_Set(unsigned index, unsigned data) {
+     700:	e92d4800 	push	{r11, lr}
+     704:	e28db004 	add	r11, sp, #4
+     708:	e24dd010 	sub	sp, sp, #16
+     70c:	e50b0010 	str	r0, [r11, #-16]
+     710:	e50b1014 	str	r1, [r11, #-20]	; 0xffffffec
+#ifdef DEBUG
+    if (index > 6) VIS_ERROR_Handler();
+     714:	e51b3010 	ldr	r3, [r11, #-16]
+     718:	e3530006 	cmp	r3, #6
+     71c:	9a000000 	bls	724 <VIS_HEX_Set+0x24>
+     720:	ebfffed1 	bl	26c <VIS_ERROR_Handler>
+#endif // DEBUG
+    data &= 0x7F;
+     724:	e51b3014 	ldr	r3, [r11, #-20]	; 0xffffffec
+     728:	e203307f 	and	r3, r3, #127	; 0x7f
+     72c:	e50b3014 	str	r3, [r11, #-20]	; 0xffffffec
+    if (index < 4) {
+     730:	e51b3010 	ldr	r3, [r11, #-16]
+     734:	e3530003 	cmp	r3, #3
+     738:	8a000017 	bhi	79c <VIS_HEX_Set+0x9c>
+        // HEX 0 ~ 3
+        unsigned original = *(HEX3_HEX0_ptr);
+     73c:	e30137c0 	movw	r3, #6080	; 0x17c0
+     740:	e3403000 	movt	r3, #0
+     744:	e5933000 	ldr	r3, [r3]
+     748:	e5933000 	ldr	r3, [r3]
+     74c:	e50b3008 	str	r3, [r11, #-8]
+        // clear the byte
+        original &= ~(0xFF << (index << 3));
+     750:	e51b3010 	ldr	r3, [r11, #-16]
+     754:	e1a03183 	lsl	r3, r3, #3
+     758:	e3a020ff 	mov	r2, #255	; 0xff
+     75c:	e1a03312 	lsl	r3, r2, r3
+     760:	e1e03003 	mvn	r3, r3
+     764:	e51b2008 	ldr	r2, [r11, #-8]
+     768:	e0023003 	and	r3, r2, r3
+     76c:	e50b3008 	str	r3, [r11, #-8]
+        *(HEX3_HEX0_ptr) = original | (data << (index << 3));
+     770:	e30137c0 	movw	r3, #6080	; 0x17c0
+     774:	e3403000 	movt	r3, #0
+     778:	e5933000 	ldr	r3, [r3]
+     77c:	e51b2010 	ldr	r2, [r11, #-16]
+     780:	e1a02182 	lsl	r2, r2, #3
+     784:	e51b1014 	ldr	r1, [r11, #-20]	; 0xffffffec
+     788:	e1a01211 	lsl	r1, r1, r2
+     78c:	e51b2008 	ldr	r2, [r11, #-8]
+     790:	e1812002 	orr	r2, r1, r2
+     794:	e5832000 	str	r2, [r3]
+     798:	ea000018 	b	800 <VIS_HEX_Set+0x100>
+    } else {
+        // HEX 4 ~ 5
+        unsigned original = *(HEX5_HEX4_ptr);
+     79c:	e30137c4 	movw	r3, #6084	; 0x17c4
+     7a0:	e3403000 	movt	r3, #0
+     7a4:	e5933000 	ldr	r3, [r3]
+     7a8:	e5933000 	ldr	r3, [r3]
+     7ac:	e50b300c 	str	r3, [r11, #-12]
+        // clear the byte
+        original &= ~(0xFF << ((index - 4) << 3));
+     7b0:	e51b3010 	ldr	r3, [r11, #-16]
+     7b4:	e2433004 	sub	r3, r3, #4
+     7b8:	e1a03183 	lsl	r3, r3, #3
+     7bc:	e3a020ff 	mov	r2, #255	; 0xff
+     7c0:	e1a03312 	lsl	r3, r2, r3
+     7c4:	e1e03003 	mvn	r3, r3
+     7c8:	e51b200c 	ldr	r2, [r11, #-12]
+     7cc:	e0023003 	and	r3, r2, r3
+     7d0:	e50b300c 	str	r3, [r11, #-12]
+        *(HEX5_HEX4_ptr) = original | (data << ((index - 4) << 3));
+     7d4:	e30137c4 	movw	r3, #6084	; 0x17c4
+     7d8:	e3403000 	movt	r3, #0
+     7dc:	e5933000 	ldr	r3, [r3]
+     7e0:	e51b2010 	ldr	r2, [r11, #-16]
+     7e4:	e2422004 	sub	r2, r2, #4
+     7e8:	e1a02182 	lsl	r2, r2, #3
+     7ec:	e51b1014 	ldr	r1, [r11, #-20]	; 0xffffffec
+     7f0:	e1a01211 	lsl	r1, r1, r2
+     7f4:	e51b200c 	ldr	r2, [r11, #-12]
+     7f8:	e1812002 	orr	r2, r1, r2
+     7fc:	e5832000 	str	r2, [r3]
+    }
+}
+     800:	e24bd004 	sub	sp, r11, #4
+     804:	e8bd8800 	pop	{r11, pc}
 
-00000b7c <strlen>:
- b7c:	e3c01003 	bic	r1, r0, #3
- b80:	e2100003 	ands	r0, r0, #3
- b84:	e2600000 	rsb	r0, r0, #0
- b88:	e4913004 	ldr	r3, [r1], #4
- b8c:	e280c004 	add	r12, r0, #4
- b90:	e1a0c18c 	lsl	r12, r12, #3
- b94:	e3e02000 	mvn	r2, #0
- b98:	11833c32 	orrne	r3, r3, r2, lsr r12
- b9c:	e3a0c001 	mov	r12, #1
- ba0:	e18cc40c 	orr	r12, r12, r12, lsl #8
- ba4:	e18cc80c 	orr	r12, r12, r12, lsl #16
- ba8:	e043200c 	sub	r2, r3, r12
- bac:	e1c22003 	bic	r2, r2, r3
- bb0:	e012238c 	ands	r2, r2, r12, lsl #7
- bb4:	04913004 	ldreq	r3, [r1], #4
- bb8:	02800004 	addeq	r0, r0, #4
- bbc:	0afffff9 	beq	ba8 <strlen+0x2c>
- bc0:	e31300ff 	tst	r3, #255	; 0xff
- bc4:	12800001 	addne	r0, r0, #1
- bc8:	13130cff 	tstne	r3, #65280	; 0xff00
- bcc:	12800001 	addne	r0, r0, #1
- bd0:	131308ff 	tstne	r3, #16711680	; 0xff0000
- bd4:	12800001 	addne	r0, r0, #1
- bd8:	e12fff1e 	bx	lr
+00000808 <VIS_HEX_SetDigit>:
 
-00000bdc <__register_exitproc>:
- bdc:	e59fc0e4 	ldr	r12, [pc, #228]	; cc8 <__register_exitproc+0xec>
- be0:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
- be4:	e59c4000 	ldr	r4, [r12]
- be8:	e594c148 	ldr	r12, [r4, #328]	; 0x148
- bec:	e35c0000 	cmp	r12, #0
- bf0:	0284cf53 	addeq	r12, r4, #332	; 0x14c
- bf4:	e59c5004 	ldr	r5, [r12, #4]
- bf8:	0584c148 	streq	r12, [r4, #328]	; 0x148
- bfc:	e355001f 	cmp	r5, #31
- c00:	e24dd010 	sub	sp, sp, #16
- c04:	e1a06000 	mov	r6, r0
- c08:	da000015 	ble	c64 <__register_exitproc+0x88>
- c0c:	e59f00b8 	ldr	r0, [pc, #184]	; ccc <__register_exitproc+0xf0>
- c10:	e3500000 	cmp	r0, #0
- c14:	1a000001 	bne	c20 <__register_exitproc+0x44>
- c18:	e3e00000 	mvn	r0, #0
- c1c:	ea000018 	b	c84 <__register_exitproc+0xa8>
- c20:	e3a00e19 	mov	r0, #400	; 0x190
- c24:	e58d100c 	str	r1, [sp, #12]
- c28:	e58d2008 	str	r2, [sp, #8]
- c2c:	e58d3004 	str	r3, [sp, #4]
- c30:	e320f000 	nop	{0}
- c34:	e250c000 	subs	r12, r0, #0
- c38:	e59d100c 	ldr	r1, [sp, #12]
- c3c:	e59d2008 	ldr	r2, [sp, #8]
- c40:	e59d3004 	ldr	r3, [sp, #4]
- c44:	0afffff3 	beq	c18 <__register_exitproc+0x3c>
- c48:	e5945148 	ldr	r5, [r4, #328]	; 0x148
- c4c:	e3a00000 	mov	r0, #0
- c50:	e58c0004 	str	r0, [r12, #4]
- c54:	e58c5000 	str	r5, [r12]
- c58:	e584c148 	str	r12, [r4, #328]	; 0x148
- c5c:	e58c0188 	str	r0, [r12, #392]	; 0x188
- c60:	e58c018c 	str	r0, [r12, #396]	; 0x18c
- c64:	e3560000 	cmp	r6, #0
- c68:	e59c4004 	ldr	r4, [r12, #4]
- c6c:	1a000007 	bne	c90 <__register_exitproc+0xb4>
- c70:	e2843002 	add	r3, r4, #2
- c74:	e2844001 	add	r4, r4, #1
- c78:	e78c1103 	str	r1, [r12, r3, lsl #2]
- c7c:	e58c4004 	str	r4, [r12, #4]
- c80:	e3a00000 	mov	r0, #0
- c84:	e28dd010 	add	sp, sp, #16
- c88:	e8bd41f0 	pop	{r4, r5, r6, r7, r8, lr}
- c8c:	e12fff1e 	bx	lr
- c90:	e3a00001 	mov	r0, #1
- c94:	e1a00410 	lsl	r0, r0, r4
- c98:	e08c8104 	add	r8, r12, r4, lsl #2
- c9c:	e3560002 	cmp	r6, #2
- ca0:	e59c7188 	ldr	r7, [r12, #392]	; 0x188
- ca4:	e5883108 	str	r3, [r8, #264]	; 0x108
- ca8:	059c318c 	ldreq	r3, [r12, #396]	; 0x18c
- cac:	e1877000 	orr	r7, r7, r0
- cb0:	01830000 	orreq	r0, r3, r0
- cb4:	e1a05008 	mov	r5, r8
- cb8:	e5882088 	str	r2, [r8, #136]	; 0x88
- cbc:	e58c7188 	str	r7, [r12, #392]	; 0x188
- cc0:	058c018c 	streq	r0, [r12, #396]	; 0x18c
- cc4:	eaffffe9 	b	c70 <__register_exitproc+0x94>
- cc8:	00000ffc 	.word	0x00000ffc
- ccc:	00000000 	.word	0x00000000
+void VIS_HEX_SetDigit(unsigned index, unsigned data) {
+     808:	e92d4800 	push	{r11, lr}
+     80c:	e28db004 	add	r11, sp, #4
+     810:	e24dd008 	sub	sp, sp, #8
+     814:	e50b0008 	str	r0, [r11, #-8]
+     818:	e50b100c 	str	r1, [r11, #-12]
+#ifdef DEBUG
+    if (index > 6) VIS_ERROR_Handler();
+     81c:	e51b3008 	ldr	r3, [r11, #-8]
+     820:	e3530006 	cmp	r3, #6
+     824:	9a000000 	bls	82c <VIS_HEX_SetDigit+0x24>
+     828:	ebfffe8f 	bl	26c <VIS_ERROR_Handler>
+    if (data > 0xF) VIS_ERROR_Handler();
+     82c:	e51b300c 	ldr	r3, [r11, #-12]
+     830:	e353000f 	cmp	r3, #15
+     834:	9a000000 	bls	83c <VIS_HEX_SetDigit+0x34>
+     838:	ebfffe8b 	bl	26c <VIS_ERROR_Handler>
+#endif // DEBUG
+    VIS_HEX_Set(index, HEX_HEXs[data]);
+     83c:	e30137c8 	movw	r3, #6088	; 0x17c8
+     840:	e3403000 	movt	r3, #0
+     844:	e51b200c 	ldr	r2, [r11, #-12]
+     848:	e7933102 	ldr	r3, [r3, r2, lsl #2]
+     84c:	e51b0008 	ldr	r0, [r11, #-8]
+     850:	e1a01003 	mov	r1, r3
+     854:	ebffffa9 	bl	700 <VIS_HEX_Set>
+}
+     858:	e24bd004 	sub	sp, r11, #4
+     85c:	e8bd8800 	pop	{r11, pc}
 
-00000cd0 <__call_exitprocs>:
- cd0:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, r10, r11, lr}
- cd4:	e59f3168 	ldr	r3, [pc, #360]	; e44 <__call_exitprocs+0x174>
- cd8:	e5933000 	ldr	r3, [r3]
- cdc:	e24dd014 	sub	sp, sp, #20
- ce0:	e58d3004 	str	r3, [sp, #4]
- ce4:	e2833f52 	add	r3, r3, #328	; 0x148
- ce8:	e58d0008 	str	r0, [sp, #8]
- cec:	e58d300c 	str	r3, [sp, #12]
- cf0:	e1a07001 	mov	r7, r1
- cf4:	e3a08001 	mov	r8, #1
- cf8:	e59d3004 	ldr	r3, [sp, #4]
- cfc:	e5936148 	ldr	r6, [r3, #328]	; 0x148
- d00:	e3560000 	cmp	r6, #0
- d04:	e59db00c 	ldr	r11, [sp, #12]
- d08:	0a000033 	beq	ddc <__call_exitprocs+0x10c>
- d0c:	e5965004 	ldr	r5, [r6, #4]
- d10:	e2554001 	subs	r4, r5, #1
- d14:	5286a088 	addpl	r10, r6, #136	; 0x88
- d18:	5285501f 	addpl	r5, r5, #31
- d1c:	508a5105 	addpl	r5, r10, r5, lsl #2
- d20:	5a000007 	bpl	d44 <__call_exitprocs+0x74>
- d24:	ea000029 	b	dd0 <__call_exitprocs+0x100>
- d28:	e5953000 	ldr	r3, [r5]
- d2c:	e1530007 	cmp	r3, r7
- d30:	0a000005 	beq	d4c <__call_exitprocs+0x7c>
- d34:	e2444001 	sub	r4, r4, #1
- d38:	e3740001 	cmn	r4, #1
- d3c:	e2455004 	sub	r5, r5, #4
- d40:	0a000022 	beq	dd0 <__call_exitprocs+0x100>
- d44:	e3570000 	cmp	r7, #0
- d48:	1afffff6 	bne	d28 <__call_exitprocs+0x58>
- d4c:	e5963004 	ldr	r3, [r6, #4]
- d50:	e06a2005 	rsb	r2, r10, r5
- d54:	e2433001 	sub	r3, r3, #1
- d58:	e0862002 	add	r2, r6, r2
- d5c:	e1530004 	cmp	r3, r4
- d60:	e5123078 	ldr	r3, [r2, #-120]	; 0xffffff88
- d64:	13a01000 	movne	r1, #0
- d68:	05864004 	streq	r4, [r6, #4]
- d6c:	15021078 	strne	r1, [r2, #-120]	; 0xffffff88
- d70:	e3530000 	cmp	r3, #0
- d74:	0affffee 	beq	d34 <__call_exitprocs+0x64>
- d78:	e1a02418 	lsl	r2, r8, r4
- d7c:	e5961188 	ldr	r1, [r6, #392]	; 0x188
- d80:	e1120001 	tst	r2, r1
- d84:	e5969004 	ldr	r9, [r6, #4]
- d88:	0a000016 	beq	de8 <__call_exitprocs+0x118>
- d8c:	e596118c 	ldr	r1, [r6, #396]	; 0x18c
- d90:	e1120001 	tst	r2, r1
- d94:	1a000016 	bne	df4 <__call_exitprocs+0x124>
- d98:	e59d0008 	ldr	r0, [sp, #8]
- d9c:	e5151080 	ldr	r1, [r5, #-128]	; 0xffffff80
- da0:	e1a0e00f 	mov	lr, pc
- da4:	e12fff13 	bx	r3
- da8:	e5963004 	ldr	r3, [r6, #4]
- dac:	e1530009 	cmp	r3, r9
- db0:	1affffd0 	bne	cf8 <__call_exitprocs+0x28>
- db4:	e59b3000 	ldr	r3, [r11]
- db8:	e1530006 	cmp	r3, r6
- dbc:	1affffcd 	bne	cf8 <__call_exitprocs+0x28>
- dc0:	e2444001 	sub	r4, r4, #1
- dc4:	e3740001 	cmn	r4, #1
- dc8:	e2455004 	sub	r5, r5, #4
- dcc:	1affffdc 	bne	d44 <__call_exitprocs+0x74>
- dd0:	e59f1070 	ldr	r1, [pc, #112]	; e48 <__call_exitprocs+0x178>
- dd4:	e3510000 	cmp	r1, #0
- dd8:	1a000009 	bne	e04 <__call_exitprocs+0x134>
- ddc:	e28dd014 	add	sp, sp, #20
- de0:	e8bd4ff0 	pop	{r4, r5, r6, r7, r8, r9, r10, r11, lr}
- de4:	e12fff1e 	bx	lr
- de8:	e1a0e00f 	mov	lr, pc
- dec:	e12fff13 	bx	r3
- df0:	eaffffec 	b	da8 <__call_exitprocs+0xd8>
- df4:	e5150080 	ldr	r0, [r5, #-128]	; 0xffffff80
- df8:	e1a0e00f 	mov	lr, pc
- dfc:	e12fff13 	bx	r3
- e00:	eaffffe8 	b	da8 <__call_exitprocs+0xd8>
- e04:	e5963004 	ldr	r3, [r6, #4]
- e08:	e3530000 	cmp	r3, #0
- e0c:	e5963000 	ldr	r3, [r6]
- e10:	1a000008 	bne	e38 <__call_exitprocs+0x168>
- e14:	e3530000 	cmp	r3, #0
- e18:	0a000006 	beq	e38 <__call_exitprocs+0x168>
- e1c:	e1a00006 	mov	r0, r6
- e20:	e58b3000 	str	r3, [r11]
- e24:	e320f000 	nop	{0}
- e28:	e59b6000 	ldr	r6, [r11]
- e2c:	e3560000 	cmp	r6, #0
- e30:	1affffb5 	bne	d0c <__call_exitprocs+0x3c>
- e34:	eaffffe8 	b	ddc <__call_exitprocs+0x10c>
- e38:	e1a0b006 	mov	r11, r6
- e3c:	e1a06003 	mov	r6, r3
- e40:	eafffff9 	b	e2c <__call_exitprocs+0x15c>
- e44:	00000ffc 	.word	0x00000ffc
- e48:	00000000 	.word	0x00000000
+00000860 <VIS_HEX_SetUint_HEX>:
 
-00000e4c <register_fini>:
- e4c:	e92d4008 	push	{r3, lr}
- e50:	e59f3010 	ldr	r3, [pc, #16]	; e68 <register_fini+0x1c>
- e54:	e3530000 	cmp	r3, #0
- e58:	159f000c 	ldrne	r0, [pc, #12]	; e6c <register_fini+0x20>
- e5c:	1bffff31 	blne	b28 <atexit>
- e60:	e8bd4008 	pop	{r3, lr}
- e64:	e12fff1e 	bx	lr
- e68:	00001024 	.word	0x00001024
- e6c:	00000e70 	.word	0x00000e70
+void VIS_HEX_SetUint_HEX(unsigned data) {
+     860:	e92d4800 	push	{r11, lr}
+     864:	e28db004 	add	r11, sp, #4
+     868:	e24dd010 	sub	sp, sp, #16
+     86c:	e50b0010 	str	r0, [r11, #-16]
+    
+    static volatile int *JTAG_UART_ptr = (int *)JTAG_UART_BASE; // JTAG UART address
+    VIS_Uart_Tx(JTAG_UART_ptr, "HEX_HEX()\r\nData=", strlen("HEX_HEX()\r\nData="));
+     870:	e301380c 	movw	r3, #6156	; 0x180c
+     874:	e3403000 	movt	r3, #0
+     878:	e5933000 	ldr	r3, [r3]
+     87c:	e1a00003 	mov	r0, r3
+     880:	e30116e4 	movw	r1, #5860	; 0x16e4
+     884:	e3401000 	movt	r1, #0
+     888:	e3a02010 	mov	r2, #16
+     88c:	ebfffe97 	bl	2f0 <VIS_Uart_Tx>
+    data &= 0xFFFFFF;
+     890:	e51b3010 	ldr	r3, [r11, #-16]
+     894:	e3c334ff 	bic	r3, r3, #-16777216	; 0xff000000
+     898:	e50b3010 	str	r3, [r11, #-16]
+    VIS_UART_TxInt(JTAG_UART_ptr, data);
+     89c:	e301380c 	movw	r3, #6156	; 0x180c
+     8a0:	e3403000 	movt	r3, #0
+     8a4:	e5932000 	ldr	r2, [r3]
+     8a8:	e51b3010 	ldr	r3, [r11, #-16]
+     8ac:	e1a00002 	mov	r0, r2
+     8b0:	e1a01003 	mov	r1, r3
+     8b4:	ebfffea6 	bl	354 <VIS_UART_TxInt>
+    VIS_UART_TxEnter(JTAG_UART_ptr);
+     8b8:	e301380c 	movw	r3, #6156	; 0x180c
+     8bc:	e3403000 	movt	r3, #0
+     8c0:	e5933000 	ldr	r3, [r3]
+     8c4:	e1a00003 	mov	r0, r3
+     8c8:	ebfffee9 	bl	474 <VIS_UART_TxEnter>
+    for (unsigned i = 0; i <= 5; i++) {
+     8cc:	e3a03000 	mov	r3, #0
+     8d0:	e50b3008 	str	r3, [r11, #-8]
+     8d4:	ea000016 	b	934 <VIS_HEX_SetUint_HEX+0xd4>
+        VIS_HEX_SetDigit(i, data & (0xF));
+     8d8:	e51b3010 	ldr	r3, [r11, #-16]
+     8dc:	e203300f 	and	r3, r3, #15
+     8e0:	e51b0008 	ldr	r0, [r11, #-8]
+     8e4:	e1a01003 	mov	r1, r3
+     8e8:	ebffffc6 	bl	808 <VIS_HEX_SetDigit>
+        
+        VIS_UART_TxInt(JTAG_UART_ptr, data);
+     8ec:	e301380c 	movw	r3, #6156	; 0x180c
+     8f0:	e3403000 	movt	r3, #0
+     8f4:	e5932000 	ldr	r2, [r3]
+     8f8:	e51b3010 	ldr	r3, [r11, #-16]
+     8fc:	e1a00002 	mov	r0, r2
+     900:	e1a01003 	mov	r1, r3
+     904:	ebfffe92 	bl	354 <VIS_UART_TxInt>
+        VIS_UART_TxEnter(JTAG_UART_ptr);
+     908:	e301380c 	movw	r3, #6156	; 0x180c
+     90c:	e3403000 	movt	r3, #0
+     910:	e5933000 	ldr	r3, [r3]
+     914:	e1a00003 	mov	r0, r3
+     918:	ebfffed5 	bl	474 <VIS_UART_TxEnter>
+        data >>= 4;
+     91c:	e51b3010 	ldr	r3, [r11, #-16]
+     920:	e1a03223 	lsr	r3, r3, #4
+     924:	e50b3010 	str	r3, [r11, #-16]
+    static volatile int *JTAG_UART_ptr = (int *)JTAG_UART_BASE; // JTAG UART address
+    VIS_Uart_Tx(JTAG_UART_ptr, "HEX_HEX()\r\nData=", strlen("HEX_HEX()\r\nData="));
+    data &= 0xFFFFFF;
+    VIS_UART_TxInt(JTAG_UART_ptr, data);
+    VIS_UART_TxEnter(JTAG_UART_ptr);
+    for (unsigned i = 0; i <= 5; i++) {
+     928:	e51b3008 	ldr	r3, [r11, #-8]
+     92c:	e2833001 	add	r3, r3, #1
+     930:	e50b3008 	str	r3, [r11, #-8]
+     934:	e51b3008 	ldr	r3, [r11, #-8]
+     938:	e3530005 	cmp	r3, #5
+     93c:	9affffe5 	bls	8d8 <VIS_HEX_SetUint_HEX+0x78>
+        
+        VIS_UART_TxInt(JTAG_UART_ptr, data);
+        VIS_UART_TxEnter(JTAG_UART_ptr);
+        data >>= 4;
+    }
+}
+     940:	e24bd004 	sub	sp, r11, #4
+     944:	e8bd8800 	pop	{r11, pc}
 
-00000e70 <__libc_fini_array>:
- e70:	e92d4038 	push	{r3, r4, r5, lr}
- e74:	e59f5030 	ldr	r5, [pc, #48]	; eac <__libc_fini_array+0x3c>
- e78:	e59f4030 	ldr	r4, [pc, #48]	; eb0 <__libc_fini_array+0x40>
- e7c:	e0654004 	rsb	r4, r5, r4
- e80:	e1b04144 	asrs	r4, r4, #2
- e84:	10855104 	addne	r5, r5, r4, lsl #2
- e88:	0a000004 	beq	ea0 <__libc_fini_array+0x30>
- e8c:	e5353004 	ldr	r3, [r5, #-4]!
- e90:	e1a0e00f 	mov	lr, pc
- e94:	e12fff13 	bx	r3
- e98:	e2544001 	subs	r4, r4, #1
- e9c:	1afffffa 	bne	e8c <__libc_fini_array+0x1c>
- ea0:	eb00005f 	bl	1024 <__libc_fini>
- ea4:	e8bd4038 	pop	{r3, r4, r5, lr}
- ea8:	e12fff1e 	bx	lr
- eac:	0000103c 	.word	0x0000103c
- eb0:	00001040 	.word	0x00001040
+00000948 <VIS_HEX_SetUint_DEC>:
 
-00000eb4 <__cs3_premain>:
- eb4:	e92d4008 	push	{r3, lr}
- eb8:	eb00001d 	bl	f34 <__libc_init_array>
- ebc:	e59f3030 	ldr	r3, [pc, #48]	; ef4 <__cs3_premain+0x40>
- ec0:	e3530000 	cmp	r3, #0
- ec4:	15930000 	ldrne	r0, [r3]
- ec8:	01a00003 	moveq	r0, r3
- ecc:	e59f3024 	ldr	r3, [pc, #36]	; ef8 <__cs3_premain+0x44>
- ed0:	e3530000 	cmp	r3, #0
- ed4:	15931000 	ldrne	r1, [r3]
- ed8:	01a01003 	moveq	r1, r3
- edc:	e3a02000 	mov	r2, #0
- ee0:	ebfffcdd 	bl	25c <main>
- ee4:	e59f3010 	ldr	r3, [pc, #16]	; efc <__cs3_premain+0x48>
- ee8:	e3530000 	cmp	r3, #0
- eec:	1bffff15 	blne	b48 <exit>
- ef0:	eafffffe 	b	ef0 <__cs3_premain+0x3c>
+void VIS_HEX_SetUint_DEC(unsigned data) {
+     948:	e92d4800 	push	{r11, lr}
+     94c:	e28db004 	add	r11, sp, #4
+     950:	e24dd010 	sub	sp, sp, #16
+     954:	e50b0010 	str	r0, [r11, #-16]
+    static volatile int *JTAG_UART_ptr = (int *)JTAG_UART_BASE; // JTAG UART address
+    VIS_Uart_Tx(JTAG_UART_ptr, "HEX_DEC()\r\nData=", strlen("HEX_HEX()\r\nData="));
+     958:	e3013808 	movw	r3, #6152	; 0x1808
+     95c:	e3403000 	movt	r3, #0
+     960:	e5933000 	ldr	r3, [r3]
+     964:	e1a00003 	mov	r0, r3
+     968:	e30116f8 	movw	r1, #5880	; 0x16f8
+     96c:	e3401000 	movt	r1, #0
+     970:	e3a02010 	mov	r2, #16
+     974:	ebfffe5d 	bl	2f0 <VIS_Uart_Tx>
+    data %= 1000000;
+     978:	e51b2010 	ldr	r2, [r11, #-16]
+     97c:	e30d3e83 	movw	r3, #56963	; 0xde83
+     980:	e344331b 	movt	r3, #17179	; 0x431b
+     984:	e0831293 	umull	r1, r3, r3, r2
+     988:	e1a01923 	lsr	r1, r3, #18
+     98c:	e3043240 	movw	r3, #16960	; 0x4240
+     990:	e340300f 	movt	r3, #15
+     994:	e0030193 	mul	r3, r3, r1
+     998:	e0633002 	rsb	r3, r3, r2
+     99c:	e50b3010 	str	r3, [r11, #-16]
+    VIS_UART_TxInt(JTAG_UART_ptr, data);
+     9a0:	e3013808 	movw	r3, #6152	; 0x1808
+     9a4:	e3403000 	movt	r3, #0
+     9a8:	e5932000 	ldr	r2, [r3]
+     9ac:	e51b3010 	ldr	r3, [r11, #-16]
+     9b0:	e1a00002 	mov	r0, r2
+     9b4:	e1a01003 	mov	r1, r3
+     9b8:	ebfffe65 	bl	354 <VIS_UART_TxInt>
+    VIS_UART_TxEnter(JTAG_UART_ptr);
+     9bc:	e3013808 	movw	r3, #6152	; 0x1808
+     9c0:	e3403000 	movt	r3, #0
+     9c4:	e5933000 	ldr	r3, [r3]
+     9c8:	e1a00003 	mov	r0, r3
+     9cc:	ebfffea8 	bl	474 <VIS_UART_TxEnter>
+    for (unsigned i = 0; i <= 5; i++) {
+     9d0:	e3a03000 	mov	r3, #0
+     9d4:	e50b3008 	str	r3, [r11, #-8]
+     9d8:	ea000021 	b	a64 <VIS_HEX_SetUint_DEC+0x11c>
+        VIS_HEX_SetDigit(i, data %10);
+     9dc:	e51b1010 	ldr	r1, [r11, #-16]
+     9e0:	e30c3ccd 	movw	r3, #52429	; 0xcccd
+     9e4:	e34c3ccc 	movt	r3, #52428	; 0xcccc
+     9e8:	e0832193 	umull	r2, r3, r3, r1
+     9ec:	e1a021a3 	lsr	r2, r3, #3
+     9f0:	e1a03002 	mov	r3, r2
+     9f4:	e1a03103 	lsl	r3, r3, #2
+     9f8:	e0833002 	add	r3, r3, r2
+     9fc:	e1a03083 	lsl	r3, r3, #1
+     a00:	e0632001 	rsb	r2, r3, r1
+     a04:	e51b0008 	ldr	r0, [r11, #-8]
+     a08:	e1a01002 	mov	r1, r2
+     a0c:	ebffff7d 	bl	808 <VIS_HEX_SetDigit>
+        data /= 10;
+     a10:	e51b2010 	ldr	r2, [r11, #-16]
+     a14:	e30c3ccd 	movw	r3, #52429	; 0xcccd
+     a18:	e34c3ccc 	movt	r3, #52428	; 0xcccc
+     a1c:	e0831293 	umull	r1, r3, r3, r2
+     a20:	e1a031a3 	lsr	r3, r3, #3
+     a24:	e50b3010 	str	r3, [r11, #-16]
+        VIS_UART_TxInt(JTAG_UART_ptr, data);
+     a28:	e3013808 	movw	r3, #6152	; 0x1808
+     a2c:	e3403000 	movt	r3, #0
+     a30:	e5932000 	ldr	r2, [r3]
+     a34:	e51b3010 	ldr	r3, [r11, #-16]
+     a38:	e1a00002 	mov	r0, r2
+     a3c:	e1a01003 	mov	r1, r3
+     a40:	ebfffe43 	bl	354 <VIS_UART_TxInt>
+        VIS_UART_TxEnter(JTAG_UART_ptr);
+     a44:	e3013808 	movw	r3, #6152	; 0x1808
+     a48:	e3403000 	movt	r3, #0
+     a4c:	e5933000 	ldr	r3, [r3]
+     a50:	e1a00003 	mov	r0, r3
+     a54:	ebfffe86 	bl	474 <VIS_UART_TxEnter>
+    static volatile int *JTAG_UART_ptr = (int *)JTAG_UART_BASE; // JTAG UART address
+    VIS_Uart_Tx(JTAG_UART_ptr, "HEX_DEC()\r\nData=", strlen("HEX_HEX()\r\nData="));
+    data %= 1000000;
+    VIS_UART_TxInt(JTAG_UART_ptr, data);
+    VIS_UART_TxEnter(JTAG_UART_ptr);
+    for (unsigned i = 0; i <= 5; i++) {
+     a58:	e51b3008 	ldr	r3, [r11, #-8]
+     a5c:	e2833001 	add	r3, r3, #1
+     a60:	e50b3008 	str	r3, [r11, #-8]
+     a64:	e51b3008 	ldr	r3, [r11, #-8]
+     a68:	e3530005 	cmp	r3, #5
+     a6c:	9affffda 	bls	9dc <VIS_HEX_SetUint_DEC+0x94>
+        VIS_HEX_SetDigit(i, data %10);
+        data /= 10;
+        VIS_UART_TxInt(JTAG_UART_ptr, data);
+        VIS_UART_TxEnter(JTAG_UART_ptr);
+    }
+     a70:	e24bd004 	sub	sp, r11, #4
+     a74:	e8bd8800 	pop	{r11, pc}
+
+00000a78 <led_test>:
+
+static volatile int *JTAG_UART_ptr = (int *)JTAG_UART_BASE; // JTAG UART address
+static volatile int * audio_ptr   = (int *)AUDIO_BASE; // Audio in address
+
+// LED test passed
+void led_test() {
+     a78:	e92d4800 	push	{r11, lr}
+     a7c:	e28db004 	add	r11, sp, #4
+    VIS_LED_Set(1, VIS_LED_SET);
+     a80:	e3a00001 	mov	r0, #1
+     a84:	e3a01001 	mov	r1, #1
+     a88:	ebfffead 	bl	544 <VIS_LED_Set>
+    VIS_LED_Set(3, VIS_LED_SET);
+     a8c:	e3a00003 	mov	r0, #3
+     a90:	e3a01001 	mov	r1, #1
+     a94:	ebfffeaa 	bl	544 <VIS_LED_Set>
+    VIS_LED_Set(5, VIS_LED_SET);
+     a98:	e3a00005 	mov	r0, #5
+     a9c:	e3a01001 	mov	r1, #1
+     aa0:	ebfffea7 	bl	544 <VIS_LED_Set>
+    VIS_LED_Set(7, VIS_LED_SET);
+     aa4:	e3a00007 	mov	r0, #7
+     aa8:	e3a01001 	mov	r1, #1
+     aac:	ebfffea4 	bl	544 <VIS_LED_Set>
+    VIS_LED_Toggle(9);
+     ab0:	e3a00009 	mov	r0, #9
+     ab4:	ebfffecf 	bl	5f8 <VIS_LED_Toggle>
+    VIS_LED_Toggle(2);
+     ab8:	e3a00002 	mov	r0, #2
+     abc:	ebfffecd 	bl	5f8 <VIS_LED_Toggle>
+    VIS_LED_Toggle(2);
+     ac0:	e3a00002 	mov	r0, #2
+     ac4:	ebfffecb 	bl	5f8 <VIS_LED_Toggle>
+    VIS_LED_Set(4, VIS_LED_SET);
+     ac8:	e3a00004 	mov	r0, #4
+     acc:	e3a01001 	mov	r1, #1
+     ad0:	ebfffe9b 	bl	544 <VIS_LED_Set>
+    VIS_LED_Set(4, VIS_LED_RESET);
+     ad4:	e3a00004 	mov	r0, #4
+     ad8:	e3a01000 	mov	r1, #0
+     adc:	ebfffe98 	bl	544 <VIS_LED_Set>
+}
+     ae0:	e8bd8800 	pop	{r11, pc}
+
+00000ae4 <audio_test>:
+
+void audio_test() {
+     ae4:	e92d4800 	push	{r11, lr}
+     ae8:	e28db004 	add	r11, sp, #4
+     aec:	e24ddc19 	sub	sp, sp, #6400	; 0x1900
+     af0:	e24dd010 	sub	sp, sp, #16
+ /* used for audio record/playback */
+    int fifospace, buffer_index = 0;
+     af4:	e3a03000 	mov	r3, #0
+     af8:	e50b300c 	str	r3, [r11, #-12]
+    int left_buffer[BUF_SIZE];
+    int right_buffer[BUF_SIZE];
+
+    fifospace = *(audio_ptr + 1); // read the audio port fifospace register
+     afc:	e3013814 	movw	r3, #6164	; 0x1814
+     b00:	e3403000 	movt	r3, #0
+     b04:	e5933000 	ldr	r3, [r3]
+     b08:	e5933004 	ldr	r3, [r3, #4]
+     b0c:	e50b3008 	str	r3, [r11, #-8]
+    if ((fifospace & 0x000000FF) > BUF_THRESHOLD) // check RARC
+     b10:	e51b3008 	ldr	r3, [r11, #-8]
+     b14:	e6ef3073 	uxtb	r3, r3
+     b18:	e3530060 	cmp	r3, #96	; 0x60
+     b1c:	da000028 	ble	bc4 <audio_test+0xe0>
+    {
+        // store data until the the audio-in FIFO is empty or the buffer
+        // is full
+        while ((fifospace & 0x000000FF) && (buffer_index < BUF_SIZE)) {
+     b20:	ea00001f 	b	ba4 <audio_test+0xc0>
+            left_buffer[buffer_index]  = *(audio_ptr + 2);
+     b24:	e3013814 	movw	r3, #6164	; 0x1814
+     b28:	e3403000 	movt	r3, #0
+     b2c:	e5933000 	ldr	r3, [r3]
+     b30:	e5932008 	ldr	r2, [r3, #8]
+     b34:	e51b100c 	ldr	r1, [r11, #-12]
+     b38:	e30f3374 	movw	r3, #62324	; 0xf374
+     b3c:	e34f3fff 	movt	r3, #65535	; 0xffff
+     b40:	e1a01101 	lsl	r1, r1, #2
+     b44:	e24b0004 	sub	r0, r11, #4
+     b48:	e0801001 	add	r1, r0, r1
+     b4c:	e0813003 	add	r3, r1, r3
+     b50:	e5832000 	str	r2, [r3]
+            right_buffer[buffer_index] = *(audio_ptr + 3);
+     b54:	e3013814 	movw	r3, #6164	; 0x1814
+     b58:	e3403000 	movt	r3, #0
+     b5c:	e5933000 	ldr	r3, [r3]
+     b60:	e593200c 	ldr	r2, [r3, #12]
+     b64:	e30e36f4 	movw	r3, #59124	; 0xe6f4
+     b68:	e34f3fff 	movt	r3, #65535	; 0xffff
+     b6c:	e51b100c 	ldr	r1, [r11, #-12]
+     b70:	e1a01101 	lsl	r1, r1, #2
+     b74:	e24b0004 	sub	r0, r11, #4
+     b78:	e0801001 	add	r1, r0, r1
+     b7c:	e0813003 	add	r3, r1, r3
+     b80:	e5832000 	str	r2, [r3]
+            ++buffer_index;
+     b84:	e51b300c 	ldr	r3, [r11, #-12]
+     b88:	e2833001 	add	r3, r3, #1
+     b8c:	e50b300c 	str	r3, [r11, #-12]
+            fifospace = *(audio_ptr + 1); // read the audio port fifospace register
+     b90:	e3013814 	movw	r3, #6164	; 0x1814
+     b94:	e3403000 	movt	r3, #0
+     b98:	e5933000 	ldr	r3, [r3]
+     b9c:	e5933004 	ldr	r3, [r3, #4]
+     ba0:	e50b3008 	str	r3, [r11, #-8]
+    fifospace = *(audio_ptr + 1); // read the audio port fifospace register
+    if ((fifospace & 0x000000FF) > BUF_THRESHOLD) // check RARC
+    {
+        // store data until the the audio-in FIFO is empty or the buffer
+        // is full
+        while ((fifospace & 0x000000FF) && (buffer_index < BUF_SIZE)) {
+     ba4:	e51b3008 	ldr	r3, [r11, #-8]
+     ba8:	e6ef3073 	uxtb	r3, r3
+     bac:	e3530000 	cmp	r3, #0
+     bb0:	0a000003 	beq	bc4 <audio_test+0xe0>
+     bb4:	e51b200c 	ldr	r2, [r11, #-12]
+     bb8:	e300331f 	movw	r3, #799	; 0x31f
+     bbc:	e1520003 	cmp	r2, r3
+     bc0:	daffffd7 	ble	b24 <audio_test+0x40>
+            right_buffer[buffer_index] = *(audio_ptr + 3);
+            ++buffer_index;
+            fifospace = *(audio_ptr + 1); // read the audio port fifospace register
+        }
+    }
+    VIS_Uart_Tx(JTAG_UART_ptr, "Buffer Size=", strlen("Buffer Size="));
+     bc4:	e3013810 	movw	r3, #6160	; 0x1810
+     bc8:	e3403000 	movt	r3, #0
+     bcc:	e5933000 	ldr	r3, [r3]
+     bd0:	e1a00003 	mov	r0, r3
+     bd4:	e301170c 	movw	r1, #5900	; 0x170c
+     bd8:	e3401000 	movt	r1, #0
+     bdc:	e3a0200c 	mov	r2, #12
+     be0:	ebfffdc2 	bl	2f0 <VIS_Uart_Tx>
+    VIS_UART_TxInt(JTAG_UART_ptr, BUF_SIZE);
+     be4:	e3013810 	movw	r3, #6160	; 0x1810
+     be8:	e3403000 	movt	r3, #0
+     bec:	e5933000 	ldr	r3, [r3]
+     bf0:	e1a00003 	mov	r0, r3
+     bf4:	e3a01e32 	mov	r1, #800	; 0x320
+     bf8:	ebfffdd5 	bl	354 <VIS_UART_TxInt>
+    VIS_Uart_Tx(JTAG_UART_ptr, "\r\n", strlen("\r\n"));
+     bfc:	e3013810 	movw	r3, #6160	; 0x1810
+     c00:	e3403000 	movt	r3, #0
+     c04:	e5933000 	ldr	r3, [r3]
+     c08:	e1a00003 	mov	r0, r3
+     c0c:	e301171c 	movw	r1, #5916	; 0x171c
+     c10:	e3401000 	movt	r1, #0
+     c14:	e3a02002 	mov	r2, #2
+     c18:	ebfffdb4 	bl	2f0 <VIS_Uart_Tx>
+    
+
+    for (int i = 0; i < 200; i++) {
+     c1c:	e3a03000 	mov	r3, #0
+     c20:	e50b3010 	str	r3, [r11, #-16]
+     c24:	ea000024 	b	cbc <audio_test+0x1d8>
+        VIS_UART_TxInt(JTAG_UART_ptr, i);
+     c28:	e3013810 	movw	r3, #6160	; 0x1810
+     c2c:	e3403000 	movt	r3, #0
+     c30:	e5933000 	ldr	r3, [r3]
+     c34:	e1a00003 	mov	r0, r3
+     c38:	e51b1010 	ldr	r1, [r11, #-16]
+     c3c:	ebfffdc4 	bl	354 <VIS_UART_TxInt>
+        VIS_Uart_TxChar(JTAG_UART_ptr, ':');
+     c40:	e3013810 	movw	r3, #6160	; 0x1810
+     c44:	e3403000 	movt	r3, #0
+     c48:	e5933000 	ldr	r3, [r3]
+     c4c:	e1a00003 	mov	r0, r3
+     c50:	e3a0103a 	mov	r1, #58	; 0x3a
+     c54:	ebfffd87 	bl	278 <VIS_Uart_TxChar>
+        VIS_UART_TxInt(JTAG_UART_ptr, left_buffer[i]);
+     c58:	e3013810 	movw	r3, #6160	; 0x1810
+     c5c:	e3403000 	movt	r3, #0
+     c60:	e5932000 	ldr	r2, [r3]
+     c64:	e51b1010 	ldr	r1, [r11, #-16]
+     c68:	e30f3374 	movw	r3, #62324	; 0xf374
+     c6c:	e34f3fff 	movt	r3, #65535	; 0xffff
+     c70:	e1a01101 	lsl	r1, r1, #2
+     c74:	e24b0004 	sub	r0, r11, #4
+     c78:	e0801001 	add	r1, r0, r1
+     c7c:	e0813003 	add	r3, r1, r3
+     c80:	e5933000 	ldr	r3, [r3]
+     c84:	e1a00002 	mov	r0, r2
+     c88:	e1a01003 	mov	r1, r3
+     c8c:	ebfffdb0 	bl	354 <VIS_UART_TxInt>
+        VIS_Uart_Tx(JTAG_UART_ptr, "\r\n", strlen("\r\n"));
+     c90:	e3013810 	movw	r3, #6160	; 0x1810
+     c94:	e3403000 	movt	r3, #0
+     c98:	e5933000 	ldr	r3, [r3]
+     c9c:	e1a00003 	mov	r0, r3
+     ca0:	e301171c 	movw	r1, #5916	; 0x171c
+     ca4:	e3401000 	movt	r1, #0
+     ca8:	e3a02002 	mov	r2, #2
+     cac:	ebfffd8f 	bl	2f0 <VIS_Uart_Tx>
+    VIS_Uart_Tx(JTAG_UART_ptr, "Buffer Size=", strlen("Buffer Size="));
+    VIS_UART_TxInt(JTAG_UART_ptr, BUF_SIZE);
+    VIS_Uart_Tx(JTAG_UART_ptr, "\r\n", strlen("\r\n"));
+    
+
+    for (int i = 0; i < 200; i++) {
+     cb0:	e51b3010 	ldr	r3, [r11, #-16]
+     cb4:	e2833001 	add	r3, r3, #1
+     cb8:	e50b3010 	str	r3, [r11, #-16]
+     cbc:	e51b3010 	ldr	r3, [r11, #-16]
+     cc0:	e35300c7 	cmp	r3, #199	; 0xc7
+     cc4:	daffffd7 	ble	c28 <audio_test+0x144>
+        VIS_UART_TxInt(JTAG_UART_ptr, i);
+        VIS_Uart_TxChar(JTAG_UART_ptr, ':');
+        VIS_UART_TxInt(JTAG_UART_ptr, left_buffer[i]);
+        VIS_Uart_Tx(JTAG_UART_ptr, "\r\n", strlen("\r\n"));
+    }
+}
+     cc8:	e24bd004 	sub	sp, r11, #4
+     ccc:	e8bd8800 	pop	{r11, pc}
+
+00000cd0 <uart_test>:
+
+void uart_test() {
+     cd0:	e92d4810 	push	{r4, r11, lr}
+     cd4:	e28db008 	add	r11, sp, #8
+     cd8:	e24dd024 	sub	sp, sp, #36	; 0x24
+    
+    char text_string[] = "\nJTAG UART test\n> \0";
+     cdc:	e3013720 	movw	r3, #5920	; 0x1720
+     ce0:	e3403000 	movt	r3, #0
+     ce4:	e24bc028 	sub	r12, r11, #40	; 0x28
+     ce8:	e1a0e003 	mov	lr, r3
+     cec:	e8be000f 	ldm	lr!, {r0, r1, r2, r3}
+     cf0:	e8ac000f 	stmia	r12!, {r0, r1, r2, r3}
+     cf4:	e59e3000 	ldr	r3, [lr]
+     cf8:	e58c3000 	str	r3, [r12]
+    char c;
+
+    VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
+     cfc:	e3013810 	movw	r3, #6160	; 0x1810
+     d00:	e3403000 	movt	r3, #0
+     d04:	e5934000 	ldr	r4, [r3]
+     d08:	e24b3028 	sub	r3, r11, #40	; 0x28
+     d0c:	e1a00003 	mov	r0, r3
+     d10:	eb00015f 	bl	1294 <strlen>
+     d14:	e1a03000 	mov	r3, r0
+     d18:	e24b2028 	sub	r2, r11, #40	; 0x28
+     d1c:	e1a00004 	mov	r0, r4
+     d20:	e1a01002 	mov	r1, r2
+     d24:	e1a02003 	mov	r2, r3
+     d28:	ebfffd70 	bl	2f0 <VIS_Uart_Tx>
+
+    for (int i = 0; i < BUF_SIZE; i++) {
+     d2c:	e3a03000 	mov	r3, #0
+     d30:	e50b3010 	str	r3, [r11, #-16]
+     d34:	ea00000e 	b	d74 <uart_test+0xa4>
+        VIS_UART_TxInt(JTAG_UART_ptr, i);
+     d38:	e3013810 	movw	r3, #6160	; 0x1810
+     d3c:	e3403000 	movt	r3, #0
+     d40:	e5933000 	ldr	r3, [r3]
+     d44:	e1a00003 	mov	r0, r3
+     d48:	e51b1010 	ldr	r1, [r11, #-16]
+     d4c:	ebfffd80 	bl	354 <VIS_UART_TxInt>
+        VIS_Uart_TxChar(JTAG_UART_ptr, ' ');
+     d50:	e3013810 	movw	r3, #6160	; 0x1810
+     d54:	e3403000 	movt	r3, #0
+     d58:	e5933000 	ldr	r3, [r3]
+     d5c:	e1a00003 	mov	r0, r3
+     d60:	e3a01020 	mov	r1, #32
+     d64:	ebfffd43 	bl	278 <VIS_Uart_TxChar>
+    char text_string[] = "\nJTAG UART test\n> \0";
+    char c;
+
+    VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
+
+    for (int i = 0; i < BUF_SIZE; i++) {
+     d68:	e51b3010 	ldr	r3, [r11, #-16]
+     d6c:	e2833001 	add	r3, r3, #1
+     d70:	e50b3010 	str	r3, [r11, #-16]
+     d74:	e51b2010 	ldr	r2, [r11, #-16]
+     d78:	e300331f 	movw	r3, #799	; 0x31f
+     d7c:	e1520003 	cmp	r2, r3
+     d80:	daffffec 	ble	d38 <uart_test+0x68>
+     d84:	ea000000 	b	d8c <uart_test+0xbc>
+        if (c != '\0') {
+            VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
+
+            VIS_Uart_TxChar(JTAG_UART_ptr, c);
+        }
+    }
+     d88:	e1a00000 	nop			; (mov r0, r0)
+    }
+
+    /* read and echo characters */
+    while (1)
+    {
+        c = VIS_Uart_RxChar(JTAG_UART_ptr);
+     d8c:	e3013810 	movw	r3, #6160	; 0x1810
+     d90:	e3403000 	movt	r3, #0
+     d94:	e5933000 	ldr	r3, [r3]
+     d98:	e1a00003 	mov	r0, r3
+     d9c:	ebfffdc0 	bl	4a4 <VIS_Uart_RxChar>
+     da0:	e1a03000 	mov	r3, r0
+     da4:	e54b3011 	strb	r3, [r11, #-17]	; 0xffffffef
+        if (c != '\0') {
+     da8:	e55b3011 	ldrb	r3, [r11, #-17]	; 0xffffffef
+     dac:	e3530000 	cmp	r3, #0
+     db0:	0afffff4 	beq	d88 <uart_test+0xb8>
+            VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
+     db4:	e3013810 	movw	r3, #6160	; 0x1810
+     db8:	e3403000 	movt	r3, #0
+     dbc:	e5934000 	ldr	r4, [r3]
+     dc0:	e24b3028 	sub	r3, r11, #40	; 0x28
+     dc4:	e1a00003 	mov	r0, r3
+     dc8:	eb000131 	bl	1294 <strlen>
+     dcc:	e1a03000 	mov	r3, r0
+     dd0:	e24b2028 	sub	r2, r11, #40	; 0x28
+     dd4:	e1a00004 	mov	r0, r4
+     dd8:	e1a01002 	mov	r1, r2
+     ddc:	e1a02003 	mov	r2, r3
+     de0:	ebfffd42 	bl	2f0 <VIS_Uart_Tx>
+
+            VIS_Uart_TxChar(JTAG_UART_ptr, c);
+     de4:	e3013810 	movw	r3, #6160	; 0x1810
+     de8:	e3403000 	movt	r3, #0
+     dec:	e5932000 	ldr	r2, [r3]
+     df0:	e55b3011 	ldrb	r3, [r11, #-17]	; 0xffffffef
+     df4:	e1a00002 	mov	r0, r2
+     df8:	e1a01003 	mov	r1, r3
+     dfc:	ebfffd1d 	bl	278 <VIS_Uart_TxChar>
+        }
+    }
+     e00:	eaffffe0 	b	d88 <uart_test+0xb8>
+
+00000e04 <hex_test>:
+}
+
+void hex_test() {
+     e04:	e92d4810 	push	{r4, r11, lr}
+     e08:	e28db008 	add	r11, sp, #8
+     e0c:	e24dd024 	sub	sp, sp, #36	; 0x24
+    char text_string[] = "\nPress any key to continue\n> \0";
+     e10:	e3013734 	movw	r3, #5940	; 0x1734
+     e14:	e3403000 	movt	r3, #0
+     e18:	e24bc02c 	sub	r12, r11, #44	; 0x2c
+     e1c:	e1a0e003 	mov	lr, r3
+     e20:	e8be000f 	ldm	lr!, {r0, r1, r2, r3}
+     e24:	e8ac000f 	stmia	r12!, {r0, r1, r2, r3}
+     e28:	e89e000f 	ldm	lr, {r0, r1, r2, r3}
+     e2c:	e8ac0007 	stmia	r12!, {r0, r1, r2}
+     e30:	e1cc30b0 	strh	r3, [r12]
+     e34:	e28cc002 	add	r12, r12, #2
+     e38:	e1a03823 	lsr	r3, r3, #16
+     e3c:	e5cc3000 	strb	r3, [r12]
+    VIS_HEX_Set(0, (0x1U << 6) + 0x1U);
+     e40:	e3a00000 	mov	r0, #0
+     e44:	e3a01041 	mov	r1, #65	; 0x41
+     e48:	ebfffe2c 	bl	700 <VIS_HEX_Set>
+    VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
+     e4c:	e3013810 	movw	r3, #6160	; 0x1810
+     e50:	e3403000 	movt	r3, #0
+     e54:	e5934000 	ldr	r4, [r3]
+     e58:	e24b302c 	sub	r3, r11, #44	; 0x2c
+     e5c:	e1a00003 	mov	r0, r3
+     e60:	eb00010b 	bl	1294 <strlen>
+     e64:	e1a03000 	mov	r3, r0
+     e68:	e24b202c 	sub	r2, r11, #44	; 0x2c
+     e6c:	e1a00004 	mov	r0, r4
+     e70:	e1a01002 	mov	r1, r2
+     e74:	e1a02003 	mov	r2, r3
+     e78:	ebfffd1c 	bl	2f0 <VIS_Uart_Tx>
+    while(VIS_Uart_RxChar(JTAG_UART_ptr) == '\0');
+     e7c:	e1a00000 	nop			; (mov r0, r0)
+     e80:	e3013810 	movw	r3, #6160	; 0x1810
+     e84:	e3403000 	movt	r3, #0
+     e88:	e5933000 	ldr	r3, [r3]
+     e8c:	e1a00003 	mov	r0, r3
+     e90:	ebfffd83 	bl	4a4 <VIS_Uart_RxChar>
+     e94:	e1a03000 	mov	r3, r0
+     e98:	e3530000 	cmp	r3, #0
+     e9c:	0afffff7 	beq	e80 <hex_test+0x7c>
+    VIS_HEX_SetDigit(1, 0x3);
+     ea0:	e3a00001 	mov	r0, #1
+     ea4:	e3a01003 	mov	r1, #3
+     ea8:	ebfffe56 	bl	808 <VIS_HEX_SetDigit>
+    VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
+     eac:	e3013810 	movw	r3, #6160	; 0x1810
+     eb0:	e3403000 	movt	r3, #0
+     eb4:	e5934000 	ldr	r4, [r3]
+     eb8:	e24b302c 	sub	r3, r11, #44	; 0x2c
+     ebc:	e1a00003 	mov	r0, r3
+     ec0:	eb0000f3 	bl	1294 <strlen>
+     ec4:	e1a03000 	mov	r3, r0
+     ec8:	e24b202c 	sub	r2, r11, #44	; 0x2c
+     ecc:	e1a00004 	mov	r0, r4
+     ed0:	e1a01002 	mov	r1, r2
+     ed4:	e1a02003 	mov	r2, r3
+     ed8:	ebfffd04 	bl	2f0 <VIS_Uart_Tx>
+    while(VIS_Uart_RxChar(JTAG_UART_ptr) == '\0');
+     edc:	e1a00000 	nop			; (mov r0, r0)
+     ee0:	e3013810 	movw	r3, #6160	; 0x1810
+     ee4:	e3403000 	movt	r3, #0
+     ee8:	e5933000 	ldr	r3, [r3]
+     eec:	e1a00003 	mov	r0, r3
+     ef0:	ebfffd6b 	bl	4a4 <VIS_Uart_RxChar>
+     ef4:	e1a03000 	mov	r3, r0
+     ef8:	e3530000 	cmp	r3, #0
+     efc:	0afffff7 	beq	ee0 <hex_test+0xdc>
+    VIS_HEX_SetDigit(2, 0x2);
+     f00:	e3a00002 	mov	r0, #2
+     f04:	e3a01002 	mov	r1, #2
+     f08:	ebfffe3e 	bl	808 <VIS_HEX_SetDigit>
+    VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
+     f0c:	e3013810 	movw	r3, #6160	; 0x1810
+     f10:	e3403000 	movt	r3, #0
+     f14:	e5934000 	ldr	r4, [r3]
+     f18:	e24b302c 	sub	r3, r11, #44	; 0x2c
+     f1c:	e1a00003 	mov	r0, r3
+     f20:	eb0000db 	bl	1294 <strlen>
+     f24:	e1a03000 	mov	r3, r0
+     f28:	e24b202c 	sub	r2, r11, #44	; 0x2c
+     f2c:	e1a00004 	mov	r0, r4
+     f30:	e1a01002 	mov	r1, r2
+     f34:	e1a02003 	mov	r2, r3
+     f38:	ebfffcec 	bl	2f0 <VIS_Uart_Tx>
+    while(VIS_Uart_RxChar(JTAG_UART_ptr) == '\0');
+     f3c:	e1a00000 	nop			; (mov r0, r0)
+     f40:	e3013810 	movw	r3, #6160	; 0x1810
+     f44:	e3403000 	movt	r3, #0
+     f48:	e5933000 	ldr	r3, [r3]
+     f4c:	e1a00003 	mov	r0, r3
+     f50:	ebfffd53 	bl	4a4 <VIS_Uart_RxChar>
+     f54:	e1a03000 	mov	r3, r0
+     f58:	e3530000 	cmp	r3, #0
+     f5c:	0afffff7 	beq	f40 <hex_test+0x13c>
+    VIS_HEX_SetDigit(3, 0x1);
+     f60:	e3a00003 	mov	r0, #3
+     f64:	e3a01001 	mov	r1, #1
+     f68:	ebfffe26 	bl	808 <VIS_HEX_SetDigit>
+    VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
+     f6c:	e3013810 	movw	r3, #6160	; 0x1810
+     f70:	e3403000 	movt	r3, #0
+     f74:	e5934000 	ldr	r4, [r3]
+     f78:	e24b302c 	sub	r3, r11, #44	; 0x2c
+     f7c:	e1a00003 	mov	r0, r3
+     f80:	eb0000c3 	bl	1294 <strlen>
+     f84:	e1a03000 	mov	r3, r0
+     f88:	e24b202c 	sub	r2, r11, #44	; 0x2c
+     f8c:	e1a00004 	mov	r0, r4
+     f90:	e1a01002 	mov	r1, r2
+     f94:	e1a02003 	mov	r2, r3
+     f98:	ebfffcd4 	bl	2f0 <VIS_Uart_Tx>
+    while(VIS_Uart_RxChar(JTAG_UART_ptr) == '\0');
+     f9c:	e1a00000 	nop			; (mov r0, r0)
+     fa0:	e3013810 	movw	r3, #6160	; 0x1810
+     fa4:	e3403000 	movt	r3, #0
+     fa8:	e5933000 	ldr	r3, [r3]
+     fac:	e1a00003 	mov	r0, r3
+     fb0:	ebfffd3b 	bl	4a4 <VIS_Uart_RxChar>
+     fb4:	e1a03000 	mov	r3, r0
+     fb8:	e3530000 	cmp	r3, #0
+     fbc:	0afffff7 	beq	fa0 <hex_test+0x19c>
+    VIS_HEX_Set(4, (0x1U << 6) + 0x1U);
+     fc0:	e3a00004 	mov	r0, #4
+     fc4:	e3a01041 	mov	r1, #65	; 0x41
+     fc8:	ebfffdcc 	bl	700 <VIS_HEX_Set>
+    VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
+     fcc:	e3013810 	movw	r3, #6160	; 0x1810
+     fd0:	e3403000 	movt	r3, #0
+     fd4:	e5934000 	ldr	r4, [r3]
+     fd8:	e24b302c 	sub	r3, r11, #44	; 0x2c
+     fdc:	e1a00003 	mov	r0, r3
+     fe0:	eb0000ab 	bl	1294 <strlen>
+     fe4:	e1a03000 	mov	r3, r0
+     fe8:	e24b202c 	sub	r2, r11, #44	; 0x2c
+     fec:	e1a00004 	mov	r0, r4
+     ff0:	e1a01002 	mov	r1, r2
+     ff4:	e1a02003 	mov	r2, r3
+     ff8:	ebfffcbc 	bl	2f0 <VIS_Uart_Tx>
+    while(VIS_Uart_RxChar(JTAG_UART_ptr) == '\0');
+     ffc:	e1a00000 	nop			; (mov r0, r0)
+    1000:	e3013810 	movw	r3, #6160	; 0x1810
+    1004:	e3403000 	movt	r3, #0
+    1008:	e5933000 	ldr	r3, [r3]
+    100c:	e1a00003 	mov	r0, r3
+    1010:	ebfffd23 	bl	4a4 <VIS_Uart_RxChar>
+    1014:	e1a03000 	mov	r3, r0
+    1018:	e3530000 	cmp	r3, #0
+    101c:	0afffff7 	beq	1000 <hex_test+0x1fc>
+    VIS_HEX_SetDigit(5, 0xF);
+    1020:	e3a00005 	mov	r0, #5
+    1024:	e3a0100f 	mov	r1, #15
+    1028:	ebfffdf6 	bl	808 <VIS_HEX_SetDigit>
+
+    VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
+    102c:	e3013810 	movw	r3, #6160	; 0x1810
+    1030:	e3403000 	movt	r3, #0
+    1034:	e5934000 	ldr	r4, [r3]
+    1038:	e24b302c 	sub	r3, r11, #44	; 0x2c
+    103c:	e1a00003 	mov	r0, r3
+    1040:	eb000093 	bl	1294 <strlen>
+    1044:	e1a03000 	mov	r3, r0
+    1048:	e24b202c 	sub	r2, r11, #44	; 0x2c
+    104c:	e1a00004 	mov	r0, r4
+    1050:	e1a01002 	mov	r1, r2
+    1054:	e1a02003 	mov	r2, r3
+    1058:	ebfffca4 	bl	2f0 <VIS_Uart_Tx>
+    while(VIS_Uart_RxChar(JTAG_UART_ptr) == '\0');
+    105c:	e1a00000 	nop			; (mov r0, r0)
+    1060:	e3013810 	movw	r3, #6160	; 0x1810
+    1064:	e3403000 	movt	r3, #0
+    1068:	e5933000 	ldr	r3, [r3]
+    106c:	e1a00003 	mov	r0, r3
+    1070:	ebfffd0b 	bl	4a4 <VIS_Uart_RxChar>
+    1074:	e1a03000 	mov	r3, r0
+    1078:	e3530000 	cmp	r3, #0
+    107c:	0afffff7 	beq	1060 <hex_test+0x25c>
+
+    VIS_HEX_SetUint_DEC(123456);
+    1080:	e30e0240 	movw	r0, #57920	; 0xe240
+    1084:	e3400001 	movt	r0, #1
+    1088:	ebfffe2e 	bl	948 <VIS_HEX_SetUint_DEC>
+    VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
+    108c:	e3013810 	movw	r3, #6160	; 0x1810
+    1090:	e3403000 	movt	r3, #0
+    1094:	e5934000 	ldr	r4, [r3]
+    1098:	e24b302c 	sub	r3, r11, #44	; 0x2c
+    109c:	e1a00003 	mov	r0, r3
+    10a0:	eb00007b 	bl	1294 <strlen>
+    10a4:	e1a03000 	mov	r3, r0
+    10a8:	e24b202c 	sub	r2, r11, #44	; 0x2c
+    10ac:	e1a00004 	mov	r0, r4
+    10b0:	e1a01002 	mov	r1, r2
+    10b4:	e1a02003 	mov	r2, r3
+    10b8:	ebfffc8c 	bl	2f0 <VIS_Uart_Tx>
+    while(VIS_Uart_RxChar(JTAG_UART_ptr) == '\0');
+    10bc:	e1a00000 	nop			; (mov r0, r0)
+    10c0:	e3013810 	movw	r3, #6160	; 0x1810
+    10c4:	e3403000 	movt	r3, #0
+    10c8:	e5933000 	ldr	r3, [r3]
+    10cc:	e1a00003 	mov	r0, r3
+    10d0:	ebfffcf3 	bl	4a4 <VIS_Uart_RxChar>
+    10d4:	e1a03000 	mov	r3, r0
+    10d8:	e3530000 	cmp	r3, #0
+    10dc:	0afffff7 	beq	10c0 <hex_test+0x2bc>
+
+    VIS_HEX_SetUint_HEX(0x123ACF);
+    10e0:	e3030acf 	movw	r0, #15055	; 0x3acf
+    10e4:	e3400012 	movt	r0, #18
+    10e8:	ebfffddc 	bl	860 <VIS_HEX_SetUint_HEX>
+    
+    10ec:	e24bd008 	sub	sp, r11, #8
+    10f0:	e8bd8810 	pop	{r4, r11, pc}
+
+000010f4 <__aeabi_idiv>:
+    10f4:	e3510000 	cmp	r1, #0
+    10f8:	0a000043 	beq	120c <.divsi3_skip_div0_test+0x110>
+
+000010fc <.divsi3_skip_div0_test>:
+    10fc:	e020c001 	eor	r12, r0, r1
+    1100:	42611000 	rsbmi	r1, r1, #0
+    1104:	e2512001 	subs	r2, r1, #1
+    1108:	0a000027 	beq	11ac <.divsi3_skip_div0_test+0xb0>
+    110c:	e1b03000 	movs	r3, r0
+    1110:	42603000 	rsbmi	r3, r0, #0
+    1114:	e1530001 	cmp	r3, r1
+    1118:	9a000026 	bls	11b8 <.divsi3_skip_div0_test+0xbc>
+    111c:	e1110002 	tst	r1, r2
+    1120:	0a000028 	beq	11c8 <.divsi3_skip_div0_test+0xcc>
+    1124:	e311020e 	tst	r1, #-536870912	; 0xe0000000
+    1128:	01a01181 	lsleq	r1, r1, #3
+    112c:	03a02008 	moveq	r2, #8
+    1130:	13a02001 	movne	r2, #1
+    1134:	e3510201 	cmp	r1, #268435456	; 0x10000000
+    1138:	31510003 	cmpcc	r1, r3
+    113c:	31a01201 	lslcc	r1, r1, #4
+    1140:	31a02202 	lslcc	r2, r2, #4
+    1144:	3afffffa 	bcc	1134 <.divsi3_skip_div0_test+0x38>
+    1148:	e3510102 	cmp	r1, #-2147483648	; 0x80000000
+    114c:	31510003 	cmpcc	r1, r3
+    1150:	31a01081 	lslcc	r1, r1, #1
+    1154:	31a02082 	lslcc	r2, r2, #1
+    1158:	3afffffa 	bcc	1148 <.divsi3_skip_div0_test+0x4c>
+    115c:	e3a00000 	mov	r0, #0
+    1160:	e1530001 	cmp	r3, r1
+    1164:	20433001 	subcs	r3, r3, r1
+    1168:	21800002 	orrcs	r0, r0, r2
+    116c:	e15300a1 	cmp	r3, r1, lsr #1
+    1170:	204330a1 	subcs	r3, r3, r1, lsr #1
+    1174:	218000a2 	orrcs	r0, r0, r2, lsr #1
+    1178:	e1530121 	cmp	r3, r1, lsr #2
+    117c:	20433121 	subcs	r3, r3, r1, lsr #2
+    1180:	21800122 	orrcs	r0, r0, r2, lsr #2
+    1184:	e15301a1 	cmp	r3, r1, lsr #3
+    1188:	204331a1 	subcs	r3, r3, r1, lsr #3
+    118c:	218001a2 	orrcs	r0, r0, r2, lsr #3
+    1190:	e3530000 	cmp	r3, #0
+    1194:	11b02222 	lsrsne	r2, r2, #4
+    1198:	11a01221 	lsrne	r1, r1, #4
+    119c:	1affffef 	bne	1160 <.divsi3_skip_div0_test+0x64>
+    11a0:	e35c0000 	cmp	r12, #0
+    11a4:	42600000 	rsbmi	r0, r0, #0
+    11a8:	e12fff1e 	bx	lr
+    11ac:	e13c0000 	teq	r12, r0
+    11b0:	42600000 	rsbmi	r0, r0, #0
+    11b4:	e12fff1e 	bx	lr
+    11b8:	33a00000 	movcc	r0, #0
+    11bc:	01a00fcc 	asreq	r0, r12, #31
+    11c0:	03800001 	orreq	r0, r0, #1
+    11c4:	e12fff1e 	bx	lr
+    11c8:	e3510801 	cmp	r1, #65536	; 0x10000
+    11cc:	21a01821 	lsrcs	r1, r1, #16
+    11d0:	23a02010 	movcs	r2, #16
+    11d4:	33a02000 	movcc	r2, #0
+    11d8:	e3510c01 	cmp	r1, #256	; 0x100
+    11dc:	21a01421 	lsrcs	r1, r1, #8
+    11e0:	22822008 	addcs	r2, r2, #8
+    11e4:	e3510010 	cmp	r1, #16
+    11e8:	21a01221 	lsrcs	r1, r1, #4
+    11ec:	22822004 	addcs	r2, r2, #4
+    11f0:	e3510004 	cmp	r1, #4
+    11f4:	82822003 	addhi	r2, r2, #3
+    11f8:	908220a1 	addls	r2, r2, r1, lsr #1
+    11fc:	e35c0000 	cmp	r12, #0
+    1200:	e1a00233 	lsr	r0, r3, r2
+    1204:	42600000 	rsbmi	r0, r0, #0
+    1208:	e12fff1e 	bx	lr
+    120c:	e3500000 	cmp	r0, #0
+    1210:	c3e00102 	mvngt	r0, #-2147483648	; 0x80000000
+    1214:	b3a00102 	movlt	r0, #-2147483648	; 0x80000000
+    1218:	ea000007 	b	123c <__aeabi_idiv0>
+
+0000121c <__aeabi_idivmod>:
+    121c:	e3510000 	cmp	r1, #0
+    1220:	0afffff9 	beq	120c <.divsi3_skip_div0_test+0x110>
+    1224:	e92d4003 	push	{r0, r1, lr}
+    1228:	ebffffb3 	bl	10fc <.divsi3_skip_div0_test>
+    122c:	e8bd4006 	pop	{r1, r2, lr}
+    1230:	e0030092 	mul	r3, r2, r0
+    1234:	e0411003 	sub	r1, r1, r3
+    1238:	e12fff1e 	bx	lr
+
+0000123c <__aeabi_idiv0>:
+    123c:	e12fff1e 	bx	lr
+
+00001240 <atexit>:
+    1240:	e1a01000 	mov	r1, r0
+    1244:	e3a00000 	mov	r0, #0
+    1248:	e92d4008 	push	{r3, lr}
+    124c:	e1a02000 	mov	r2, r0
+    1250:	e1a03000 	mov	r3, r0
+    1254:	eb000026 	bl	12f4 <__register_exitproc>
+    1258:	e8bd4008 	pop	{r3, lr}
+    125c:	e12fff1e 	bx	lr
+
+00001260 <exit>:
+    1260:	e92d4008 	push	{r3, lr}
+    1264:	e3a01000 	mov	r1, #0
+    1268:	e1a04000 	mov	r4, r0
+    126c:	eb00005d 	bl	13e8 <__call_exitprocs>
+    1270:	e59f3018 	ldr	r3, [pc, #24]	; 1290 <exit+0x30>
+    1274:	e5930000 	ldr	r0, [r3]
+    1278:	e590303c 	ldr	r3, [r0, #60]	; 0x3c
+    127c:	e3530000 	cmp	r3, #0
+    1280:	11a0e00f 	movne	lr, pc
+    1284:	112fff13 	bxne	r3
+    1288:	e1a00004 	mov	r0, r4
+    128c:	eb0000e1 	bl	1618 <_exit>
+    1290:	00001754 	.word	0x00001754
+
+00001294 <strlen>:
+    1294:	e3c01003 	bic	r1, r0, #3
+    1298:	e2100003 	ands	r0, r0, #3
+    129c:	e2600000 	rsb	r0, r0, #0
+    12a0:	e4913004 	ldr	r3, [r1], #4
+    12a4:	e280c004 	add	r12, r0, #4
+    12a8:	e1a0c18c 	lsl	r12, r12, #3
+    12ac:	e3e02000 	mvn	r2, #0
+    12b0:	11833c32 	orrne	r3, r3, r2, lsr r12
+    12b4:	e3a0c001 	mov	r12, #1
+    12b8:	e18cc40c 	orr	r12, r12, r12, lsl #8
+    12bc:	e18cc80c 	orr	r12, r12, r12, lsl #16
+    12c0:	e043200c 	sub	r2, r3, r12
+    12c4:	e1c22003 	bic	r2, r2, r3
+    12c8:	e012238c 	ands	r2, r2, r12, lsl #7
+    12cc:	04913004 	ldreq	r3, [r1], #4
+    12d0:	02800004 	addeq	r0, r0, #4
+    12d4:	0afffff9 	beq	12c0 <strlen+0x2c>
+    12d8:	e31300ff 	tst	r3, #255	; 0xff
+    12dc:	12800001 	addne	r0, r0, #1
+    12e0:	13130cff 	tstne	r3, #65280	; 0xff00
+    12e4:	12800001 	addne	r0, r0, #1
+    12e8:	131308ff 	tstne	r3, #16711680	; 0xff0000
+    12ec:	12800001 	addne	r0, r0, #1
+    12f0:	e12fff1e 	bx	lr
+
+000012f4 <__register_exitproc>:
+    12f4:	e59fc0e4 	ldr	r12, [pc, #228]	; 13e0 <__register_exitproc+0xec>
+    12f8:	e92d41f0 	push	{r4, r5, r6, r7, r8, lr}
+    12fc:	e59c4000 	ldr	r4, [r12]
+    1300:	e594c148 	ldr	r12, [r4, #328]	; 0x148
+    1304:	e35c0000 	cmp	r12, #0
+    1308:	0284cf53 	addeq	r12, r4, #332	; 0x14c
+    130c:	e59c5004 	ldr	r5, [r12, #4]
+    1310:	0584c148 	streq	r12, [r4, #328]	; 0x148
+    1314:	e355001f 	cmp	r5, #31
+    1318:	e24dd010 	sub	sp, sp, #16
+    131c:	e1a06000 	mov	r6, r0
+    1320:	da000015 	ble	137c <__register_exitproc+0x88>
+    1324:	e59f00b8 	ldr	r0, [pc, #184]	; 13e4 <__register_exitproc+0xf0>
+    1328:	e3500000 	cmp	r0, #0
+    132c:	1a000001 	bne	1338 <__register_exitproc+0x44>
+    1330:	e3e00000 	mvn	r0, #0
+    1334:	ea000018 	b	139c <__register_exitproc+0xa8>
+    1338:	e3a00e19 	mov	r0, #400	; 0x190
+    133c:	e58d100c 	str	r1, [sp, #12]
+    1340:	e58d2008 	str	r2, [sp, #8]
+    1344:	e58d3004 	str	r3, [sp, #4]
+    1348:	e320f000 	nop	{0}
+    134c:	e250c000 	subs	r12, r0, #0
+    1350:	e59d100c 	ldr	r1, [sp, #12]
+    1354:	e59d2008 	ldr	r2, [sp, #8]
+    1358:	e59d3004 	ldr	r3, [sp, #4]
+    135c:	0afffff3 	beq	1330 <__register_exitproc+0x3c>
+    1360:	e5945148 	ldr	r5, [r4, #328]	; 0x148
+    1364:	e3a00000 	mov	r0, #0
+    1368:	e58c0004 	str	r0, [r12, #4]
+    136c:	e58c5000 	str	r5, [r12]
+    1370:	e584c148 	str	r12, [r4, #328]	; 0x148
+    1374:	e58c0188 	str	r0, [r12, #392]	; 0x188
+    1378:	e58c018c 	str	r0, [r12, #396]	; 0x18c
+    137c:	e3560000 	cmp	r6, #0
+    1380:	e59c4004 	ldr	r4, [r12, #4]
+    1384:	1a000007 	bne	13a8 <__register_exitproc+0xb4>
+    1388:	e2843002 	add	r3, r4, #2
+    138c:	e2844001 	add	r4, r4, #1
+    1390:	e78c1103 	str	r1, [r12, r3, lsl #2]
+    1394:	e58c4004 	str	r4, [r12, #4]
+    1398:	e3a00000 	mov	r0, #0
+    139c:	e28dd010 	add	sp, sp, #16
+    13a0:	e8bd41f0 	pop	{r4, r5, r6, r7, r8, lr}
+    13a4:	e12fff1e 	bx	lr
+    13a8:	e3a00001 	mov	r0, #1
+    13ac:	e1a00410 	lsl	r0, r0, r4
+    13b0:	e08c8104 	add	r8, r12, r4, lsl #2
+    13b4:	e3560002 	cmp	r6, #2
+    13b8:	e59c7188 	ldr	r7, [r12, #392]	; 0x188
+    13bc:	e5883108 	str	r3, [r8, #264]	; 0x108
+    13c0:	059c318c 	ldreq	r3, [r12, #396]	; 0x18c
+    13c4:	e1877000 	orr	r7, r7, r0
+    13c8:	01830000 	orreq	r0, r3, r0
+    13cc:	e1a05008 	mov	r5, r8
+    13d0:	e5882088 	str	r2, [r8, #136]	; 0x88
+    13d4:	e58c7188 	str	r7, [r12, #392]	; 0x188
+    13d8:	058c018c 	streq	r0, [r12, #396]	; 0x18c
+    13dc:	eaffffe9 	b	1388 <__register_exitproc+0x94>
+    13e0:	00001754 	.word	0x00001754
+    13e4:	00000000 	.word	0x00000000
+
+000013e8 <__call_exitprocs>:
+    13e8:	e92d4ff0 	push	{r4, r5, r6, r7, r8, r9, r10, r11, lr}
+    13ec:	e59f3168 	ldr	r3, [pc, #360]	; 155c <__call_exitprocs+0x174>
+    13f0:	e5933000 	ldr	r3, [r3]
+    13f4:	e24dd014 	sub	sp, sp, #20
+    13f8:	e58d3004 	str	r3, [sp, #4]
+    13fc:	e2833f52 	add	r3, r3, #328	; 0x148
+    1400:	e58d0008 	str	r0, [sp, #8]
+    1404:	e58d300c 	str	r3, [sp, #12]
+    1408:	e1a07001 	mov	r7, r1
+    140c:	e3a08001 	mov	r8, #1
+    1410:	e59d3004 	ldr	r3, [sp, #4]
+    1414:	e5936148 	ldr	r6, [r3, #328]	; 0x148
+    1418:	e3560000 	cmp	r6, #0
+    141c:	e59db00c 	ldr	r11, [sp, #12]
+    1420:	0a000033 	beq	14f4 <__call_exitprocs+0x10c>
+    1424:	e5965004 	ldr	r5, [r6, #4]
+    1428:	e2554001 	subs	r4, r5, #1
+    142c:	5286a088 	addpl	r10, r6, #136	; 0x88
+    1430:	5285501f 	addpl	r5, r5, #31
+    1434:	508a5105 	addpl	r5, r10, r5, lsl #2
+    1438:	5a000007 	bpl	145c <__call_exitprocs+0x74>
+    143c:	ea000029 	b	14e8 <__call_exitprocs+0x100>
+    1440:	e5953000 	ldr	r3, [r5]
+    1444:	e1530007 	cmp	r3, r7
+    1448:	0a000005 	beq	1464 <__call_exitprocs+0x7c>
+    144c:	e2444001 	sub	r4, r4, #1
+    1450:	e3740001 	cmn	r4, #1
+    1454:	e2455004 	sub	r5, r5, #4
+    1458:	0a000022 	beq	14e8 <__call_exitprocs+0x100>
+    145c:	e3570000 	cmp	r7, #0
+    1460:	1afffff6 	bne	1440 <__call_exitprocs+0x58>
+    1464:	e5963004 	ldr	r3, [r6, #4]
+    1468:	e06a2005 	rsb	r2, r10, r5
+    146c:	e2433001 	sub	r3, r3, #1
+    1470:	e0862002 	add	r2, r6, r2
+    1474:	e1530004 	cmp	r3, r4
+    1478:	e5123078 	ldr	r3, [r2, #-120]	; 0xffffff88
+    147c:	13a01000 	movne	r1, #0
+    1480:	05864004 	streq	r4, [r6, #4]
+    1484:	15021078 	strne	r1, [r2, #-120]	; 0xffffff88
+    1488:	e3530000 	cmp	r3, #0
+    148c:	0affffee 	beq	144c <__call_exitprocs+0x64>
+    1490:	e1a02418 	lsl	r2, r8, r4
+    1494:	e5961188 	ldr	r1, [r6, #392]	; 0x188
+    1498:	e1120001 	tst	r2, r1
+    149c:	e5969004 	ldr	r9, [r6, #4]
+    14a0:	0a000016 	beq	1500 <__call_exitprocs+0x118>
+    14a4:	e596118c 	ldr	r1, [r6, #396]	; 0x18c
+    14a8:	e1120001 	tst	r2, r1
+    14ac:	1a000016 	bne	150c <__call_exitprocs+0x124>
+    14b0:	e59d0008 	ldr	r0, [sp, #8]
+    14b4:	e5151080 	ldr	r1, [r5, #-128]	; 0xffffff80
+    14b8:	e1a0e00f 	mov	lr, pc
+    14bc:	e12fff13 	bx	r3
+    14c0:	e5963004 	ldr	r3, [r6, #4]
+    14c4:	e1530009 	cmp	r3, r9
+    14c8:	1affffd0 	bne	1410 <__call_exitprocs+0x28>
+    14cc:	e59b3000 	ldr	r3, [r11]
+    14d0:	e1530006 	cmp	r3, r6
+    14d4:	1affffcd 	bne	1410 <__call_exitprocs+0x28>
+    14d8:	e2444001 	sub	r4, r4, #1
+    14dc:	e3740001 	cmn	r4, #1
+    14e0:	e2455004 	sub	r5, r5, #4
+    14e4:	1affffdc 	bne	145c <__call_exitprocs+0x74>
+    14e8:	e59f1070 	ldr	r1, [pc, #112]	; 1560 <__call_exitprocs+0x178>
+    14ec:	e3510000 	cmp	r1, #0
+    14f0:	1a000009 	bne	151c <__call_exitprocs+0x134>
+    14f4:	e28dd014 	add	sp, sp, #20
+    14f8:	e8bd4ff0 	pop	{r4, r5, r6, r7, r8, r9, r10, r11, lr}
+    14fc:	e12fff1e 	bx	lr
+    1500:	e1a0e00f 	mov	lr, pc
+    1504:	e12fff13 	bx	r3
+    1508:	eaffffec 	b	14c0 <__call_exitprocs+0xd8>
+    150c:	e5150080 	ldr	r0, [r5, #-128]	; 0xffffff80
+    1510:	e1a0e00f 	mov	lr, pc
+    1514:	e12fff13 	bx	r3
+    1518:	eaffffe8 	b	14c0 <__call_exitprocs+0xd8>
+    151c:	e5963004 	ldr	r3, [r6, #4]
+    1520:	e3530000 	cmp	r3, #0
+    1524:	e5963000 	ldr	r3, [r6]
+    1528:	1a000008 	bne	1550 <__call_exitprocs+0x168>
+    152c:	e3530000 	cmp	r3, #0
+    1530:	0a000006 	beq	1550 <__call_exitprocs+0x168>
+    1534:	e1a00006 	mov	r0, r6
+    1538:	e58b3000 	str	r3, [r11]
+    153c:	e320f000 	nop	{0}
+    1540:	e59b6000 	ldr	r6, [r11]
+    1544:	e3560000 	cmp	r6, #0
+    1548:	1affffb5 	bne	1424 <__call_exitprocs+0x3c>
+    154c:	eaffffe8 	b	14f4 <__call_exitprocs+0x10c>
+    1550:	e1a0b006 	mov	r11, r6
+    1554:	e1a06003 	mov	r6, r3
+    1558:	eafffff9 	b	1544 <__call_exitprocs+0x15c>
+    155c:	00001754 	.word	0x00001754
+    1560:	00000000 	.word	0x00000000
+
+00001564 <register_fini>:
+    1564:	e92d4008 	push	{r3, lr}
+    1568:	e59f3010 	ldr	r3, [pc, #16]	; 1580 <register_fini+0x1c>
+    156c:	e3530000 	cmp	r3, #0
+    1570:	159f000c 	ldrne	r0, [pc, #12]	; 1584 <register_fini+0x20>
+    1574:	1bffff31 	blne	1240 <atexit>
+    1578:	e8bd4008 	pop	{r3, lr}
+    157c:	e12fff1e 	bx	lr
+    1580:	0000177c 	.word	0x0000177c
+    1584:	00001588 	.word	0x00001588
+
+00001588 <__libc_fini_array>:
+    1588:	e92d4038 	push	{r3, r4, r5, lr}
+    158c:	e59f5030 	ldr	r5, [pc, #48]	; 15c4 <__libc_fini_array+0x3c>
+    1590:	e59f4030 	ldr	r4, [pc, #48]	; 15c8 <__libc_fini_array+0x40>
+    1594:	e0654004 	rsb	r4, r5, r4
+    1598:	e1b04144 	asrs	r4, r4, #2
+    159c:	10855104 	addne	r5, r5, r4, lsl #2
+    15a0:	0a000004 	beq	15b8 <__libc_fini_array+0x30>
+    15a4:	e5353004 	ldr	r3, [r5, #-4]!
+    15a8:	e1a0e00f 	mov	lr, pc
+    15ac:	e12fff13 	bx	r3
+    15b0:	e2544001 	subs	r4, r4, #1
+    15b4:	1afffffa 	bne	15a4 <__libc_fini_array+0x1c>
+    15b8:	eb00006f 	bl	177c <__libc_fini>
+    15bc:	e8bd4038 	pop	{r3, r4, r5, lr}
+    15c0:	e12fff1e 	bx	lr
+    15c4:	00001794 	.word	0x00001794
+    15c8:	00001798 	.word	0x00001798
+
+000015cc <__cs3_premain>:
+    15cc:	e92d4008 	push	{r3, lr}
+    15d0:	eb00001d 	bl	164c <__libc_init_array>
+    15d4:	e59f3030 	ldr	r3, [pc, #48]	; 160c <__cs3_premain+0x40>
+    15d8:	e3530000 	cmp	r3, #0
+    15dc:	15930000 	ldrne	r0, [r3]
+    15e0:	01a00003 	moveq	r0, r3
+    15e4:	e59f3024 	ldr	r3, [pc, #36]	; 1610 <__cs3_premain+0x44>
+    15e8:	e3530000 	cmp	r3, #0
+    15ec:	15931000 	ldrne	r1, [r3]
+    15f0:	01a01003 	moveq	r1, r3
+    15f4:	e3a02000 	mov	r2, #0
+    15f8:	ebfffb17 	bl	25c <main>
+    15fc:	e59f3010 	ldr	r3, [pc, #16]	; 1614 <__cs3_premain+0x48>
+    1600:	e3530000 	cmp	r3, #0
+    1604:	1bffff15 	blne	1260 <exit>
+    1608:	eafffffe 	b	1608 <__cs3_premain+0x3c>
 	...
- efc:	00000b48 	.word	0x00000b48
+    1614:	00001260 	.word	0x00001260
 
-00000f00 <_exit>:
- f00:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
- f04:	e3a00018 	mov	r0, #24
- f08:	e59f1004 	ldr	r1, [pc, #4]	; f14 <_exit+0x14>
- f0c:	ef123456 	svc	0x00123456
- f10:	eafffffe 	b	f10 <_exit+0x10>
- f14:	00020026 	.word	0x00020026
+00001618 <_exit>:
+    1618:	e52de004 	push	{lr}		; (str lr, [sp, #-4]!)
+    161c:	e3a00018 	mov	r0, #24
+    1620:	e59f1004 	ldr	r1, [pc, #4]	; 162c <_exit+0x14>
+    1624:	ef123456 	svc	0x00123456
+    1628:	eafffffe 	b	1628 <_exit+0x10>
+    162c:	00020026 	.word	0x00020026
 
-00000f18 <__cs3_isr_interrupt>:
- f18:	eafffffe 	b	f18 <__cs3_isr_interrupt>
+00001630 <__cs3_isr_interrupt>:
+    1630:	eafffffe 	b	1630 <__cs3_isr_interrupt>
 
-00000f1c <__cs3_isr_undef>:
- f1c:	eafffffe 	b	f1c <__cs3_isr_undef>
+00001634 <__cs3_isr_undef>:
+    1634:	eafffffe 	b	1634 <__cs3_isr_undef>
 
-00000f20 <__cs3_isr_swi>:
- f20:	eafffffe 	b	f20 <__cs3_isr_swi>
+00001638 <__cs3_isr_swi>:
+    1638:	eafffffe 	b	1638 <__cs3_isr_swi>
 
-00000f24 <__cs3_isr_pabort>:
- f24:	eafffffe 	b	f24 <__cs3_isr_pabort>
+0000163c <__cs3_isr_pabort>:
+    163c:	eafffffe 	b	163c <__cs3_isr_pabort>
 
-00000f28 <__cs3_isr_dabort>:
- f28:	eafffffe 	b	f28 <__cs3_isr_dabort>
+00001640 <__cs3_isr_dabort>:
+    1640:	eafffffe 	b	1640 <__cs3_isr_dabort>
 
-00000f2c <__cs3_isr_irq>:
- f2c:	eafffffe 	b	f2c <__cs3_isr_irq>
+00001644 <__cs3_isr_irq>:
+    1644:	eafffffe 	b	1644 <__cs3_isr_irq>
 
-00000f30 <__cs3_isr_fiq>:
- f30:	eafffffe 	b	f30 <__cs3_isr_fiq>
+00001648 <__cs3_isr_fiq>:
+    1648:	eafffffe 	b	1648 <__cs3_isr_fiq>
 
-00000f34 <__libc_init_array>:
- f34:	e92d4070 	push	{r4, r5, r6, lr}
- f38:	e59f506c 	ldr	r5, [pc, #108]	; fac <__libc_init_array+0x78>
- f3c:	e59f606c 	ldr	r6, [pc, #108]	; fb0 <__libc_init_array+0x7c>
- f40:	e0656006 	rsb	r6, r5, r6
- f44:	e1b06146 	asrs	r6, r6, #2
- f48:	12455004 	subne	r5, r5, #4
- f4c:	13a04000 	movne	r4, #0
- f50:	0a000005 	beq	f6c <__libc_init_array+0x38>
- f54:	e5b53004 	ldr	r3, [r5, #4]!
- f58:	e2844001 	add	r4, r4, #1
- f5c:	e1a0e00f 	mov	lr, pc
- f60:	e12fff13 	bx	r3
- f64:	e1560004 	cmp	r6, r4
- f68:	1afffff9 	bne	f54 <__libc_init_array+0x20>
- f6c:	e59f5040 	ldr	r5, [pc, #64]	; fb4 <__libc_init_array+0x80>
- f70:	e59f6040 	ldr	r6, [pc, #64]	; fb8 <__libc_init_array+0x84>
- f74:	e0656006 	rsb	r6, r5, r6
- f78:	eb000021 	bl	1004 <_init>
- f7c:	e1b06146 	asrs	r6, r6, #2
- f80:	12455004 	subne	r5, r5, #4
- f84:	13a04000 	movne	r4, #0
- f88:	0a000005 	beq	fa4 <__libc_init_array+0x70>
- f8c:	e5b53004 	ldr	r3, [r5, #4]!
- f90:	e2844001 	add	r4, r4, #1
- f94:	e1a0e00f 	mov	lr, pc
- f98:	e12fff13 	bx	r3
- f9c:	e1560004 	cmp	r6, r4
- fa0:	1afffff9 	bne	f8c <__libc_init_array+0x58>
- fa4:	e8bd4070 	pop	{r4, r5, r6, lr}
- fa8:	e12fff1e 	bx	lr
- fac:	0000101c 	.word	0x0000101c
- fb0:	0000101c 	.word	0x0000101c
- fb4:	0000101c 	.word	0x0000101c
- fb8:	00001024 	.word	0x00001024
+0000164c <__libc_init_array>:
+    164c:	e92d4070 	push	{r4, r5, r6, lr}
+    1650:	e59f506c 	ldr	r5, [pc, #108]	; 16c4 <__libc_init_array+0x78>
+    1654:	e59f606c 	ldr	r6, [pc, #108]	; 16c8 <__libc_init_array+0x7c>
+    1658:	e0656006 	rsb	r6, r5, r6
+    165c:	e1b06146 	asrs	r6, r6, #2
+    1660:	12455004 	subne	r5, r5, #4
+    1664:	13a04000 	movne	r4, #0
+    1668:	0a000005 	beq	1684 <__libc_init_array+0x38>
+    166c:	e5b53004 	ldr	r3, [r5, #4]!
+    1670:	e2844001 	add	r4, r4, #1
+    1674:	e1a0e00f 	mov	lr, pc
+    1678:	e12fff13 	bx	r3
+    167c:	e1560004 	cmp	r6, r4
+    1680:	1afffff9 	bne	166c <__libc_init_array+0x20>
+    1684:	e59f5040 	ldr	r5, [pc, #64]	; 16cc <__libc_init_array+0x80>
+    1688:	e59f6040 	ldr	r6, [pc, #64]	; 16d0 <__libc_init_array+0x84>
+    168c:	e0656006 	rsb	r6, r5, r6
+    1690:	eb000031 	bl	175c <_init>
+    1694:	e1b06146 	asrs	r6, r6, #2
+    1698:	12455004 	subne	r5, r5, #4
+    169c:	13a04000 	movne	r4, #0
+    16a0:	0a000005 	beq	16bc <__libc_init_array+0x70>
+    16a4:	e5b53004 	ldr	r3, [r5, #4]!
+    16a8:	e2844001 	add	r4, r4, #1
+    16ac:	e1a0e00f 	mov	lr, pc
+    16b0:	e12fff13 	bx	r3
+    16b4:	e1560004 	cmp	r6, r4
+    16b8:	1afffff9 	bne	16a4 <__libc_init_array+0x58>
+    16bc:	e8bd4070 	pop	{r4, r5, r6, lr}
+    16c0:	e12fff1e 	bx	lr
+    16c4:	00001774 	.word	0x00001774
+    16c8:	00001774 	.word	0x00001774
+    16cc:	00001774 	.word	0x00001774
+    16d0:	0000177c 	.word	0x0000177c
 
 Disassembly of section .rodata:
 
-00000fc0 <intToChar-0x30>:
-     fc0:	66667542 	.word	0x66667542
-     fc4:	53207265 	.word	0x53207265
-     fc8:	3d657a69 	.word	0x3d657a69
-     fcc:	00000000 	.word	0x00000000
-     fd0:	00000a0d 	.word	0x00000a0d
-     fd4:	41544a0a 	.word	0x41544a0a
-     fd8:	41552047 	.word	0x41552047
-     fdc:	65205452 	.word	0x65205452
-     fe0:	706d6178 	.word	0x706d6178
-     fe4:	6320656c 	.word	0x6320656c
-     fe8:	0a65646f 	.word	0x0a65646f
-     fec:	0000203e 	.word	0x0000203e
+000016d8 <intToChar>:
+    16d8:	33323130 37363534 00003938 5f584548     0123456789..HEX_
+    16e8:	28584548 440a0d29 3d617461 00000000     HEX()..Data=....
+    16f8:	5f584548 28434544 440a0d29 3d617461     HEX_DEC()..Data=
+    1708:	00000000 66667542 53207265 3d657a69     ....Buffer Size=
+    1718:	00000000 00000a0d 41544a0a 41552047     .........JTAG UA
+    1728:	74205452 0a747365 0000203e 6572500a     RT test.> ...Pre
+    1738:	61207373 6b20796e 74207965 6f63206f     ss any key to co
+    1748:	6e69746e 3e0a6575 00000020              ntinue.> ...
 
-00000ff0 <intToChar>:
-     ff0:	33323130 37363534 00003938              0123456789..
+00001754 <_global_impure_ptr>:
+    1754:	00001820 00000043                        ...C...
 
-00000ffc <_global_impure_ptr>:
-     ffc:	00001078 00000043                       x...C...
+0000175c <_init>:
+    175c:	e1a0c00d 	mov	r12, sp
+    1760:	e92ddff8 	push	{r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr, pc}
+    1764:	e24cb004 	sub	r11, r12, #4
+    1768:	e24bd028 	sub	sp, r11, #40	; 0x28
+    176c:	e89d6ff0 	ldm	sp, {r4, r5, r6, r7, r8, r9, r10, r11, sp, lr}
+    1770:	e12fff1e 	bx	lr
 
-00001004 <_init>:
-    1004:	e1a0c00d 	mov	r12, sp
-    1008:	e92ddff8 	push	{r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr, pc}
-    100c:	e24cb004 	sub	r11, r12, #4
-    1010:	e24bd028 	sub	sp, r11, #40	; 0x28
-    1014:	e89d6ff0 	ldm	sp, {r4, r5, r6, r7, r8, r9, r10, r11, sp, lr}
-    1018:	e12fff1e 	bx	lr
+00001774 <__init_array_start>:
+    1774:	00001564 	.word	0x00001564
 
-0000101c <__init_array_start>:
-    101c:	00000e4c 	.word	0x00000e4c
+00001778 <__frame_dummy_init_array_entry>:
+    1778:	00000208                                ....
 
-00001020 <__frame_dummy_init_array_entry>:
-    1020:	00000208                                ....
+0000177c <__libc_fini>:
+    177c:	e1a0c00d 	mov	r12, sp
+    1780:	e92ddff8 	push	{r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr, pc}
+    1784:	e24cb004 	sub	r11, r12, #4
+    1788:	e24bd028 	sub	sp, r11, #40	; 0x28
+    178c:	e89d6ff0 	ldm	sp, {r4, r5, r6, r7, r8, r9, r10, r11, sp, lr}
+    1790:	e12fff1e 	bx	lr
 
-00001024 <__libc_fini>:
-    1024:	e1a0c00d 	mov	r12, sp
-    1028:	e92ddff8 	push	{r3, r4, r5, r6, r7, r8, r9, r10, r11, r12, lr, pc}
-    102c:	e24cb004 	sub	r11, r12, #4
-    1030:	e24bd028 	sub	sp, r11, #40	; 0x28
-    1034:	e89d6ff0 	ldm	sp, {r4, r5, r6, r7, r8, r9, r10, r11, sp, lr}
-    1038:	e12fff1e 	bx	lr
+00001794 <__fini_array_start>:
+    1794:	000001c4 	.word	0x000001c4
 
-0000103c <__fini_array_start>:
-    103c:	000001c4 	.word	0x000001c4
-
-00001040 <__cs3_regions>:
+00001798 <__cs3_regions>:
 	...
-    104c:	000014a8 	.word	0x000014a8
-    1050:	00000020 	.word	0x00000020
+    17a4:	00001c50 	.word	0x00001c50
+    17a8:	00000020 	.word	0x00000020
 
-00001054 <__cs3_regions_end>:
-    1054:	00000000 	.word	0x00000000
+000017ac <__cs3_regions_end>:
+    17ac:	00000000 	.word	0x00000000

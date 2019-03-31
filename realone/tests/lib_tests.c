@@ -4,6 +4,7 @@
 #include "../lib/Audio.h"
 #include <string.h>
 #include "../lib/LED.h"
+#include "../lib/HEX.h"
 
 
 static volatile int *JTAG_UART_ptr = (int *)JTAG_UART_BASE; // JTAG UART address
@@ -55,7 +56,7 @@ void audio_test() {
 
 void uart_test() {
     
-    char text_string[] = "\nJTAG UART example code\n> \0";
+    char text_string[] = "\nJTAG UART test\n> \0";
     char c;
 
     VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
@@ -75,4 +76,34 @@ void uart_test() {
             VIS_Uart_TxChar(JTAG_UART_ptr, c);
         }
     }
+}
+
+void hex_test() {
+    char text_string[] = "\nPress any key to continue\n> \0";
+    VIS_HEX_Set(0, (0x1U << 6) + 0x1U);
+    VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
+    while(VIS_Uart_RxChar(JTAG_UART_ptr) == '\0');
+    VIS_HEX_SetDigit(1, 0x3);
+    VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
+    while(VIS_Uart_RxChar(JTAG_UART_ptr) == '\0');
+    VIS_HEX_SetDigit(2, 0x2);
+    VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
+    while(VIS_Uart_RxChar(JTAG_UART_ptr) == '\0');
+    VIS_HEX_SetDigit(3, 0x1);
+    VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
+    while(VIS_Uart_RxChar(JTAG_UART_ptr) == '\0');
+    VIS_HEX_Set(4, (0x1U << 6) + 0x1U);
+    VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
+    while(VIS_Uart_RxChar(JTAG_UART_ptr) == '\0');
+    VIS_HEX_SetDigit(5, 0xF);
+
+    VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
+    while(VIS_Uart_RxChar(JTAG_UART_ptr) == '\0');
+
+    VIS_HEX_SetUint_DEC(123456);
+    VIS_Uart_Tx(JTAG_UART_ptr, text_string, strlen(text_string));
+    while(VIS_Uart_RxChar(JTAG_UART_ptr) == '\0');
+
+    VIS_HEX_SetUint_HEX(0x123ACF);
+    
 }

@@ -6,6 +6,8 @@
         "fstream": "c",
         "jtag_uart.h": "c",
         "address_map_arm.h": "c",
-        "audio.h": "c"
+        "audio.h": "c",
+        "tests.h": "c",
+        "hex.h": "c"
     }
 }
