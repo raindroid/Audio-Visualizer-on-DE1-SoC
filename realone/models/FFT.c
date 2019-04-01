@@ -1,5 +1,6 @@
 #include "../helpers/math.h"
 #include "FFT.h"
+#include <math.h>
 
 //note: in this file, all the double value are shifted to the left by 16 bits
 
@@ -40,7 +41,7 @@
 }
  
   int magnitude (Complex c)  {
-    return sqrt((c.i>>8)*(c.i>>8) + (c.r>>8)*(c.r>>8));
+    return sqrt((c.i>>10)*(c.i>>10) + (c.r>>10)*(c.r>>10));
 }
 
 
@@ -90,9 +91,7 @@ void FastFourierTransform (Complex *a,  int n ){
     initOmega (omega, omegaInverse, n);
     dft ( a , n ,  omega);
 }
-unsigned * idftMag ( Complex *a,  int n,  Complex* omegaInverse )  {
+void idftMag (unsigned * result, Complex *a,  int n,  Complex* omegaInverse )  {
         transform ( a, n, omegaInverse ) ;
-        unsigned result[n];
-        for ( int i = 0 ; i < n ; ++ i ) result [i] = (magnitude(a [i])/n )%12000 ;
-        return result;
+        for ( int i = 0 ; i < n ; ++ i ) result [i] = (magnitude(a [i])/n ) ;
     }
