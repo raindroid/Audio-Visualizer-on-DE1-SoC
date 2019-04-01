@@ -1,36 +1,23 @@
-#include "../helpers/math.c"
+#include "../helpers/math.h"
+#include "FFT.h"
 
 //note: in this file, all the double value are shifted to the left by 16 bits
 
-typedef struct Complex  {
-	int r, i ;
-} Complex;
-
- void setReal ( Complex *c, const int x );
- Complex add (Complex c, const Complex rhs );
- Complex sub (Complex c, const Complex rhs );
- Complex multiply (Complex c, const Complex rhs );
- Complex divideByInt (Complex c, const int x );
- Complex conj (Complex c);
- void initOmega (Complex omega[],  const int n );
- void transform ( Complex *a, const int n, const Complex* omega );
- void dft ( Complex *a, const int n , const Complex* omega);
-
- void setReal ( Complex *c, const int x )  {  c->r = x ;  }
+ void setReal ( Complex *c,  int x )  {  c->r = x ;  }
  int getReal ( Complex c )  {  return c.r ;  }
- Complex add (Complex c, const Complex rhs )   {
+ Complex add (Complex c,  Complex rhs )   {
     Complex newC;
     newC.i += c.i;
     newC.r += c.r;
     return newC ;
 }
-  Complex sub (Complex c, const Complex rhs )   {
+  Complex sub (Complex c,  Complex rhs )   {
    Complex newC;
     newC.i -= c.i;
     newC.r -= c.r;
     return newC ;
 }
- Complex multiply (Complex c, const Complex rhs )   {
+ Complex multiply (Complex c,  Complex rhs )   {
     Complex newC;
     newC.i = (c.r>>8) * (rhs.i>>8) + (c.i>>8) * (rhs.r>>8);
     newC.r = (c.r>>8) * (rhs.r>>8) - (c.i>>8) * (rhs.i>>8);
@@ -38,30 +25,36 @@ typedef struct Complex  {
     //return Complex ( r * rhs.r - i * rhs.i, r * rhs.i + i * rhs.r )
 }
 
- Complex divideByInt (Complex c, const int x )   {
+ Complex divideByInt (Complex c,  int x )   {
     Complex newC;
     newC.i /= x;
     newC.r /= x;
     return newC ;
 }
 
- Complex conj (Complex c)  {
+ Complex conjg (Complex c)  {
     Complex newC;
     newC.i = -c.i;
     newC.r = c.r;
     return newC ;
 }
+ 
+  int magnitude (Complex c)  {
+    return sqrt((c.i>>8)*(c.i>>8) + (c.r>>8)*(c.r>>8));
+}
 
- void initOmega (Complex omega[],  const int n )  {
+
+ void initOmega (Complex *omega, Complex *omegaInverse,   int n )  {
     for ( int i = 0 ; i < n ; ++ i )  {
         Complex c;
         c.i = VIS_FastSin_d16 ( 360 / n * i );
         c.r = VIS_FastCos_d16 ( 360 / n * i);
         omega [i] = c;
+        omegaInverse [i] = conjg ( omega [i] ) ;
     }
 }
 
-void transform ( Complex *a, const int n, const Complex* omega ) {
+void transform ( Complex *a,  int n,  Complex* omega ) {
     for ( int i = 0, j = 0 ; i < n ; ++ i )  {
         if ( i > j ){
             //swap ( a [i], a [j] )
@@ -84,12 +77,16 @@ void transform ( Complex *a, const int n, const Complex* omega ) {
     }
 }
 
-void dft ( Complex *a, const int n , const Complex* omega)  {
+void dft ( Complex *a,  int n ,  Complex* omega)  {
         transform ( a, n, omega ) ;
 }
 
-void FastFourierTransform (Complex *a, const int n ){
-    Complex omega [n];
-    initOmega (omega, n );
+void idft ( Complex *a,  int n,  Complex* omegaInverse )  {
+        transform ( a, n, omegaInverse ) ;
+        for ( int i = 0 ; i < n ; ++ i ) a [i] = divideByInt(a[i],n) ;
+    }
+void FastFourierTransform (Complex *a,  int n ){
+    Complex omega [n], omegaInverse[n];
+    initOmega (omega, omegaInverse, n);
     dft ( a , n ,  omega);
 }

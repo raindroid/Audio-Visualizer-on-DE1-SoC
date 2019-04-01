@@ -8,6 +8,7 @@
 #include "../views/VGA_Display.h"
 #include <stdlib.h>
 #include "../values.h"
+#include "../models/FFT.h"
 
 
 static volatile int *JTAG_UART_ptr = (int *)JTAG_UART_BASE; // JTAG UART address
@@ -136,5 +137,114 @@ void display_test() {
         }
         VIS_VGA_UpdateFrame(k, fakeSpect);
         // VIS_VGA_ColorTest();
+    }
+}
+
+void audio_transform_test() {
+    volatile int * red_LED_ptr = (int *)LEDR_BASE;
+    volatile int * audio_ptr   = (int *)AUDIO_BASE;
+
+    /* used for audio record/playback */
+    int fifospace;
+    int buffer_index_start = 0;
+    int fourierIndex = 0;
+    int fourierLength = 800;
+    int fourierSize = BUF_SIZE/fourierLength;
+    int record = 0, play = 0, vga = 0, buffer_index = 0;
+    int left_buffer[BUF_SIZE];
+    int right_buffer[BUF_SIZE];
+    unsigned fftamp[fourierSize][fourierLength];
+    Complex cArray[fourierLength];
+    unsigned k = 800;
+    unsigned count = 0;
+
+    Complex omega [fourierLength],omegaInverse[fourierLength];
+    initOmega (omega,omegaInverse, fourierLength );
+    
+    fifospace = *(audio_ptr + 1); // read the audio port fifospace register
+    // if ((fifospace & 0x000000FF) > BUF_THRESHOLD) // check RARC
+    {
+        // store data until the the audio-in FIFO is empty or the buffer
+        // is full
+        // while ((fifospace & 0x000000FF) && (buffer_index < BUF_SIZE)) {
+        while(1) {
+            // left_buffer[buffer_index]  = *(audio_ptr + 2);
+            // right_buffer[buffer_index] = *(audio_ptr + 3);
+            while (!(fifospace & 0x000000FF));
+            *(audio_ptr + 2)  = *(audio_ptr + 2) >> 6;
+            *(audio_ptr + 3)  = *(audio_ptr + 3) >> 6;
+
+             if(buffer_index - buffer_index_start == fourierLength){
+                    buffer_index_start = buffer_index;
+                if(count == 10) {
+                    count = 0;
+                    for(int i=0;i<fourierLength;i++){
+                        idft(cArray,fourierLength,omega);
+                        //FastFourierTransform(cArray,fourierLength);
+                    //     fftamp[fourierIndex][fourierLength] = magnitude(cArray[i])%15000;
+                    }
+                //     VIS_VGA_UpdateFrame(k, fftamp[fourierIndex]);
+                    fourierIndex ++;
+                    if(fourierIndex == fourierSize){
+                        fourierIndex =0;
+                    }
+                }else{
+                    count ++;
+                }
+              }
+            Complex c;
+            c.i = 0;
+            c.r = *(audio_ptr + 2);
+            cArray[buffer_index-buffer_index_start] = c;
+
+            ++buffer_index;
+            if (buffer_index >= 0xFFFFFF) buffer_index = 0;
+            VIS_HEX_SetUint_HEX(buffer_index);
+            if (VIS_Uart_RxChar(JTAG_UART_ptr) != 0) {
+                // reset counter
+                buffer_index = 0;
+            }
+
+            // fifospace = *(audio_ptr + 1); // read the audio port fifospace register
+        }
+    }
+}
+void check_KEYs(int * KEY0, int * KEY1, int * KEY2, int * counter) {
+    volatile int * KEY_ptr   = (int *)KEY_BASE;
+    volatile int * audio_ptr = (int *)AUDIO_BASE;
+    int            KEY_value;
+
+    KEY_value = *(KEY_ptr); // read the pushbutton KEY values
+    while (*KEY_ptr)
+        ; // wait for pushbutton KEY release
+
+    if (KEY_value == 0x1) // check KEY0
+    {
+        // reset counter to start recording
+        *counter = 0;
+        // clear audio-in FIFO
+        *(audio_ptr) = 0x4;
+        *(audio_ptr) = 0x0;
+
+        *KEY0 = 1;
+    } else if (KEY_value == 0x2) // check KEY1
+    {
+        // reset counter to start playback
+        *counter = 0;
+        // clear audio-out FIFO
+        *(audio_ptr) = 0x8;
+        *(audio_ptr) = 0x0;
+
+        *KEY1 = 1;
+    }
+    else if (KEY_value == 0x4) // check KEY2
+    {
+        // reset counter to start playback
+        *counter = 0;
+        // clear audio-out FIFO
+        *(audio_ptr) = 0x8;
+        *(audio_ptr) = 0x0;
+
+        *KEY2 = 1;
     }
 }
