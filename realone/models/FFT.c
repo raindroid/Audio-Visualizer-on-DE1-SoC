@@ -64,10 +64,10 @@ void transform ( Complex *a,  int n,  Complex* omega ) {
         } 
         for( int l = n >> 1 ; ( j ^= l ) < l ; l >>= 1 ) ;
     }
-
+    
     for ( int l = 2 ; l <= n ; l <<= 1 )  {
         int m = l / 2;
-        for ( Complex *p = a ; p != a + n ; p += l )  {
+        for (Complex * p = a ; p < a + n ; p += l )  {
             for ( int i = 0 ; i < m ; ++ i )  {
                 Complex t = multiply(omega [n / l * i] , p [m + i]);
                 p [m + i] = sub (p [i] , t) ;
@@ -90,3 +90,9 @@ void FastFourierTransform (Complex *a,  int n ){
     initOmega (omega, omegaInverse, n);
     dft ( a , n ,  omega);
 }
+unsigned * idftMag ( Complex *a,  int n,  Complex* omegaInverse )  {
+        transform ( a, n, omegaInverse ) ;
+        unsigned result[n];
+        for ( int i = 0 ; i < n ; ++ i ) result [i] = (magnitude(a [i])/n )%12000 ;
+        return result;
+    }

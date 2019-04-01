@@ -18,6 +18,7 @@ void initOmega (Complex *omega, Complex *omegaInverse,   int n );
  void FastFourierTransform (Complex *a,  int n );
  void setReal ( Complex *c,  int x );
  int getReal ( Complex c );
+ unsigned * idftMag ( Complex *a,  int n,  Complex* omegaInverse );
 
 
  #endif // !_FFT_H__

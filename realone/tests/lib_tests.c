@@ -148,14 +148,14 @@ void audio_transform_test() {
     int fifospace;
     int buffer_index_start = 0;
     int fourierIndex = 0;
-    int fourierLength = 800;
+    int fourierLength = 80;
     int fourierSize = BUF_SIZE/fourierLength;
     int record = 0, play = 0, vga = 0, buffer_index = 0;
     int left_buffer[BUF_SIZE];
     int right_buffer[BUF_SIZE];
-    unsigned fftamp[fourierSize][fourierLength];
+    unsigned fftamp[fourierLength];
     Complex cArray[fourierLength];
-    unsigned k = 800;
+    unsigned k = 80;
     unsigned count = 0;
 
     Complex omega [fourierLength],omegaInverse[fourierLength];
@@ -178,12 +178,12 @@ void audio_transform_test() {
                     buffer_index_start = buffer_index;
                 if(count == 10) {
                     count = 0;
-                    for(int i=0;i<fourierLength;i++){
-                        idft(cArray,fourierLength,omega);
+                    
+                    //idft(cArray,fourierLength,omegaInverse);
                         //FastFourierTransform(cArray,fourierLength);
-                    //     fftamp[fourierIndex][fourierLength] = magnitude(cArray[i])%15000;
-                    }
-                //     VIS_VGA_UpdateFrame(k, fftamp[fourierIndex]);
+                    //fftamp[fourierIndex][fourierLength] = magnitude(cArray[i])%15000;
+                    
+                    VIS_VGA_UpdateFrame(k, idftMag(cArray,fourierLength,omegaInverse));
                     fourierIndex ++;
                     if(fourierIndex == fourierSize){
                         fourierIndex =0;
