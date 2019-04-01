@@ -141,6 +141,7 @@ void display_test() {
 }
 
 void audio_transform_test() {
+    VIS_VGA_SetBuffer(SDRAM_BASE, FPGA_ONCHIP_BASE);
     volatile int * red_LED_ptr = (int *)LEDR_BASE;
     volatile int * audio_ptr   = (int *)AUDIO_BASE;
 
@@ -148,7 +149,7 @@ void audio_transform_test() {
     int fifospace;
     int buffer_index_start = 0;
     int fourierIndex = 0;
-    unsigned fourierLength = 100;
+    unsigned fourierLength = 200;
     int fourierSize = BUF_SIZE/fourierLength;
     int record = 0, play = 0, vga = 0, buffer_index = 0;
     int left_buffer[BUF_SIZE];
@@ -157,6 +158,7 @@ void audio_transform_test() {
     Complex cArray[fourierLength];
     unsigned count = 0;
     unsigned result[fourierLength];
+    Complex c;
 
     Complex omega [fourierLength],omegaInverse[fourierLength];
     initOmega (omega,omegaInverse, fourierLength );
@@ -176,7 +178,7 @@ void audio_transform_test() {
 
              if(buffer_index - buffer_index_start == fourierLength){
                     buffer_index_start = buffer_index;
-                if(count == 0) {
+                if(count == 5) {
                     count = 0;
                     
                     //idft(cArray,fourierLength,omegaInverse);
@@ -184,16 +186,12 @@ void audio_transform_test() {
                     //fftamp[fourierIndex][fourierLength] = magnitude(cArray[i])%15000;
                     idftMag(result,cArray,fourierLength,omegaInverse);
                     VIS_VGA_UpdateFrame(fourierLength,result );
-                    fourierIndex ++;
-                    if(fourierIndex == fourierSize){
-                        fourierIndex =0;
-                    }
                 }else{
                     count ++;
                 }
               }
             
-            Complex c;
+            
             c.i = 0;
             c.r = *(audio_ptr + 2);
             cArray[buffer_index-buffer_index_start] = c;

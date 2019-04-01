@@ -40,8 +40,8 @@
     return newC ;
 }
  
-  int magnitude (Complex c)  {
-    return sqrt((c.i>>10)*(c.i>>10) + (c.r>>10)*(c.r>>10));
+  unsigned magnitude (Complex c)  {
+    return ((c.i>>8)*(c.i>>8) + (c.r>>8)*(c.r>>8));
 }
 
 
@@ -93,5 +93,5 @@ void FastFourierTransform (Complex *a,  int n ){
 }
 void idftMag (unsigned * result, Complex *a,  int n,  Complex* omegaInverse )  {
         transform ( a, n, omegaInverse ) ;
-        for ( int i = 0 ; i < n ; ++ i ) result [i] = (magnitude(a [i])/n ) ;
+        for ( int i = 0 ; i < n ; ++ i ) result [i] = (magnitude(a [i]))>>16 ;
     }
