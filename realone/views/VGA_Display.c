@@ -1,7 +1,7 @@
 #include "VGA_Display.h"
 #include <stdbool.h>
 #include "../values.h"
-// #include <math.h>
+#include <math.h>
 #include "../helpers/Math.h"
 
 static volatile unsigned pixel_buffer_start; // global variable
@@ -15,11 +15,15 @@ void VIS_VGA_Setup() {
     ring.colorSeed = 0;
     ring.offsetDeg = 0;
     ring.radius = SCREEN_H / 6;
-    ring.inOffset = 50;
+    ring.inOffset = 100;
     ring.loudnessThreshold = 1000;
     ring.cX = SCREEN_W / 2;
     ring.cY = SCREEN_H / 2;
     historyIndicator = 0;
+}
+
+RingProperty *get_ring() {
+    return &ring;
 }
 
 void VIS_VGA_UpdateFrame(unsigned size, unsigned spect[]) {
@@ -36,7 +40,7 @@ void VIS_VGA_UpdateFrame(unsigned size, unsigned spect[]) {
     // // draw on VGA
     // unsigned startDeg = ring.offsetDeg;
     for (int i = 0; i < size; i++) {
-        unsigned color = color_from_gradient(ring.colorSeed + i * 120 / size, 1);
+        unsigned color = color_from_gradient_f((ring.colorSeed + i * 120 / size) % 32, 1);
         unsigned degree = i * 360 / size + (ring.offsetDeg >> 4);
         int maxLength = (SCREEN_W / 2 - ring.radius);
 
@@ -73,7 +77,7 @@ void VIS_VGA_ColorTest() {
     
     clear_screen();
     for (int i = 0; i < SCREEN_H; i++) {
-        draw_line(0, i, SCREEN_W - 1, i, color_from_gradient(i , 1));
+        draw_line(0, i, SCREEN_W - 1, i, color_from_gradient_f(i , 1));
     }
 
     // swap front and back buffers on VGA vertical sync
@@ -100,9 +104,16 @@ int color_from_RGB888(int r, int g, int b) {
 }
 
 int color_from_gradient(int seed, int freq) {
-    int r = ((127 * VIS_FastSin_r16((freq << 16) * seed / 30 + (0 << 16))) >> 16) + 128;
-    int g = ((127 * VIS_FastSin_r16((freq << 16) * seed / 30 + (1 << 16))) >> 16) + 128;
-    int b = ((127 * VIS_FastSin_r16((freq << 16) * seed / 30 + (2 << 16))) >> 16) + 128;
+    int r = ((127 * VIS_FastSin_r16((freq * seed << 16) / 30 + (0 << 16))) >> 16) + 128;
+    int g = ((127 * VIS_FastSin_r16((freq * seed << 16) / 30 + (1 << 16))) >> 16) + 128;
+    int b = ((127 * VIS_FastSin_r16((freq * seed << 16) / 30 + (2 << 16))) >> 16) + 128;
+    return color_from_RGB888(r, g, b);
+}
+
+int color_from_gradient_f(int seed, int freq) {
+    int r = VIS_FastSin_r(freq * seed / 10. + 0) * 127 + 128;
+    int g = VIS_FastSin_r(freq * seed / 10. + 1) * 127 + 128;
+    int b = VIS_FastSin_r(freq * seed / 10. + 2) * 127 + 128;
     return color_from_RGB888(r, g, b);
 }
 

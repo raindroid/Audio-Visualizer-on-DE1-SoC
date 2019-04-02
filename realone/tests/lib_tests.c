@@ -140,6 +140,11 @@ void display_test() {
     }
 }
 
+void color_test() {
+    VIS_VGA_SetBuffer(SDRAM_BASE, FPGA_ONCHIP_BASE);
+    VIS_VGA_ColorTest();
+}
+
 void audio_transform_test() {
     VIS_VGA_SetBuffer(SDRAM_BASE, FPGA_ONCHIP_BASE);
     volatile int * red_LED_ptr = (int *)LEDR_BASE;
