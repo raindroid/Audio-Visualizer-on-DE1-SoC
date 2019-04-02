@@ -95,3 +95,39 @@ void idftMag (unsigned * result, Complex *a,  int n,  Complex* omegaInverse )  {
         transform ( a, n, omegaInverse ) ;
         for ( int i = 0 ; i < n ; ++ i ) result [i] = (magnitude(a [i]))>>16 ;
     }
+
+// int * separate_freq_bands(fftw_complex out[M / 2 + 1], int bars, int lcf[200],
+// 			 int hcf[200], float k[200], int channel, double sens, double ignore) {
+// 	int o,i;
+// 	float peak[201];
+// 	static int fl[200];
+// 	static int fr[200];
+// 	int y[M / 2 + 1];
+// 	float temp;
+
+
+// 	// process: separate frequency bands
+// 	for (o = 0; o < bars; o++) {
+
+// 		peak[o] = 0;
+
+// 		// process: get peaks
+// 		for (i = lcf[o]; i <= hcf[o]; i++) {
+
+// 			//getting r of compex
+// 			y[i] = hypot(out[i][0], out[i][1]);
+// 			peak[o] += y[i]; //adding upp band
+// 		}
+
+
+// 		peak[o] = peak[o] / (hcf[o]-lcf[o]+1); //getting average
+// 		temp = peak[o] * k[o] * sens; //multiplying with k and adjusting to sens settings
+// 		if (temp <= ignore) temp = 0;
+// 		if (channel == 1) fl[o] = temp;
+// 		else fr[o] = temp;
+
+// 	}
+
+// 	if (channel == 1) return fl;
+//  	else return fr;
+// }
