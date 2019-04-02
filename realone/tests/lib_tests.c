@@ -176,25 +176,31 @@ void audio_transform_test() {
             *(audio_ptr + 2)  = *(audio_ptr + 2) >> 6;
             *(audio_ptr + 3)  = *(audio_ptr + 3) >> 6;
 
-             if(buffer_index - buffer_index_start == fourierLength){
-                    buffer_index_start = buffer_index;
-                if(count == 5) {
-                    count = 0;
+            //  if(buffer_index - buffer_index_start == fourierLength){
+            //         buffer_index_start = buffer_index;
+            //     if(count == 1) {
+            //         count = 0;
                     
-                    //idft(cArray,fourierLength,omegaInverse);
-                        //FastFourierTransform(cArray,fourierLength);
-                    //fftamp[fourierIndex][fourierLength] = magnitude(cArray[i])%15000;
-                    idftMag(result,cArray,fourierLength,omegaInverse);
-                    VIS_VGA_UpdateFrame(fourierLength,result );
-                }else{
-                    count ++;
-                }
-              }
+            //         //idft(cArray,fourierLength,omegaInverse);
+            //             //FastFourierTransform(cArray,fourierLength);
+            //         //fftamp[fourierIndex][fourierLength] = magnitude(cArray[i])%15000;
+            //         idftMag(result,cArray,fourierLength,omegaInverse);
+            //         VIS_VGA_UpdateFrame(fourierLength,result );
+            //     }else{
+            //         count ++;
+            //     }
+            //   }
+            
+            if(buffer_index == fourierLength){
+                buffer_index = 0;
+                idftMag(result,cArray,fourierLength,omegaInverse);
+                VIS_VGA_UpdateFrame(fourierLength,result );
+            }
             
             
             c.i = 0;
             c.r = *(audio_ptr + 2);
-            cArray[buffer_index-buffer_index_start] = c;
+            cArray[buffer_index] = c;
 
             ++buffer_index;
             if (buffer_index >= 0xFFFFFF) buffer_index = 0;
