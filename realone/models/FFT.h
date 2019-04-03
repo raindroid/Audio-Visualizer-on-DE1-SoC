@@ -3,7 +3,6 @@
 #define __FFT_H__
 typedef struct Complex  {
 	float r, i ;
-	int mag;
 } Complex;
 
  Complex add (Complex c,  Complex rhs );
@@ -20,6 +19,7 @@ void FastFourierTransform (Complex *a,  int n );
 void idftMag (unsigned * result, Complex *a,  int n,  Complex* omegaInverse );
 void sdft(Complex *x, int n, Complex * omegaInverse, Complex *result);
 void initExps(int size, Complex omegaInverse[][size]);
+void fdft(Complex *x, int n, Complex omegaExp[][n], Complex *result);
 
 
  #endif // !_FFT_H__

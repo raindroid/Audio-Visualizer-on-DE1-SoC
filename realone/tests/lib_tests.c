@@ -152,22 +152,19 @@ void audio_transform_test() {
 
     /* used for audio record/playback */
     int fifospace;
-    int buffer_index_start = 0;
+    int buffer_index = 0;
     int fourierIndex = 0;
-    const int fourierLength = 160;
-    int fourierSize = BUF_SIZE/fourierLength;
-    int record = 0, play = 0, vga = 0, buffer_index = 0;
-    int left_buffer[BUF_SIZE];
-    int right_buffer[BUF_SIZE];
-    unsigned fftamp[fourierLength];
+    const int fourierLength = 240;
     Complex cArray[fourierLength];
     Complex fourierResult[fourierLength];
     unsigned result[fourierLength];
     Complex c;
 
     Complex omegaInverse[fourierLength];
-    //initExps( fourierLength, omegaInverse);
-    
+
+    Complex omegaExp[fourierLength][fourierLength];
+    initExps( fourierLength, omegaExp);
+
     fifospace = *(audio_ptr + 1); // read the audio port fifospace register
     // if ((fifospace & 0x000000FF) > BUF_THRESHOLD) // check RARC
     {
@@ -178,8 +175,8 @@ void audio_transform_test() {
             // left_buffer[buffer_index]  = *(audio_ptr + 2);
             // right_buffer[buffer_index] = *(audio_ptr + 3);
             while (!(fifospace & 0x000000FF));
-            *(audio_ptr + 2)  = *(audio_ptr + 2) >> 16;
-            *(audio_ptr + 3)  = *(audio_ptr + 3) >> 16;
+            *(audio_ptr + 2)  = *(audio_ptr + 2) >> 6;
+            *(audio_ptr + 3)  = *(audio_ptr + 3) >> 6;
 
             //  if(buffer_index - buffer_index_start == fourierLength){
             //         buffer_index_start = buffer_index;
@@ -198,19 +195,17 @@ void audio_transform_test() {
             
             if(buffer_index == fourierLength){
                 buffer_index = 0;
-                sdft(cArray, fourierLength, omegaInverse, fourierResult);
-                int display = 0;
+                //sdft(cArray, fourierLength, omegaInverse, fourierResult);
+                fdft(cArray, fourierLength, omegaExp, fourierResult);
                 for(int i=0;i<fourierLength; i++){
                     result[i] = magnitude(fourierResult[i]);
-                    if(result [i] > 2147483600) display = 1;
                 }
-                if(display == 1)
                     VIS_VGA_UpdateFrame(fourierLength, result );
             }
             
             
             c.i = 0;
-            c.r = ((float) *(audio_ptr + 2));
+            c.r = ((float) *(audio_ptr + 2))/200000000;
             cArray[buffer_index] = c;
 
             ++buffer_index;
