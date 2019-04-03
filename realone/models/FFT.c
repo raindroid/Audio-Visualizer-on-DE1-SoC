@@ -3,30 +3,30 @@
 #include <math.h>
 
 //note: in this file, all the double value are shifted to the left by 16 bits
+ 
+ float PI = 3.1415926535897932384626;
 
- void setReal ( Complex *c,  int x )  {  c->r = x ;  }
- int getReal ( Complex c )  {  return c.r ;  }
  Complex add (Complex c,  Complex rhs )   {
-    Complex newC;
-    newC.i += c.i;
-    newC.r += c.r;
+	 Complex newC = { 0,0,0 };
+    newC.i = c.i + rhs.i;
+    newC.r = c.r + rhs.r;
     return newC ;
 }
   Complex sub (Complex c,  Complex rhs )   {
-   Complex newC;
-    newC.i -= c.i;
-    newC.r -= c.r;
+	  Complex newC = {0,0,0};
+	  newC.i = c.i - rhs.i;
+	  newC.r = c.r - rhs.r;
     return newC ;
 }
  Complex multiply (Complex c,  Complex rhs )   {
     Complex newC;
-    newC.i = (c.r>>8) * (rhs.i>>8) + (c.i>>8) * (rhs.r>>8);
-    newC.r = (c.r>>8) * (rhs.r>>8) - (c.i>>8) * (rhs.i>>8);
+    newC.i = (c.r) * (rhs.i) + (c.i) * (rhs.r);
+    newC.r = (c.r) * (rhs.r) - (c.i) * (rhs.i);
     return newC ;
     //return Complex ( r * rhs.r - i * rhs.i, r * rhs.i + i * rhs.r )
 }
 
- Complex divideByInt (Complex c,  int x )   {
+ Complex divideByInt (Complex c,  float x )   {
     Complex newC;
     newC.i /= x;
     newC.r /= x;
@@ -40,94 +40,102 @@
     return newC ;
 }
  
-  unsigned magnitude (Complex c)  {
-    return ((c.i>>8)*(c.i>>8) + (c.r>>8)*(c.r>>8));
+  int magnitude (Complex c)  {
+    return ((int) c.r)*((int) c.r)+((int) c.i)*((int) c.i) ;
 }
 
-
- void initOmega (Complex *omega, Complex *omegaInverse,   int n )  {
-    for ( int i = 0 ; i < n ; ++ i )  {
-        Complex c;
-        c.i = VIS_FastSin_d16 ( 360 / n * i );
-        c.r = VIS_FastCos_d16 ( 360 / n * i);
-        omega [i] = c;
-        omegaInverse [i] = conjg ( omega [i] ) ;
+void init(int index, int size, Complex *omegaInverse) {
+    if(index == 0){
+        for (int i = 0; i < size; ++i) {
+            Complex c ={1,0,0};
+            omegaInverse[i] = c;
+        }
     }
-}
-
-void transform ( Complex *a,  int n,  Complex* omega ) {
-    for ( int i = 0, j = 0 ; i < n ; ++ i )  {
-        if ( i > j ){
-            //swap ( a [i], a [j] )
-            Complex temp = a[i];
-            a[i] = a[j];
-            a[j] = temp;
-        } 
-        for( int l = n >> 1 ; ( j ^= l ) < l ; l >>= 1 ) ;
-    }
-    
-    for ( int l = 2 ; l <= n ; l <<= 1 )  {
-        int m = l / 2;
-        for (Complex * p = a ; p < a + n ; p += l )  {
-            for ( int i = 0 ; i < m ; ++ i )  {
-                Complex t = multiply(omega [n / l * i] , p [m + i]);
-                p [m + i] = sub (p [i] , t) ;
-                p [i] = add(p [i], t) ;
-            }
+    else{
+        for (int i = 0; i < size; ++i) {
+            Complex c ={cosf(2 * PI / index * i), -sinf(2 * PI / index * i),0};
+            omegaInverse[i] = c;
         }
     }
 }
 
-void dft ( Complex *a,  int n ,  Complex* omega)  {
-        transform ( a, n, omega ) ;
-}
 
-void idft ( Complex *a,  int n,  Complex* omegaInverse )  {
-        transform ( a, n, omegaInverse ) ;
-        for ( int i = 0 ; i < n ; ++ i ) a [i] = divideByInt(a[i],n) ;
-    }
-void FastFourierTransform (Complex *a,  int n ){
-    Complex omega [n], omegaInverse[n];
-    initOmega (omega, omegaInverse, n);
-    dft ( a , n ,  omega);
-}
-void idftMag (unsigned * result, Complex *a,  int n,  Complex* omegaInverse )  {
-        transform ( a, n, omegaInverse ) ;
-        for ( int i = 0 ; i < n ; ++ i ) result [i] = (magnitude(a [i]))>>16 ;
-    }
-
-// int * separate_freq_bands(fftw_complex out[M / 2 + 1], int bars, int lcf[200],
-// 			 int hcf[200], float k[200], int channel, double sens, double ignore) {
-// 	int o,i;
-// 	float peak[201];
-// 	static int fl[200];
-// 	static int fr[200];
-// 	int y[M / 2 + 1];
-// 	float temp;
-
-
-// 	// process: separate frequency bands
-// 	for (o = 0; o < bars; o++) {
-
-// 		peak[o] = 0;
-
-// 		// process: get peaks
-// 		for (i = lcf[o]; i <= hcf[o]; i++) {
-
-// 			//getting r of compex
-// 			y[i] = hypot(out[i][0], out[i][1]);
-// 			peak[o] += y[i]; //adding upp band
-// 		}
-
-
-// 		peak[o] = peak[o] / (hcf[o]-lcf[o]+1); //getting average
-// 		temp = peak[o] * k[o] * sens; //multiplying with k and adjusting to sens settings
-// 		if (temp <= ignore) temp = 0;
-// 		if (channel == 1) fl[o] = temp;
-// 		else fr[o] = temp;
-
-// 	}
-
-// 	if (channel == 1) return fl;
-//  	else return fr;
+// void transform ( Complex *a,  int n,  Complex* omega ) {
+//     for ( int i = 0, j = 0 ; i < n ; ++ i )  {
+//         if ( i > j ){
+//             //swap ( a [i], a [j] )
+//             Complex temp = a[i];
+//             a[i] = a[j];
+//             a[j] = temp;
+//         } 
+//         for( int l = n >> 1 ; ( j ^= l ) < l ; l >>= 1 ) ;
+//     }
+    
+//     for ( int l = 2 ; l <= n ; l <<= 1 )  {
+//         int m = l / 2;
+//         for (Complex * p = a ; p < a + n ; p += l )  {
+//             for ( int i = 0 ; i < m ; ++ i )  {
+//                 Complex t = multiply(omega [n / l * i] , p [m + i]);
+//                 p [m + i] = sub (p [i] , t) ;
+//                 p [i] = add(p [i], t) ;
+//             }
+//         }
+//     }
 // }
+
+// void dft ( Complex *a,  int n ,  Complex* omega)  {
+//         transform ( a, n, omega ) ;
+// }
+
+// void idft ( Complex *a,  int n,  Complex* omegaInverse )  {
+//         transform ( a, n, omegaInverse ) ;
+//         for ( int i = 0 ; i < n ; ++ i ) a [i] = divideByInt(a[i],n) ;
+//     }
+// void FastFourierTransform (Complex *a,  int n ){
+//     Complex omega [n], omegaInverse[n];
+//     initOmega (omega, omegaInverse, n);
+//     dft ( a , n ,  omega);
+// }
+// void idftMag (unsigned * result, Complex *a,  int n,  Complex* omegaInverse )  {
+//         transform ( a, n, omegaInverse ) ;
+//         for ( int i = 0 ; i < n ; ++ i ) result [i] = (magnitude(a [i]))>>16 ;
+//     }
+
+// void sdft(Complex *x, int n, Complex omegaInverse[][n], Complex *result) {
+//     for (int om = 0; om < n; om++) {
+//         Complex c = {0,0,0};
+//         for (int k = 0; k < n; k++) {
+//             //c = c + x[k] * omegaInverse[k];
+//             c = add(c, multiply(x[k],omegaInverse[om][k]));
+//         }
+//         c.mag = magnitude(c);
+//         result[om] = c;
+//     }
+// }
+
+
+void sdft(Complex *x, int n, Complex * omegaInverse, Complex *result) {
+		for (int om = 0; om < n; om++) {
+			Complex c = {0,0,0};
+			init(om,n,omegaInverse);
+			for (int k = 0; k < n; k++) {
+				c = add(c, multiply(x[k],omegaInverse[k]));
+			}
+			result[om] = c;
+            c.mag = magnitude(c);
+		}
+	}
+
+void initExps(int size, Complex omegaInverse[][size]) {
+    //initialize first line
+    for(int k =0; k < size; k++){
+            Complex c ={1,0,0};
+            omegaInverse[0][k] = c;
+    }
+    for (int index = 1; index < size; ++index) {
+        for(int k =0; k < size; k++){
+            Complex c ={cos(2 * PI / index * k), -sin(2 * PI / index * k),0};
+            omegaInverse[index][k] = c;
+        }
+    }
+}

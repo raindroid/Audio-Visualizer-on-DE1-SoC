@@ -154,19 +154,19 @@ void audio_transform_test() {
     int fifospace;
     int buffer_index_start = 0;
     int fourierIndex = 0;
-    unsigned fourierLength = 200;
+    const int fourierLength = 160;
     int fourierSize = BUF_SIZE/fourierLength;
     int record = 0, play = 0, vga = 0, buffer_index = 0;
     int left_buffer[BUF_SIZE];
     int right_buffer[BUF_SIZE];
     unsigned fftamp[fourierLength];
     Complex cArray[fourierLength];
-    unsigned count = 0;
+    Complex fourierResult[fourierLength];
     unsigned result[fourierLength];
     Complex c;
 
-    Complex omega [fourierLength],omegaInverse[fourierLength];
-    initOmega (omega,omegaInverse, fourierLength );
+    Complex omegaInverse[fourierLength];
+    //initExps( fourierLength, omegaInverse);
     
     fifospace = *(audio_ptr + 1); // read the audio port fifospace register
     // if ((fifospace & 0x000000FF) > BUF_THRESHOLD) // check RARC
@@ -178,8 +178,8 @@ void audio_transform_test() {
             // left_buffer[buffer_index]  = *(audio_ptr + 2);
             // right_buffer[buffer_index] = *(audio_ptr + 3);
             while (!(fifospace & 0x000000FF));
-            *(audio_ptr + 2)  = *(audio_ptr + 2) >> 6;
-            *(audio_ptr + 3)  = *(audio_ptr + 3) >> 6;
+            *(audio_ptr + 2)  = *(audio_ptr + 2) >> 16;
+            *(audio_ptr + 3)  = *(audio_ptr + 3) >> 16;
 
             //  if(buffer_index - buffer_index_start == fourierLength){
             //         buffer_index_start = buffer_index;
@@ -198,13 +198,19 @@ void audio_transform_test() {
             
             if(buffer_index == fourierLength){
                 buffer_index = 0;
-                idftMag(result,cArray,fourierLength,omegaInverse);
-                VIS_VGA_UpdateFrame(fourierLength,result );
+                sdft(cArray, fourierLength, omegaInverse, fourierResult);
+                int display = 0;
+                for(int i=0;i<fourierLength; i++){
+                    result[i] = magnitude(fourierResult[i]);
+                    if(result [i] > 2147483600) display = 1;
+                }
+                if(display == 1)
+                    VIS_VGA_UpdateFrame(fourierLength, result );
             }
             
             
             c.i = 0;
-            c.r = *(audio_ptr + 2);
+            c.r = ((float) *(audio_ptr + 2));
             cArray[buffer_index] = c;
 
             ++buffer_index;
