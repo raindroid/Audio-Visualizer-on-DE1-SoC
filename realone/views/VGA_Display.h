@@ -3,6 +3,7 @@
 
 #define SCREEN_W 320
 #define SCREEN_H 240
+#define COLOR_RANGE 240
 
 typedef struct {
     int colorSeed;  // color base of the gradient
@@ -34,6 +35,7 @@ void swap(int *a, int *b);
 int color_from_RGB888(int r, int g, int b);
 int color_from_gradient(int seed, int freq);
 int color_from_gradient_f(int seed, int freq);
+int color_from_gradient_hsv(int);
 
 
 #endif
