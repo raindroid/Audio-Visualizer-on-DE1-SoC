@@ -3,6 +3,7 @@
 
 #define SCREEN_W 320
 #define SCREEN_H 240
+#define COLOR_RANGE 240
 
 typedef struct {
     int colorSeed;  // color base of the gradient
@@ -19,6 +20,7 @@ typedef struct {
     int color;
 } Line;
 
+RingProperty *get_ring();
 void VIS_VGA_SetBuffer(unsigned frontAddress, unsigned backAddress);
 void VIS_VGA_Setup();
 void VIS_VGA_UpdateFrame(unsigned size, unsigned spect[]);
@@ -32,6 +34,8 @@ void wait_for_vsync();
 void swap(int *a, int *b);
 int color_from_RGB888(int r, int g, int b);
 int color_from_gradient(int seed, int freq);
+int color_from_gradient_f(int seed, int freq);
+int color_from_gradient_hsv(int);
 
 
 #endif

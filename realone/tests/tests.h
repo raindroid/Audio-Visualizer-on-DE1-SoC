@@ -11,5 +11,6 @@ void hex_test();
 void display_test();
 void audio_transform_test();
 void check_KEYs(int * KEY0, int * KEY1, int * KEY2, int * counter);
+void color_test();
 
 #endif

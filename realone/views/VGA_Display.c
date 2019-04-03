@@ -1,7 +1,7 @@
 #include "VGA_Display.h"
 #include <stdbool.h>
 #include "../values.h"
-// #include <math.h>
+#include <math.h>
 #include "../helpers/Math.h"
 
 static volatile unsigned pixel_buffer_start; // global variable
@@ -15,11 +15,15 @@ void VIS_VGA_Setup() {
     ring.colorSeed = 0;
     ring.offsetDeg = 0;
     ring.radius = SCREEN_H / 6;
-    ring.inOffset = 50;
+    ring.inOffset = 100;
     ring.loudnessThreshold = 1000;
     ring.cX = SCREEN_W / 2;
     ring.cY = SCREEN_H / 2;
     historyIndicator = 0;
+}
+
+RingProperty *get_ring() {
+    return &ring;
 }
 
 void VIS_VGA_UpdateFrame(unsigned size, unsigned spect[]) {
@@ -36,7 +40,7 @@ void VIS_VGA_UpdateFrame(unsigned size, unsigned spect[]) {
     // // draw on VGA
     // unsigned startDeg = ring.offsetDeg;
     for (int i = 0; i < size; i++) {
-        unsigned color = color_from_gradient(ring.colorSeed + i * 120 / size, 1);
+        unsigned color = color_from_gradient_hsv(ring.colorSeed + i * COLOR_RANGE / size);
         unsigned degree = i * 360 / size + (ring.offsetDeg >> 4);
         int maxLength = (SCREEN_W / 2 - ring.radius);
 
@@ -73,7 +77,7 @@ void VIS_VGA_ColorTest() {
     
     clear_screen();
     for (int i = 0; i < SCREEN_H; i++) {
-        draw_line(0, i, SCREEN_W - 1, i, color_from_gradient(i , 1));
+        draw_line(0, i, SCREEN_W - 1, i, color_from_gradient_hsv(i * COLOR_RANGE / SCREEN_H));
     }
 
     // swap front and back buffers on VGA vertical sync
@@ -96,13 +100,49 @@ void VIS_VGA_SetBuffer(unsigned frontAddress, unsigned backAddress) {
 }
 
 int color_from_RGB888(int r, int g, int b) {
+#ifdef DEBUG
+    r = r % 256;
+    g = g % 256;
+    b = b % 256;
+#endif
     return (r >> 3 << 11 ) | (g >> 2 << 5 ) | (b >> 3 & 0x1F);
 }
 
 int color_from_gradient(int seed, int freq) {
-    int r = ((127 * VIS_FastSin_r16((freq << 16) * seed / 30 + (0 << 16))) >> 16) + 128;
-    int g = ((127 * VIS_FastSin_r16((freq << 16) * seed / 30 + (1 << 16))) >> 16) + 128;
-    int b = ((127 * VIS_FastSin_r16((freq << 16) * seed / 30 + (2 << 16))) >> 16) + 128;
+    int r = ((127 * VIS_FastSin_r16((freq * seed << 16) / 30 + (0 << 16))) >> 16) + 128;
+    int g = ((127 * VIS_FastSin_r16((freq * seed << 16) / 30 + (1 << 16))) >> 16) + 128;
+    int b = ((127 * VIS_FastSin_r16((freq * seed << 16) / 30 + (2 << 16))) >> 16) + 128;
+    return color_from_RGB888(r, g, b);
+}
+
+int color_from_gradient_f(int seed, int freq) {
+    static const int colorScale = 55, colorOffset = 200;
+    int r = VIS_FastSin_r(freq * seed / 10. + 0) * colorScale + colorOffset;
+    int g = VIS_FastSin_r(freq * seed / 10. + 1) * colorScale + colorOffset;
+    int b = VIS_FastSin_r(freq * seed / 10. + 2) * colorScale + colorOffset;
+    return color_from_RGB888(r, g, b);
+}
+
+int color_from_gradient_hsv(int cid) {
+    cid = cid % COLOR_RANGE;
+    static int r = 0, g = 0, b = 0;
+    if (cid <= COLOR_RANGE * 3 / 10) {
+        r = 0xFF;
+        g = cid * 85 / 24;
+        b = 0x0;
+    } else if (cid < COLOR_RANGE * 5 / 10) {
+        r = (COLOR_RANGE * 3 / 10 - cid) * 85 / 24;
+        g = 0xFF;
+        b = 0x0;
+    } else if (cid < COLOR_RANGE * 7 / 10) {
+        r = 0x0;
+        g = 0xFF;
+        b = (cid - COLOR_RANGE * 5 / 10) * 85 / 24;;
+    } else {
+        r = 0x0;
+        g = (COLOR_RANGE - cid) * 85 / 24;
+        b = 0xFF;
+    }
     return color_from_RGB888(r, g, b);
 }
 
