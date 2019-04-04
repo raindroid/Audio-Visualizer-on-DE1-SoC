@@ -154,16 +154,19 @@ void audio_transform_test() {
     int fifospace;
     int buffer_index = 0;
     int fourierIndex = 0;
-    const int fourierLength = 240;
+    const int fourierLength = 256;
     Complex cArray[fourierLength];
+    float inputArray[fourierLength];
     Complex fourierResult[fourierLength];
-    unsigned result[fourierLength];
+    unsigned result[fourierLength/2];
     Complex c;
+	
 
     Complex omegaInverse[fourierLength];
+    init(fourierLength, omegaInverse);
 
-    Complex omegaExp[fourierLength][fourierLength];
-    initExps( fourierLength, omegaExp);
+    // Complex omegaExp[fourierLength][fourierLength];
+    // initExps( fourierLength, omegaExp);
 
     fifospace = *(audio_ptr + 1); // read the audio port fifospace register
     // if ((fifospace & 0x000000FF) > BUF_THRESHOLD) // check RARC
@@ -196,17 +199,20 @@ void audio_transform_test() {
             if(buffer_index == fourierLength){
                 buffer_index = 0;
                 //sdft(cArray, fourierLength, omegaInverse, fourierResult);
-                fdft(cArray, fourierLength, omegaExp, fourierResult);
-                for(int i=0;i<fourierLength; i++){
-                    result[i] = magnitude(fourierResult[i]);
+                //fdft(cArray, fourierLength, omegaExp, fourierResult);
+                fft(cArray,fourierLength);
+                for(int i=0;i<fourierLength/2; i++){
+                    result[i] = magnitude(cArray[i]);
                 }
-                    VIS_VGA_UpdateFrame(fourierLength, result );
+                    VIS_VGA_UpdateFrame(fourierLength/2, result );
             }
             
             
             c.i = 0;
-            c.r = ((float) *(audio_ptr + 2))/200000000;
+            c.r = ((float) *(audio_ptr + 2))/500000000;
             cArray[buffer_index] = c;
+
+            inputArray[buffer_index] = c.r;
 
             ++buffer_index;
             if (buffer_index >= 0xFFFFFF) buffer_index = 0;

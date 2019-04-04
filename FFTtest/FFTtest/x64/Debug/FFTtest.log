@@ -1,4 +1,2 @@
 ﻿  fft.cpp
-e:\ece243\project\ece243project\ffttest\ffttest\fft.cpp(144): warning C4244: “return”: 从“float”转换到“int”，可能丢失数据
-e:\ece243\project\ece243project\ffttest\ffttest\fft.cpp(227): warning C4101: “omegaInverse”: 未引用的局部变量
   FFTtest.vcxproj -> E:\ece243\project\ece243project\FFTtest\x64\Debug\FFTtest.exe
