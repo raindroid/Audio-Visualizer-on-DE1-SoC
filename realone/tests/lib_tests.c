@@ -154,12 +154,16 @@ void audio_transform_test() {
     int fifospace;
     int buffer_index = 0;
     int fourierIndex = 0;
-    const int fourierLength = 256;
+    const int fourierLength = 128;
     Complex cArray[fourierLength];
-    float inputArray[fourierLength];
-    Complex fourierResult[fourierLength];
-    unsigned result[fourierLength/2];
+    int ignore = 6;
+    unsigned result[fourierLength/2-ignore];
+    unsigned lastResult3[fourierLength/2-ignore];
+    unsigned lastResult2[fourierLength/2-ignore];
+    unsigned lastResult[fourierLength/2-ignore];
+    unsigned displayResult[fourierLength/2-ignore];
     Complex c;
+    float ampmax = 0;
 	
 
     Complex omegaInverse[fourierLength];
@@ -197,22 +201,44 @@ void audio_transform_test() {
             //   }
             
             if(buffer_index == fourierLength){
+
                 buffer_index = 0;
                 //sdft(cArray, fourierLength, omegaInverse, fourierResult);
                 //fdft(cArray, fourierLength, omegaExp, fourierResult);
                 fft(cArray,fourierLength);
-                for(int i=0;i<fourierLength/2; i++){
-                    result[i] = magnitude(cArray[i]);
+                for(int i=0;i<fourierLength/2-ignore; i++){ //negelect first 4 spectrum
+                    // if(i<=20){
+                    //     lastResult3[i] = lastResult2[i];
+                    //     lastResult2[i] = lastResult[i];
+                    //     lastResult[i] = result[i];
+                    //     result[i] = magnitude(cArray[i+5]) >> ((20-i)/5);
+                    //     displayResult[i] = 
+                    //     (lastResult3[i]+lastResult2[i]+lastResult[i]+result[i])/4;
+                    //  }
+                    //else
+                    {
+                        lastResult3[i] = lastResult2[i];
+                        lastResult2[i] = lastResult[i];
+                        lastResult[i] = result[i];
+                        result[i] = magnitude(cArray[i+ignore]);
+                        displayResult[i] = 
+                        (int)((lastResult3[i]+lastResult2[i]+lastResult[i]+result[i])/4*ampmax );
+                    }  
                 }
-                    VIS_VGA_UpdateFrame(fourierLength/2, result );
+                VIS_VGA_UpdateFrame(fourierLength/2-ignore, displayResult);
+                ampmax = 0;
             }
+
+            
             
             
             c.i = 0;
-            c.r = ((float) *(audio_ptr + 2))/500000000;
+            c.r = ((float) *(audio_ptr + 2))/100000000;
+            if(abs(*(audio_ptr + 2))/100000000 > ampmax){
+                ampmax = abs(*(audio_ptr + 2)/100000000);
+            }
             cArray[buffer_index] = c;
 
-            inputArray[buffer_index] = c.r;
 
             ++buffer_index;
             if (buffer_index >= 0xFFFFFF) buffer_index = 0;

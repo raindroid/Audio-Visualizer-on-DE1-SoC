@@ -14,7 +14,7 @@ static int historyIndicator;
 void VIS_VGA_Setup() {
     ring.colorSeed = 0;
     ring.offsetDeg = 0;
-    ring.radius = SCREEN_H / 6;
+    ring.radius = SCREEN_H / 8;
     ring.inOffset = 100;
     ring.loudnessThreshold = 1000;
     ring.cX = SCREEN_W / 2;
@@ -45,12 +45,12 @@ void VIS_VGA_UpdateFrame(unsigned size, unsigned spect[]) {
         int maxLength = (SCREEN_W / 2 - ring.radius);
 
         // // calculate start point
-        int innerR = ring.radius - ((ring.inOffset * maxLength * spect[i] / maxLoudness) >> 10);
+        int innerR = ring.radius - ((ring.inOffset * maxLength * spect[i] / maxLoudness) >> 12);
         unsigned iX = ring.cX + ((innerR * VIS_FastSin_d16(degree)) >> 16);
         unsigned iY = ring.cY - ((innerR * VIS_FastCos_d16(degree)) >> 16);
 
         // // calculate color end point
-        int outerR = ring.radius + (((1024 - ring.inOffset) * maxLength * spect[i] / maxLoudness) >> 10); 
+        int outerR = ring.radius + (((1024 - ring.inOffset) * maxLength * spect[i] / maxLoudness) >> 12); 
         unsigned oX = ring.cX + ((outerR * VIS_FastSin_d16(degree)) >> 16);
         unsigned oY = ring.cY - ((outerR * VIS_FastCos_d16(degree)) >> 16);
 
