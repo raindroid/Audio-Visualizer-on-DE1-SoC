@@ -42,15 +42,15 @@ void VIS_VGA_UpdateFrame(unsigned size, unsigned spect[]) {
     for (int i = 0; i < size; i++) {
         unsigned color = color_from_gradient_hsv(ring.colorSeed + i * COLOR_RANGE / size);
         unsigned degree = i * 360 / size + (ring.offsetDeg >> 4);
-        int maxLength = (SCREEN_W / 2 - ring.radius);
+        int maxLength = (SCREEN_W / 6 - ring.radius);
 
         // // calculate start point
-        int innerR = ring.radius - ((ring.inOffset * maxLength * spect[i] / maxLoudness) >> 12);
+        int innerR = ring.radius - ((ring.inOffset * maxLength * spect[i] / maxLoudness) >> 10);
         unsigned iX = ring.cX + ((innerR * VIS_FastSin_d16(degree)) >> 16);
         unsigned iY = ring.cY - ((innerR * VIS_FastCos_d16(degree)) >> 16);
 
         // // calculate color end point
-        int outerR = ring.radius + (((1024 - ring.inOffset) * maxLength * spect[i] / maxLoudness) >> 12); 
+        int outerR = ring.radius + (((1024 - ring.inOffset) * maxLength * spect[i] / maxLoudness) >> 10); 
         unsigned oX = ring.cX + ((outerR * VIS_FastSin_d16(degree)) >> 16);
         unsigned oY = ring.cY - ((outerR * VIS_FastCos_d16(degree)) >> 16);
 

@@ -2421,15 +2421,15 @@ void VIS_VGA_UpdateFrame(unsigned size, unsigned spect[]) {
     1c00:	e1a03243 	asr	r3, r3, #4
     1c04:	e0823003 	add	r3, r2, r3
     1c08:	e50b3020 	str	r3, [r11, #-32]	; 0xffffffe0
-        int maxLength = (SCREEN_W / 2 - ring.radius);
+        int maxLength = (SCREEN_W / 6 - ring.radius);
     1c0c:	e3083810 	movw	r3, #34832	; 0x8810
     1c10:	e3403000 	movt	r3, #0
     1c14:	e5933008 	ldr	r3, [r3, #8]
-    1c18:	e26330a0 	rsb	r3, r3, #160	; 0xa0
+    1c18:	e2633035 	rsb	r3, r3, #53	; 0x35
     1c1c:	e50b3024 	str	r3, [r11, #-36]	; 0xffffffdc
 
         // // calculate start point
-        int innerR = ring.radius - ((ring.inOffset * maxLength * spect[i] / maxLoudness) >> 12);
+        int innerR = ring.radius - ((ring.inOffset * maxLength * spect[i] / maxLoudness) >> 10);
     1c20:	e3083810 	movw	r3, #34832	; 0x8810
     1c24:	e3403000 	movt	r3, #0
     1c28:	e5933008 	ldr	r3, [r3, #8]
@@ -2449,7 +2449,7 @@ void VIS_VGA_UpdateFrame(unsigned size, unsigned spect[]) {
     1c60:	e51b1010 	ldr	r1, [r11, #-16]
     1c64:	eb000c3e 	bl	4d64 <__aeabi_uidiv>
     1c68:	e1a03000 	mov	r3, r0
-    1c6c:	e1a03623 	lsr	r3, r3, #12
+    1c6c:	e1a03523 	lsr	r3, r3, #10
     1c70:	e0633004 	rsb	r3, r3, r4
     1c74:	e50b3028 	str	r3, [r11, #-40]	; 0xffffffd8
         unsigned iX = ring.cX + ((innerR * VIS_FastSin_d16(degree)) >> 16);
@@ -2480,7 +2480,7 @@ void VIS_VGA_UpdateFrame(unsigned size, unsigned spect[]) {
     1cd4:	e50b3030 	str	r3, [r11, #-48]	; 0xffffffd0
 
         // // calculate color end point
-        int outerR = ring.radius + (((1024 - ring.inOffset) * maxLength * spect[i] / maxLoudness) >> 12); 
+        int outerR = ring.radius + (((1024 - ring.inOffset) * maxLength * spect[i] / maxLoudness) >> 10); 
     1cd8:	e3083810 	movw	r3, #34832	; 0x8810
     1cdc:	e3403000 	movt	r3, #0
     1ce0:	e5933008 	ldr	r3, [r3, #8]
@@ -2501,7 +2501,7 @@ void VIS_VGA_UpdateFrame(unsigned size, unsigned spect[]) {
     1d1c:	e51b1010 	ldr	r1, [r11, #-16]
     1d20:	eb000c0f 	bl	4d64 <__aeabi_uidiv>
     1d24:	e1a03000 	mov	r3, r0
-    1d28:	e1a03623 	lsr	r3, r3, #12
+    1d28:	e1a03523 	lsr	r3, r3, #10
     1d2c:	e0843003 	add	r3, r4, r3
     1d30:	e50b3034 	str	r3, [r11, #-52]	; 0xffffffcc
         unsigned oX = ring.cX + ((outerR * VIS_FastSin_d16(degree)) >> 16);
