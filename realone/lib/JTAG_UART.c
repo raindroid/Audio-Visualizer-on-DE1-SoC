@@ -14,8 +14,10 @@ void VIS_Uart_TxChar(volatile int * JTAG_UART_ptr, char c) {
 
 void VIS_Uart_Tx(volatile int * JTAG_UART_ptr, char * s, int size) {
     
-    for (int i = 0; i < size; i++)
+    for (int i = 0; i < size; i++) {
         VIS_Uart_TxChar(JTAG_UART_ptr, s[i]);
+        if (s[i] == 0) break;       // already reach the end of the string
+    }
 }
 
 void VIS_UART_TxInt(volatile int * JTAG_UART_ptr, int num) {

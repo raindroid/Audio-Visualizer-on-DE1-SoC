@@ -4,6 +4,8 @@
 #include "address_map_arm.h"
 #define DEBUG
 #define MAX_LINES 1000
+#define FOURIER_LENGTH 128
+#define IGNORE 6
 
 void VIS_ERROR_Handler();
 

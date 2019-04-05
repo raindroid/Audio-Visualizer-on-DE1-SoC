@@ -3,15 +3,29 @@
 #include "../values.h"
 #include <math.h>
 #include "../helpers/Math.h"
+#include "../lib/JTAG_UART.h"
+#include <string.h>
 
 static volatile unsigned pixel_buffer_start; // global variable
 static volatile unsigned * pixel_ctrl_ptr = (unsigned *)0xFF203020;
+static volatile int *JTAG_UART_ptr = (int *)JTAG_UART_BASE; // JTAG UART address
 
 static RingProperty ring;
 static Line canvasHistory[2][MAX_LINES]; 
 static int historyIndicator;
 
 void VIS_VGA_Setup() {
+    ring_reset();
+    historyIndicator = 0; 
+    char help[512] = "Help: \r\n"
+            "\t1. Press [W/A/S/D] to move the ring up/left/down/right.\r\n"
+            "\t2. Press [Q/E] to change the length of ring (shorter/longer).\r\n"
+            "\t3. Press [Z/X] to change the brightness.\r\n"
+            "\t4. Press [R] to reset\r\n";
+    VIS_Uart_Tx(JTAG_UART_ptr, help, 512);
+}
+
+void ring_reset() {
     ring.colorSeed = 0;
     ring.offsetDeg = 0;
     ring.radius = SCREEN_H / 8;
@@ -19,11 +33,54 @@ void VIS_VGA_Setup() {
     ring.loudnessThreshold = 1000;
     ring.cX = SCREEN_W / 2;
     ring.cY = SCREEN_H / 2;
-    historyIndicator = 0;
+    ring.maxLength = (SCREEN_H / 3 - ring.radius);
+    ring.brightness = 128;
 }
 
 RingProperty *get_ring() {
     return &ring;
+}
+
+void ring_controller() {
+    char control;
+    if ((control = VIS_Uart_RxChar(JTAG_UART_ptr)) != 0) {
+        switch (control)
+        {
+            case 'W':
+                ring.cY --;
+                if (ring.cY < 0) ring.cY = 0;
+                break;
+            case 'A':
+                ring.cX --;
+                if (ring.cX < 0) ring.cX = 0;
+                break;
+            case 'S':
+                ring.cY ++;
+                if (ring.cY > SCREEN_H) ring.cY = SCREEN_H;
+                break;
+            case 'D':
+                ring.cX ++;
+                if (ring.cX > SCREEN_W) ring.cX = SCREEN_W;
+                break;
+            case 'Q':
+                ring.maxLength --;
+                break;
+            case 'E':
+                ring.maxLength ++;
+                break;
+            case 'Z':
+                ring.brightness ++;
+                break;
+            case 'X':
+                ring.brightness --;
+                break;
+            case 'R':
+                ring_reset();
+                break;
+            default:
+                break;
+        }
+    }
 }
 
 void VIS_VGA_UpdateFrame(unsigned size, unsigned spect[]) {
@@ -42,15 +99,14 @@ void VIS_VGA_UpdateFrame(unsigned size, unsigned spect[]) {
     for (int i = 0; i < size; i++) {
         unsigned color = color_from_gradient_hsv(ring.colorSeed + i * COLOR_RANGE / size);
         unsigned degree = i * 360 / size + (ring.offsetDeg >> 4);
-        int maxLength = (SCREEN_W / 6 - ring.radius);
 
         // // calculate start point
-        int innerR = ring.radius - ((ring.inOffset * maxLength * spect[i] / maxLoudness) >> 10);
+        int innerR = ring.radius - ((ring.inOffset * ring.maxLength * spect[i] / maxLoudness) >> 10);
         unsigned iX = ring.cX + ((innerR * VIS_FastSin_d16(degree)) >> 16);
         unsigned iY = ring.cY - ((innerR * VIS_FastCos_d16(degree)) >> 16);
 
         // // calculate color end point
-        int outerR = ring.radius + (((1024 - ring.inOffset) * maxLength * spect[i] / maxLoudness) >> 10); 
+        int outerR = ring.radius + (((1024 - ring.inOffset) * ring.maxLength * spect[i] / maxLoudness) >> 10); 
         unsigned oX = ring.cX + ((outerR * VIS_FastSin_d16(degree)) >> 16);
         unsigned oY = ring.cY - ((outerR * VIS_FastCos_d16(degree)) >> 16);
 
@@ -68,6 +124,7 @@ void VIS_VGA_UpdateFrame(unsigned size, unsigned spect[]) {
 
     // swap front and back buffers on VGA vertical sync
     *pixel_ctrl_ptr = 0x1;
+    ring_controller();
 }
 
 void VIS_VGA_ColorTest() {
@@ -99,32 +156,16 @@ void VIS_VGA_SetBuffer(unsigned frontAddress, unsigned backAddress) {
     VIS_VGA_Setup();
 }
 
-int color_from_RGB888(int r, int g, int b) {
-#ifdef DEBUG
-    r = r % 256;
-    g = g % 256;
-    b = b % 256;
-#endif
+int color_from_RGB888(unsigned r, unsigned g, unsigned b) {
+    r = (r > 255) ? 255 : r;
+    g = (g > 255) ? 255 : g;
+    b = (b > 255) ? 255 : b;
     return (r >> 3 << 11 ) | (g >> 2 << 5 ) | (b >> 3 & 0x1F);
-}
-
-int color_from_gradient(int seed, int freq) {
-    int r = ((127 * VIS_FastSin_r16((freq * seed << 16) / 30 + (0 << 16))) >> 16) + 128;
-    int g = ((127 * VIS_FastSin_r16((freq * seed << 16) / 30 + (1 << 16))) >> 16) + 128;
-    int b = ((127 * VIS_FastSin_r16((freq * seed << 16) / 30 + (2 << 16))) >> 16) + 128;
-    return color_from_RGB888(r, g, b);
-}
-
-int color_from_gradient_f(int seed, int freq) {
-    static const int colorScale = 55, colorOffset = 200;
-    int r = VIS_FastSin_r(freq * seed / 10. + 0) * colorScale + colorOffset;
-    int g = VIS_FastSin_r(freq * seed / 10. + 1) * colorScale + colorOffset;
-    int b = VIS_FastSin_r(freq * seed / 10. + 2) * colorScale + colorOffset;
-    return color_from_RGB888(r, g, b);
 }
 
 int color_from_gradient_hsv(int cid) {
     cid = cid % COLOR_RANGE;
+    cid = COLOR_RANGE - cid;    // reverse the colors of high freq and low freq
     static int r = 0, g = 0, b = 0;
     if (cid <= COLOR_RANGE * 3 / 10) {
         r = 0xFF;
@@ -143,6 +184,9 @@ int color_from_gradient_hsv(int cid) {
         g = (COLOR_RANGE - cid) * 85 / 24;
         b = 0xFF;
     }
+    r = r * 128 / ring.brightness;
+    g = g * 128 / ring.brightness;
+    b = b * 128 / ring.brightness;
     return color_from_RGB888(r, g, b);
 }
 
